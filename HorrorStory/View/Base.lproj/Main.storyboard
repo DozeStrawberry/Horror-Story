@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Over View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HorrorStory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="OverViewController" customModule="HorrorStory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,7 +43,7 @@
         <!--恐怖總覽-->
         <scene sceneID="5EY-DD-vpw">
             <objects>
-                <viewController id="9Xv-cn-DC5" customClass="ViewController" customModule="HorrorStory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9Xv-cn-DC5" customClass="OverViewController" customModule="HorrorStory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GPC-F9-eQL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,33 +52,49 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="90" id="Jog-kA-X8c">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="90" id="Jog-kA-X8c" customClass="OverViewTableViewCell" customModule="HorrorStory" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jog-kA-X8c" id="G7O-Io-x2X">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wCs-T4-sCR">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCs-T4-sCR">
                                                     <rect key="frame" x="20" y="11" width="50" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="6il-Im-xYJ"/>
+                                                        <constraint firstAttribute="width" constant="50" id="U6w-O9-xzg"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="channelName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfZ-Wf-vOa">
-                                                    <rect key="frame" x="80" y="11" width="314" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="channelName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfZ-Wf-vOa">
+                                                    <rect key="frame" x="80" y="11" width="314" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subscribers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDB-dU-aZe">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XDB-dU-aZe">
                                                     <rect key="frame" x="80" y="49" width="314" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wCs-T4-sCR" firstAttribute="top" secondItem="G7O-Io-x2X" secondAttribute="topMargin" id="2jd-rd-rnB"/>
+                                                <constraint firstItem="wCs-T4-sCR" firstAttribute="leading" secondItem="G7O-Io-x2X" secondAttribute="leadingMargin" id="5i2-5q-Mrd"/>
+                                                <constraint firstItem="XDB-dU-aZe" firstAttribute="trailing" secondItem="G7O-Io-x2X" secondAttribute="trailingMargin" id="8zd-X1-Jxj"/>
+                                                <constraint firstItem="bfZ-Wf-vOa" firstAttribute="leading" secondItem="wCs-T4-sCR" secondAttribute="trailing" constant="10" id="BxK-Gg-G2A"/>
+                                                <constraint firstItem="bfZ-Wf-vOa" firstAttribute="top" secondItem="G7O-Io-x2X" secondAttribute="topMargin" id="Igx-lk-YeQ"/>
+                                                <constraint firstItem="XDB-dU-aZe" firstAttribute="top" secondItem="bfZ-Wf-vOa" secondAttribute="bottom" constant="17.5" id="Xe7-Nu-mgh"/>
+                                                <constraint firstItem="bfZ-Wf-vOa" firstAttribute="trailing" secondItem="G7O-Io-x2X" secondAttribute="trailingMargin" id="doQ-fG-eCz"/>
+                                                <constraint firstItem="XDB-dU-aZe" firstAttribute="leading" secondItem="wCs-T4-sCR" secondAttribute="trailing" constant="10" id="liG-KY-z1d"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="channelImage" destination="wCs-T4-sCR" id="m5D-7D-okp"/>
+                                            <outlet property="channelName" destination="bfZ-Wf-vOa" id="R35-7k-ykX"/>
+                                            <outlet property="subscribersLabel" destination="XDB-dU-aZe" id="ZUO-1n-3ML"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -101,8 +117,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="SubscribersLabel" destination="XDB-dU-aZe" id="8RV-RI-KJ0"/>
-                        <outlet property="channelNameLabel" destination="bfZ-Wf-vOa" id="3U8-Sy-Tza"/>
+                        <outlet property="tableView" destination="Ibc-GV-Qgw" id="5y1-hS-ypb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jM5-Fn-1Fr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
