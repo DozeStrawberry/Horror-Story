@@ -11,7 +11,7 @@ class OverViewTableViewCell: UITableViewCell {
     
     @IBOutlet weak var channelImage: UIImageView!
     @IBOutlet weak var channelName: UILabel!
-    @IBOutlet weak var subscribersLabel: UILabel!
+    @IBOutlet weak var sortLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,3 +25,5 @@ class OverViewTableViewCell: UITableViewCell {
     }
 
 }
+
+

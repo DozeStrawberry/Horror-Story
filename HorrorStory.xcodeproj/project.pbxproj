@@ -16,6 +16,8 @@
 		A2358ED7293B2D4800220389 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2358ED5293B2D4800220389 /* LaunchScreen.storyboard */; };
 		A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2535190293E2351000DEF86 /* OverViewModel.swift */; };
 		A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */; };
+		A26AB84E293EE4F30036C000 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB84D293EE4F30036C000 /* Constants.swift */; };
+		A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB850293EF3CB0036C000 /* PlayListVideo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		A2358ED8293B2D4800220389 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2535190293E2351000DEF86 /* OverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewModel.swift; sourceTree = "<group>"; };
 		A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
+		A26AB84D293EE4F30036C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A26AB850293EF3CB0036C000 /* PlayListVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListVideo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 			children = (
 				A2358EC7293B2D4700220389 /* AppDelegate.swift */,
 				A2358EC9293B2D4700220389 /* SceneDelegate.swift */,
+				A26AB84F293EF3610036C000 /* Helpers */,
 				A2535192293E235C000DEF86 /* Model */,
 				A2535193293E236A000DEF86 /* Controller */,
 				A2535194293E2390000DEF86 /* TableViewCell */,
@@ -80,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				A2535190293E2351000DEF86 /* OverViewModel.swift */,
+				A26AB850293EF3CB0036C000 /* PlayListVideo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -106,6 +112,14 @@
 				A2358ECD293B2D4700220389 /* Main.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A26AB84F293EF3610036C000 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A26AB84D293EE4F30036C000 /* Constants.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,9 +194,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2358ECC293B2D4700220389 /* OverViewController.swift in Sources */,
+				A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */,
 				A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */,
 				A2358ED2293B2D4700220389 /* HorrorStory.xcdatamodeld in Sources */,
 				A2358EC8293B2D4700220389 /* AppDelegate.swift in Sources */,
+				A26AB84E293EE4F30036C000 /* Constants.swift in Sources */,
 				A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */,
 				A2358ECA293B2D4700220389 /* SceneDelegate.swift in Sources */,
 			);

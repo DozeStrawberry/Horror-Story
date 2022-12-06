@@ -59,7 +59,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCs-T4-sCR">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCs-T4-sCR">
                                                     <rect key="frame" x="20" y="11" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="6il-Im-xYJ"/>
@@ -93,7 +93,7 @@
                                         <connections>
                                             <outlet property="channelImage" destination="wCs-T4-sCR" id="m5D-7D-okp"/>
                                             <outlet property="channelName" destination="bfZ-Wf-vOa" id="R35-7k-ykX"/>
-                                            <outlet property="subscribersLabel" destination="XDB-dU-aZe" id="ZUO-1n-3ML"/>
+                                            <outlet property="sortLabel" destination="XDB-dU-aZe" id="ZUO-1n-3ML"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -131,13 +131,25 @@
                     <view key="view" contentMode="scaleToFill" id="Nq6-wc-Qux">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YgF-zZ-QjS">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="IIv-e8-bfH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YgF-zZ-QjS" firstAttribute="bottom" secondItem="IIv-e8-bfH" secondAttribute="bottom" id="2NR-NF-omI"/>
+                            <constraint firstItem="YgF-zZ-QjS" firstAttribute="top" secondItem="IIv-e8-bfH" secondAttribute="top" id="B1e-bT-HgL"/>
+                            <constraint firstItem="YgF-zZ-QjS" firstAttribute="trailing" secondItem="IIv-e8-bfH" secondAttribute="trailing" id="sg9-gS-J0Y"/>
+                            <constraint firstItem="YgF-zZ-QjS" firstAttribute="leading" secondItem="IIv-e8-bfH" secondAttribute="leading" id="zBm-PS-KKi"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ZH-Ij-06T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3206" y="-55"/>
+            <point key="canvasLocation" x="3032" y="-356"/>
         </scene>
         <!--搜尋-->
         <scene sceneID="93d-Fg-vXu">
@@ -155,7 +167,7 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="怪談" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5kn-HN-dT9">
                                                 <rect key="frame" x="20" y="15" width="299" height="38"/>
-                                                <color key="backgroundColor" red="0.99607843159999998" green="0.97254908080000002" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" red="0.34901960784313724" green="0.27058823529411763" blue="0.27058823529411763" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -212,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="29O-Sw-VWc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3496" y="-806"/>
+            <point key="canvasLocation" x="3033" y="-1040"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xDr-bY-wea">
