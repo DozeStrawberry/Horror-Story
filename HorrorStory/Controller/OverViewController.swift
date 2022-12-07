@@ -25,18 +25,6 @@ class OverViewController: UIViewController {
         
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        //Confirm that a video selected
-//        guard tableView.indexPathForSelectedRow != nil else {
-//            return
-//        }
-//
-//        if segue.identifier == "goToPlayList"{
-//            let dvc = segue.destination as? PlayListViewController
-//            dvc?.getAPI = channelURL
-//
-//        }
-//    }
     
     private func showItemView(url: String) {
 
@@ -47,8 +35,6 @@ class OverViewController: UIViewController {
         self.navigationController?.pushViewController(dvc, animated: true)
     }
     
-
-
 }
 
 
@@ -85,21 +71,35 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
 
         case 0:
-            channelURL = Constants.XSURVEY_API_URL
+            channelURL = Constants.S01_API_URL
             showItemView(url: channelURL)
-            //performSegue(withIdentifier: "goToPlayList", sender: nil)
-            
+            channelURL = ""
     
         case 1:
-            break
+            channelURL = Constants.S02_API_URL
+            showItemView(url: channelURL)
+            channelURL = ""
+            
         case 2:
-            break
+            channelURL = Constants.S03_API_URL
+            showItemView(url: channelURL)
+            channelURL = ""
+            
         case 3:
-            break
+            channelURL = Constants.S04_API_URL
+            showItemView(url: channelURL)
+            channelURL = ""
+            
         case 4:
-            break
+            channelURL = Constants.S05_API_URL
+            showItemView(url: channelURL)
+            channelURL = ""
+            
         case 5:
-            break
+            channelURL = Constants.S06_API_URL
+            showItemView(url: channelURL)
+            channelURL = ""
+            
         default:
             break
         }
