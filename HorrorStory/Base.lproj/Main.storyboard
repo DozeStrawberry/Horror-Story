@@ -109,10 +109,10 @@
             </objects>
             <point key="canvasLocation" x="2259.4202898550725" y="-474.77678571428567"/>
         </scene>
-        <!--View Controller-->
+        <!--List View Controller-->
         <scene sceneID="Rpr-uz-ulu">
             <objects>
-                <viewController id="Ks3-su-Xgr" sceneMemberID="viewController">
+                <viewController id="Ks3-su-Xgr" customClass="ListViewController" customModule="HorrorStory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ykq-nT-pvk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -130,6 +130,9 @@
                             <constraint firstItem="wug-nC-7rL" firstAttribute="top" secondItem="kPc-oh-T9F" secondAttribute="top" id="fgu-Tj-Bmc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="wug-nC-7rL" id="ief-mO-9en"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hni-N9-n74" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -223,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ZH-Ij-06T" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4219" y="-475"/>
+            <point key="canvasLocation" x="4575" y="-475"/>
         </scene>
         <!--搜尋-->
         <scene sceneID="93d-Fg-vXu">
