@@ -9,13 +9,13 @@ import UIKit
 
 class OverViewController: UIViewController {
     
-    
     @IBOutlet weak var tableView: UITableView!
 
-  
     let Model = OverViewModel()
     
-    
+    var channelURL = String()
+  
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -23,8 +23,30 @@ class OverViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        //Confirm that a video selected
+//        guard tableView.indexPathForSelectedRow != nil else {
+//            return
+//        }
+//
+//        if segue.identifier == "goToPlayList"{
+//            let dvc = segue.destination as? PlayListViewController
+//            dvc?.getAPI = channelURL
+//
+//        }
+//    }
+    
+    private func showItemView(url: String) {
+
+        let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+
+        dvc.getAPI = url
+
+        self.navigationController?.pushViewController(dvc, animated: true)
+    }
+    
 
 
 }
@@ -59,10 +81,34 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath.row {
+
+        case 0:
+            channelURL = Constants.XSURVEY_API_URL
+            showItemView(url: channelURL)
+            //performSegue(withIdentifier: "goToPlayList", sender: nil)
+            
+    
+        case 1:
+            break
+        case 2:
+            break
+        case 3:
+            break
+        case 4:
+            break
+        case 5:
+            break
+        default:
+            break
+        }
     }
-    
-    
+     
 }
+
+
+
 
 
 

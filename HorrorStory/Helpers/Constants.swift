@@ -13,7 +13,7 @@ struct Constants {
     
     static let XSURVEY_PLAYLIST_ID = "UULFOyshL6rKK1GqwoEfy_ehBg"
     static let XSURVEY_NEXTPAGE_TOKEN = "EAAaBlBUOkNBVQ"
-    static let XSURVEY_API_URL = "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(Constants.XSURVEY_PLAYLIST_ID)=\(Constants.API_KEY)&maxResults=50&pageToken=\(Constants.XSURVEY_NEXTPAGE_TOKEN)"
+    static let XSURVEY_API_URL = "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(Constants.XSURVEY_PLAYLIST_ID)&key=\(Constants.API_KEY)"
     
 }
 

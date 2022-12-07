@@ -18,6 +18,11 @@
 		A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */; };
 		A26AB84E293EE4F30036C000 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB84D293EE4F30036C000 /* Constants.swift */; };
 		A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB850293EF3CB0036C000 /* PlayListVideo.swift */; };
+		A2B2EA73293EFBC100A22FEA /* PlayListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */; };
+		A2B2EA75293F00FB00A22FEA /* URLParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */; };
+		A2B2EA77293F21AB00A22FEA /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */; };
+		A2B2EA79293F254000A22FEA /* PlayListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA78293F254000A22FEA /* PlayListTableViewCell.swift */; };
+		A2B2EA7B293F369400A22FEA /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA7A293F369400A22FEA /* CacheManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +39,11 @@
 		A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
 		A26AB84D293EE4F30036C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A26AB850293EF3CB0036C000 /* PlayListVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListVideo.swift; sourceTree = "<group>"; };
+		A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListResponse.swift; sourceTree = "<group>"; };
+		A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParseModel.swift; sourceTree = "<group>"; };
+		A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewController.swift; sourceTree = "<group>"; };
+		A2B2EA78293F254000A22FEA /* PlayListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListTableViewCell.swift; sourceTree = "<group>"; };
+		A2B2EA7A293F369400A22FEA /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +96,8 @@
 			children = (
 				A2535190293E2351000DEF86 /* OverViewModel.swift */,
 				A26AB850293EF3CB0036C000 /* PlayListVideo.swift */,
+				A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */,
+				A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -94,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				A2358ECB293B2D4700220389 /* OverViewController.swift */,
+				A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -102,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */,
+				A2B2EA78293F254000A22FEA /* PlayListTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -118,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				A26AB84D293EE4F30036C000 /* Constants.swift */,
+				A2B2EA7A293F369400A22FEA /* CacheManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -193,14 +208,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2B2EA7B293F369400A22FEA /* CacheManager.swift in Sources */,
 				A2358ECC293B2D4700220389 /* OverViewController.swift in Sources */,
+				A2B2EA77293F21AB00A22FEA /* PlayListViewController.swift in Sources */,
 				A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */,
+				A2B2EA73293EFBC100A22FEA /* PlayListResponse.swift in Sources */,
+				A2B2EA75293F00FB00A22FEA /* URLParseModel.swift in Sources */,
 				A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */,
 				A2358ED2293B2D4700220389 /* HorrorStory.xcdatamodeld in Sources */,
 				A2358EC8293B2D4700220389 /* AppDelegate.swift in Sources */,
 				A26AB84E293EE4F30036C000 /* Constants.swift in Sources */,
 				A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */,
 				A2358ECA293B2D4700220389 /* SceneDelegate.swift in Sources */,
+				A2B2EA79293F254000A22FEA /* PlayListTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
