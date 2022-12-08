@@ -25,10 +25,14 @@ class OverViewController: UIViewController {
         
     }
     
+//    let vc = SecondViewController.init()
+//    self.navigationController?.pushViewController(vc, animated: true)
     
     private func showItemView(url: String) {
 
-        let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+        //let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+        
+        let dvc = VideoViewController.init()
 
         dvc.getAPI = url
 

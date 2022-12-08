@@ -12,13 +12,15 @@ class ListViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    let videoView = VideoViewController()
+    //let videoView = VideoViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         //scrollView.delegate = self
+        
+        //scrollView.addSubview(videoView)
         
         
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]

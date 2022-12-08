@@ -12,6 +12,8 @@ struct Constants {
     static let API_KEY = "AIzaSyB-NwzDwChm0dq3TrfwWIS04fSYwnGofwc"
     static let NEXTPAGE_TOKEN = "EAAaBlBUOkNBVQ"
     
+    static var YT_EMBED_URL = "https://www.youtube.com/embed/"
+    
     // X調查API設定
     static let S01_PLAYLIST_ID = "UULFOyshL6rKK1GqwoEfy_ehBg"
     static let S01_API_URL = "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=\(Constants.S01_PLAYLIST_ID)&key=\(Constants.API_KEY)&maxResults=50&pageToken=\(Constants.NEXTPAGE_TOKEN)"

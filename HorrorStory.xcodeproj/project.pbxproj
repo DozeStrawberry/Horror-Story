@@ -14,6 +14,7 @@
 		A2358ED2293B2D4700220389 /* HorrorStory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2358ED0293B2D4700220389 /* HorrorStory.xcdatamodeld */; };
 		A2358ED4293B2D4800220389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2358ED3293B2D4800220389 /* Assets.xcassets */; };
 		A2358ED7293B2D4800220389 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2358ED5293B2D4800220389 /* LaunchScreen.storyboard */; };
+		A248E0B22941AF77005E293D /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A248E0B12941AF77005E293D /* PlayVideoViewController.swift */; };
 		A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2535190293E2351000DEF86 /* OverViewModel.swift */; };
 		A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */; };
 		A26AB84E293EE4F30036C000 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB84D293EE4F30036C000 /* Constants.swift */; };
@@ -40,6 +41,7 @@
 		A2358ED3293B2D4800220389 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2358ED6293B2D4800220389 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2358ED8293B2D4800220389 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A248E0B12941AF77005E293D /* PlayVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoViewController.swift; sourceTree = "<group>"; };
 		A2535190293E2351000DEF86 /* OverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewModel.swift; sourceTree = "<group>"; };
 		A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
 		A26AB84D293EE4F30036C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				A2358EC7293B2D4700220389 /* AppDelegate.swift */,
 				A2358EC9293B2D4700220389 /* SceneDelegate.swift */,
+				A248E0B02941AC19005E293D /* Test */,
 				A26AB84F293EF3610036C000 /* Helpers */,
 				A2535192293E235C000DEF86 /* Model */,
 				A2535193293E236A000DEF86 /* Controller */,
@@ -100,6 +103,16 @@
 				A2358ED0293B2D4700220389 /* HorrorStory.xcdatamodeld */,
 			);
 			path = HorrorStory;
+			sourceTree = "<group>";
+		};
+		A248E0B02941AC19005E293D /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */,
+				A2B2EA78293F254000A22FEA /* PlayListTableViewCell.swift */,
+				A2B2EA832940773700A22FEA /* ListViewController.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 		A2535192293E235C000DEF86 /* Model */ = {
@@ -117,8 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				A2358ECB293B2D4700220389 /* OverViewController.swift */,
-				A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */,
-				A2B2EA832940773700A22FEA /* ListViewController.swift */,
+				A248E0B12941AF77005E293D /* PlayVideoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -127,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */,
-				A2B2EA78293F254000A22FEA /* PlayListTableViewCell.swift */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -229,6 +240,7 @@
 				A2358ECC293B2D4700220389 /* OverViewController.swift in Sources */,
 				A2B2EA77293F21AB00A22FEA /* PlayListViewController.swift in Sources */,
 				A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */,
+				A248E0B22941AF77005E293D /* PlayVideoViewController.swift in Sources */,
 				A2B2EA73293EFBC100A22FEA /* PlayListResponse.swift in Sources */,
 				A2B2EA75293F00FB00A22FEA /* URLParseModel.swift in Sources */,
 				A2B2EA842940773700A22FEA /* ListViewController.swift in Sources */,
