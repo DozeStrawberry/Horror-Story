@@ -14,29 +14,28 @@ class OverViewController: UIViewController {
     let Model = OverViewModel()
     
     var channelURL = String()
+    var channelName = String()
   
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         tableView.delegate = self
         tableView.dataSource = self
         
     }
     
-//    let vc = SecondViewController.init()
-//    self.navigationController?.pushViewController(vc, animated: true)
     
-    private func showItemView(url: String) {
+    private func showVideoView(url: String, channelTitle: String) {
 
-        //let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+        let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
         
-        let dvc = VideoViewController.init()
+        //let dvc = VideoViewController.init() //傳送xib方法
 
         dvc.getAPI = url
-
-        self.navigationController?.pushViewController(dvc, animated: true)
+        dvc.navigationTitle = channelTitle
+       
+        navigationController?.pushViewController(dvc, animated: true)
     }
     
 }
@@ -76,33 +75,45 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
 
         case 0:
             channelURL = Constants.S01_API_URL
-            showItemView(url: channelURL)
+            channelName = Model.channelArray[0]
+            showVideoView(url: channelURL, channelTitle: channelName)
             channelURL = ""
+            channelName = ""
     
         case 1:
             channelURL = Constants.S02_API_URL
-            showItemView(url: channelURL)
+            channelName = Model.channelArray[1]
+            showVideoView(url: channelURL, channelTitle: channelName)
             channelURL = ""
+            channelName = ""
             
         case 2:
             channelURL = Constants.S03_API_URL
-            showItemView(url: channelURL)
+            channelName = Model.channelArray[2]
+            showVideoView(url: channelURL, channelTitle: channelName)
             channelURL = ""
+            channelName = ""
             
         case 3:
             channelURL = Constants.S04_API_URL
-            showItemView(url: channelURL)
+            channelName = Model.channelArray[3]
+            showVideoView(url: channelURL, channelTitle: channelName)
             channelURL = ""
+            channelName = ""
             
         case 4:
             channelURL = Constants.S05_API_URL
-            showItemView(url: channelURL)
+            channelName = Model.channelArray[4]
+            showVideoView(url: channelURL, channelTitle: channelName)
             channelURL = ""
+            channelName = ""
             
         case 5:
             channelURL = Constants.S06_API_URL
-            showItemView(url: channelURL)
+            channelName = Model.channelArray[5]
+            showVideoView(url: channelURL, channelTitle: channelName)
             channelURL = ""
+            channelName = ""
             
         default:
             break

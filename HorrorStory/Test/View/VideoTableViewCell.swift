@@ -14,7 +14,7 @@ class VideoTableViewCell: UITableViewCell {
     @IBOutlet weak var videoTitleLabel: UILabel!
     @IBOutlet weak var videoReleaseLabel: UILabel!
     
-    var video: PlayListVideo?
+    var video: VideoModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,7 +28,7 @@ class VideoTableViewCell: UITableViewCell {
     }
     
     //顯示Cell內容
-    func setCell(_ v: PlayListVideo) {
+    func setCell(_ v: VideoModel) {
         self.video = v
         
         // Ensure that we have a Video，確定有值

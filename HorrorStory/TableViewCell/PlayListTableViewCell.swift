@@ -7,15 +7,15 @@
 
 import UIKit
 
+
 class PlayListTableViewCell: UITableViewCell {
-    
     
     @IBOutlet weak var playListImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var publishedLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
-    var video: PlayListVideo?
+    var video: VideoModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,11 +29,8 @@ class PlayListTableViewCell: UITableViewCell {
     }
     
     
-    @IBAction func likeButtonPress(_ sender: UIButton) {
-    }
-    
     //顯示Cell內容
-    func setCell(_ v: PlayListVideo) {
+    func setCell(_ v: VideoModel) {
         self.video = v
         
         // Ensure that we have a Video，確定有值

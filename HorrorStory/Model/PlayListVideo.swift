@@ -15,6 +15,7 @@ struct PlayListVideo: Decodable {
     var description = ""
     var thumbnail = ""
     var published = Date()
+    var channelTitle = ""
     
     
     //設定跟json匹配檔案
@@ -32,6 +33,7 @@ struct PlayListVideo: Decodable {
         case description
         case thumbnail = "url"
         case videoId
+        case channelTitle
     }
     
     
@@ -52,6 +54,8 @@ struct PlayListVideo: Decodable {
         
         // Parse the publish data，日期型別
         self.published = try snippetContainer.decode(Date.self, forKey: .published)
+        
+        self.channelTitle = try snippetContainer.decode(String.self, forKey: .channelTitle)
         
         // Parse thumbanails，縮圖
         let thumbnailContainer = try snippetContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .thumbnails)
