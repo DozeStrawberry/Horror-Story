@@ -28,27 +28,36 @@ class PlayVideoViewController: UIViewController {
        
         navigationItem.title = channelTitle
     
-        
+
         //左上按鈕
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
     }
     
     @objc func backAction() {
+    
+        let dvc = storyboard?.instantiateViewController(withIdentifier: "goToPlayList") as! PlayListViewController
+        
+        guard video != nil else { return }
+        
+        dvc.backLike = video!.isLike
+        
         self.navigationController?.popViewController(animated: true)
+        
+        print("send value \(video!.isLike)")
     }
     
     
     @IBAction func aLikeButtonPress(_ sender: UIButton) {
-        //likeBool = !likeBool!
         guard video != nil else { return }
         
         video!.isLike = !video!.isLike
         print("Button value \(video!.isLike)")
         
         setButtonImage()
-        
     }
     
+    
+    //按鈕圖片改變
     func setButtonImage() {
         guard video != nil else { return }
         if video!.isLike == false {

@@ -19,6 +19,8 @@ class PlayListViewController: UIViewController {
     var getAPI: String?
     var navigationTitle: String?
     
+    var backLike: Bool?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,14 @@ class PlayListViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    //傳過來按鈕資訊，可以傳新整理
+    override func viewWillAppear(_ animated: Bool) {
+        
+        tableView.reloadData()
+    }
+    
+    
     //按鈕
     @IBAction func likeButtonPress(_ sender: UIButton) {
         //改變Bool值
@@ -62,8 +72,6 @@ class PlayListViewController: UIViewController {
         dvc.likeBool = video.isLike
         print("\(video.isLike)")
         
-        
-
         self.navigationController?.pushViewController(dvc, animated: true)
     }
 
@@ -84,6 +92,12 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayListCell", for: indexPath) as! PlayListTableViewCell
         
         let video = self.playVideo[indexPath.row]
+        
+        //guard backLike != nil else { return }
+        
+        if backLike != nil {
+            video.isLike = backLike!
+        }
         
         //改變按鈕圖案
         if video.isLike == false {
@@ -109,7 +123,6 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
 }
-
 
 
 extension PlayListViewController: ModelDelegate {
