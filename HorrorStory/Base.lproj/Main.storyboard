@@ -159,6 +159,9 @@
                                         <rect key="frame" x="0.0" y="287" width="384" height="22"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" image="suit.heart" catalog="system"/>
+                                        <connections>
+                                            <action selector="aLikeButtonPress:" destination="wyv-T6-GWq" eventType="touchUpInside" id="gUE-HU-50V"/>
+                                        </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="247" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lIU-3i-ExZ">
                                         <rect key="frame" x="0.0" y="319" width="384" height="484"/>
@@ -182,8 +185,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="KBb-EF-gc3"/>
                     <connections>
+                        <outlet property="aLikeButton" destination="rE3-w7-Sjd" id="WYn-gt-na8"/>
                         <outlet property="dateLabel" destination="LXC-xV-u47" id="1GZ-46-coi"/>
-                        <outlet property="likeButton" destination="rE3-w7-Sjd" id="WYn-gt-na8"/>
                         <outlet property="textView" destination="lIU-3i-ExZ" id="fWB-yb-nNP"/>
                         <outlet property="titleLabel" destination="hfZ-iE-Pbx" id="EaG-4x-Jc5"/>
                         <outlet property="webView" destination="3ag-gO-KY0" id="J0w-t2-AsD"/>

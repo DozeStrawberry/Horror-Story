@@ -46,7 +46,7 @@ class PlayListViewController: UIViewController {
     @IBAction func likeButtonPress(_ sender: UIButton) {
         //改變Bool值
         playVideo[sender.tag].isLike = !playVideo[sender.tag].isLike
-        print("\(playVideo[sender.tag].isLike)")
+        //print("\(playVideo[sender.tag].isLike)")
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
         
        }
@@ -58,7 +58,11 @@ class PlayListViewController: UIViewController {
 
         dvc.video = video
         dvc.channelTitle = navigationTitle
-       
+        
+        dvc.likeBool = video.isLike
+        print("\(video.isLike)")
+        
+        
 
         self.navigationController?.pushViewController(dvc, animated: true)
     }
