@@ -17,6 +17,8 @@
 		A248E0B22941AF77005E293D /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A248E0B12941AF77005E293D /* PlayVideoViewController.swift */; };
 		A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2535190293E2351000DEF86 /* OverViewModel.swift */; };
 		A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */; };
+		A25B89AF2945677800DCF035 /* LikeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25B89AE2945677800DCF035 /* LikeListViewController.swift */; };
+		A25B89B12945ADDE00DCF035 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25B89B02945ADDE00DCF035 /* Global.swift */; };
 		A26645C72941BDE2009371A8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26645C62941BDE2009371A8 /* WebKit.framework */; };
 		A26645CB29434039009371A8 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26645CA29434039009371A8 /* VideoModel.swift */; };
 		A26AB84E293EE4F30036C000 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB84D293EE4F30036C000 /* Constants.swift */; };
@@ -45,6 +47,8 @@
 		A248E0B12941AF77005E293D /* PlayVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoViewController.swift; sourceTree = "<group>"; };
 		A2535190293E2351000DEF86 /* OverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewModel.swift; sourceTree = "<group>"; };
 		A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
+		A25B89AE2945677800DCF035 /* LikeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeListViewController.swift; sourceTree = "<group>"; };
+		A25B89B02945ADDE00DCF035 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		A26645C62941BDE2009371A8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		A26645CA29434039009371A8 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		A26AB84D293EE4F30036C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				A26AB850293EF3CB0036C000 /* PlayListVideo.swift */,
 				A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */,
 				A26645CA29434039009371A8 /* VideoModel.swift */,
+				A25B89B02945ADDE00DCF035 /* Global.swift */,
 				A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */,
 			);
 			path = Model;
@@ -134,6 +139,7 @@
 				A2358ECB293B2D4700220389 /* OverViewController.swift */,
 				A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */,
 				A248E0B12941AF77005E293D /* PlayVideoViewController.swift */,
+				A25B89AE2945677800DCF035 /* LikeListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -261,8 +267,10 @@
 				A2B2EA9D2940803800A22FEA /* VideoViewController.swift in Sources */,
 				A26AB84E293EE4F30036C000 /* Constants.swift in Sources */,
 				A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */,
+				A25B89B12945ADDE00DCF035 /* Global.swift in Sources */,
 				A2B2EA9329407A0700A22FEA /* VideoTableViewCell.swift in Sources */,
 				A2358ECA293B2D4700220389 /* SceneDelegate.swift in Sources */,
+				A25B89AF2945677800DCF035 /* LikeListViewController.swift in Sources */,
 				A2B2EA79293F254000A22FEA /* PlayListTableViewCell.swift in Sources */,
 				A26645CB29434039009371A8 /* VideoModel.swift in Sources */,
 			);

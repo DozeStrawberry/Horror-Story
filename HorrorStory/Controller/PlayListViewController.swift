@@ -7,6 +7,13 @@
 
 import UIKit
 
+//protocol LikeVideosDelegate:AnyObject {
+//
+//    //func addLikeArray(_ likeVideos: [VideoModel])
+//    var selectedLikeVideos: [VideoModel] { get }
+//}
+
+
 class PlayListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -15,16 +22,26 @@ class PlayListViewController: UIViewController {
     public var playVideo = [VideoModel]()
     public var likeVideo = [VideoModel]()
     
+//    var selectedLikeVideos: [VideoModel] {
+//        return likeVideo
+//    }
+    
+    
+    //var delegate: LikeVideosDelegate?
+    
     //接收overView傳送過來的值
     var getAPI: String?
     var navigationTitle: String?
     
+    //接收playVideo傳送過來的值
     var backLike: Bool?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //print("check have \(likeVideo.count) like video")
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -35,6 +52,12 @@ class PlayListViewController: UIViewController {
         }
         
         navigationItem.title = navigationTitle
+        
+//        let tbc = tabBarController as? LikeListViewController
+//        likeVideo = Global.sharedInstance.likeVideoArray
+//        tbc?.senderLikeVideos = likeVideo
+//
+
        
         //左上回去按鈕
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
@@ -47,6 +70,7 @@ class PlayListViewController: UIViewController {
     
     //傳過來按鈕資訊，可以傳新整理
     override func viewWillAppear(_ animated: Bool) {
+        //print("check this have \(likeVideo.count) like video")
         
         tableView.reloadData()
     }
@@ -56,6 +80,17 @@ class PlayListViewController: UIViewController {
     @IBAction func likeButtonPress(_ sender: UIButton) {
         //改變Bool值
         playVideo[sender.tag].isLike = !playVideo[sender.tag].isLike
+        
+        if playVideo[sender.tag].isLike == true {
+            let navVC = tabBarController?.viewControllers![1] as! UINavigationController
+            let LikeListViewController = navVC.topViewController as! LikeListViewController
+            LikeListViewController.senderLikeVideos = likeVideo
+            print("I send \(likeVideo.count) like")
+        } else {
+            
+        }
+        
+        
         //print("\(playVideo[sender.tag].isLike)")
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
         
@@ -70,7 +105,7 @@ class PlayListViewController: UIViewController {
         dvc.channelTitle = navigationTitle
         
         dvc.likeBool = video.isLike
-        print("\(video.isLike)")
+        //print("\(video.isLike)")
         
         self.navigationController?.pushViewController(dvc, animated: true)
     }
@@ -91,25 +126,34 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayListCell", for: indexPath) as! PlayListTableViewCell
         
-        let video = self.playVideo[indexPath.row]
+        let selectVideo = self.playVideo[indexPath.row]
         
-        //guard backLike != nil else { return }
-        
+        //回傳Bool過來有值
         if backLike != nil {
-            video.isLike = backLike!
+            selectVideo.isLike = backLike!
         }
         
         //改變按鈕圖案
-        if video.isLike == false {
+        if selectVideo.isLike == false {
             cell.likeButton.imageView?.image = UIImage(systemName: "heart")
+            
+//            if let index = find(selectVideo, indexPath) {
+//                    likeVideo.removeAtIndex(index)
+//                }
+            //likeVideo.remove(at: video)
+            //print("like video remove \(selectVideo.videoId)")
         } else {
             cell.likeButton.imageView?.image = UIImage(systemName: "heart.fill")
+            likeVideo.append(selectVideo)
+            //self.delegate?.addLikeArray(likeVideo)
+            
+            //print("check have \(likeVideo.count) like video")
+            //print("like video have \(selectVideo.videoId)")
         }
         
-        cell.setCell(video)
+        cell.setCell(selectVideo)
         cell.likeButton.tag = indexPath.row
 
-        
         return cell
     }
     
@@ -132,6 +176,5 @@ extension PlayListViewController: ModelDelegate {
         self.playVideo = videos
         tableView.reloadData()
     }
-    
-    
+     
 }
