@@ -115,6 +115,7 @@
 		A248E0B02941AC19005E293D /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				A25B89B02945ADDE00DCF035 /* Global.swift */,
 				A2535195293E23A6000DEF86 /* View */,
 			);
 			path = Test;
@@ -127,7 +128,6 @@
 				A26AB850293EF3CB0036C000 /* PlayListVideo.swift */,
 				A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */,
 				A26645CA29434039009371A8 /* VideoModel.swift */,
-				A25B89B02945ADDE00DCF035 /* Global.swift */,
 				A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */,
 			);
 			path = Model;

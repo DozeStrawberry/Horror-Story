@@ -7,11 +7,6 @@
 
 import UIKit
 
-//protocol LikeVideosDelegate:AnyObject {
-//
-//    //func addLikeArray(_ likeVideos: [VideoModel])
-//    var selectedLikeVideos: [VideoModel] { get }
-//}
 
 
 class PlayListViewController: UIViewController {
@@ -20,21 +15,17 @@ class PlayListViewController: UIViewController {
     
     var urlParseModel = URLParseModel()
     public var playVideo = [VideoModel]()
-    public var likeVideo = [VideoModel]()
+    var likeVideo = [VideoModel]()
     
-//    var selectedLikeVideos: [VideoModel] {
-//        return likeVideo
-//    }
-    
-    
-    //var delegate: LikeVideosDelegate?
-    
+
     //接收overView傳送過來的值
     var getAPI: String?
     var navigationTitle: String?
     
     //接收playVideo傳送過來的值
     var backLike: Bool?
+    
+    var likeNumber = 0
     
     
     override func viewDidLoad() {
@@ -53,11 +44,6 @@ class PlayListViewController: UIViewController {
         
         navigationItem.title = navigationTitle
         
-//        let tbc = tabBarController as? LikeListViewController
-//        likeVideo = Global.sharedInstance.likeVideoArray
-//        tbc?.senderLikeVideos = likeVideo
-//
-
        
         //左上回去按鈕
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
@@ -82,12 +68,26 @@ class PlayListViewController: UIViewController {
         playVideo[sender.tag].isLike = !playVideo[sender.tag].isLike
         
         if playVideo[sender.tag].isLike == true {
+            
+           
+            likeVideo.append(playVideo[sender.tag])
+            
+            //likeNumber += 1
+            
             let navVC = tabBarController?.viewControllers![1] as! UINavigationController
             let LikeListViewController = navVC.topViewController as! LikeListViewController
             LikeListViewController.senderLikeVideos = likeVideo
-            print("I send \(likeVideo.count) like")
-        } else {
+            //print("I send \(likeVideo.count) like")
+            print("I have \(likeNumber) number of times save likeVideo")
             
+        } else {
+//            for number in 0 ... likeNumber {
+//                likeVideo.remove(at: number)
+//
+//            }
+            
+//            let indexPath = IndexPath(row: sender.tag, section: 0)
+//            likeVideo.remove(at: indexPath)
         }
         
         
@@ -137,15 +137,11 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         if selectVideo.isLike == false {
             cell.likeButton.imageView?.image = UIImage(systemName: "heart")
             
-//            if let index = find(selectVideo, indexPath) {
-//                    likeVideo.removeAtIndex(index)
-//                }
-            //likeVideo.remove(at: video)
             //print("like video remove \(selectVideo.videoId)")
         } else {
             cell.likeButton.imageView?.image = UIImage(systemName: "heart.fill")
-            likeVideo.append(selectVideo)
-            //self.delegate?.addLikeArray(likeVideo)
+            //likeVideo.append(selectVideo)
+
             
             //print("check have \(likeVideo.count) like video")
             //print("like video have \(selectVideo.videoId)")

@@ -60,6 +60,7 @@
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                             <state key="normal" image="heart" catalog="system"/>
                                                             <connections>
+                                                                <action selector="likeButtonChange:" destination="zNp-hD-eou" eventType="touchUpInside" id="hKo-wN-1XT"/>
                                                                 <action selector="likeButtonPress:" destination="wgV-Ua-8HQ" eventType="touchUpInside" id="slj-MZ-8SD"/>
                                                             </connections>
                                                         </button>
