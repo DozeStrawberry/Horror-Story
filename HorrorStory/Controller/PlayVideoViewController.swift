@@ -18,8 +18,10 @@ class PlayVideoViewController: UIViewController {
     @IBOutlet weak var aLikeButton: UIButton!
     @IBOutlet weak var textView: UITextView!
     
+    //介面顯示
     var video: VideoModel?
     
+    //接收傳過來的值
     var channelTitle: String?
     var likeBool: Bool?
     
@@ -36,15 +38,11 @@ class PlayVideoViewController: UIViewController {
     
     @objc func backAction() {
     
-        let dvc = storyboard?.instantiateViewController(withIdentifier: "goToPlayList") as! PlayListViewController
-        
-        guard video != nil else { return }
-        
-        dvc.backLike = video!.isLike
+       
         
         self.navigationController?.popViewController(animated: true)
         
-        print("send value \(video!.isLike)")
+        //print("send value \(video!.isLike)")
     }
     
     
@@ -55,8 +53,9 @@ class PlayVideoViewController: UIViewController {
         print("Button value \(video!.isLike)")
         
         setButtonImage()
+        
+        sendLikeBool()
     }
-    
     
     //按鈕圖片改變
     func setButtonImage() {
@@ -67,6 +66,24 @@ class PlayVideoViewController: UIViewController {
             aLikeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
     }
+    
+    
+    private func sendLikeBool() {
+        
+        let dvc = storyboard?.instantiateViewController(withIdentifier: "goToPlayList") as! PlayListViewController
+        
+        guard video != nil else { return }
+        
+        dvc.backLike = video!.isLike
+    }
+    
+    
+    private func sendToLikeListData() {
+        let navVC = tabBarController?.viewControllers![1] as! UINavigationController
+        let LikeListViewController = navVC.topViewController as! LikeListViewController
+        //LikeListViewController.senderLikeVideos = likeVideo
+    }
+    
     
     
     //即將出現

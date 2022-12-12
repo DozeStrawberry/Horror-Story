@@ -50,8 +50,7 @@ class PlayListViewController: UIViewController {
     
     //傳過來按鈕資訊，可以傳新整理
     override func viewWillAppear(_ animated: Bool) {
-        //print("check this have \(likeVideo.count) like video")
-        
+        //sendLikeData()
         tableView.reloadData()
     }
     
@@ -61,6 +60,7 @@ class PlayListViewController: UIViewController {
         //改變Bool值
         playVideo[sender.tag].isLike = !playVideo[sender.tag].isLike
         
+        // true增加到array
         if playVideo[sender.tag].isLike == true {
             
             likeVideo.append(playVideo[sender.tag])
@@ -70,6 +70,7 @@ class PlayListViewController: UIViewController {
             
         } else {
             
+            // false, array刪減
             for i in 0 ..< likeVideo.count {
                 
                 if playVideo[sender.tag].videoId == likeVideo[i].videoId {
@@ -88,12 +89,15 @@ class PlayListViewController: UIViewController {
     }
     
     
-    func sendLikeData() {
+    private func sendLikeData() {
         
         let navVC = tabBarController?.viewControllers![1] as! UINavigationController
         let LikeListViewController = navVC.topViewController as! LikeListViewController
         LikeListViewController.senderLikeVideos = likeVideo
     }
+    
+    
+   
     
     //把檔案傳到下一頁
     private func showVideoView(video: VideoModel) {
@@ -135,14 +139,9 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         if selectVideo.isLike == false {
             cell.likeButton.imageView?.image = UIImage(systemName: "heart")
             
-            //print("like video remove \(selectVideo.videoId)")
         } else {
             cell.likeButton.imageView?.image = UIImage(systemName: "heart.fill")
-            //likeVideo.append(selectVideo)
 
-            
-            //print("check have \(likeVideo.count) like video")
-            //print("like video have \(selectVideo.videoId)")
         }
         
         cell.setCell(selectVideo)

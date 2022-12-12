@@ -36,7 +36,6 @@ class LikeListViewController: UIViewController {
         
         if senderLikeVideos[sender.tag].isLike == false {
             
-            
             for i in 0 ..< senderLikeVideos.count {
                 
                 if senderLikeVideos[sender.tag].videoId == senderLikeVideos[i].videoId {
