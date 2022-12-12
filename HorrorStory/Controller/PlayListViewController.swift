@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class PlayListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -25,13 +23,9 @@ class PlayListViewController: UIViewController {
     //接收playVideo傳送過來的值
     var backLike: Bool?
     
-    //var likeNumber = 0
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //print("check have \(likeVideo.count) like video")
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -67,13 +61,11 @@ class PlayListViewController: UIViewController {
         //改變Bool值
         playVideo[sender.tag].isLike = !playVideo[sender.tag].isLike
         
-        
         if playVideo[sender.tag].isLike == true {
             
             likeVideo.append(playVideo[sender.tag])
             
-            
-            print("I send \(likeVideo.count) like")
+            //print("I send \(likeVideo.count) like")
             sendLikeData()
             
         } else {
@@ -83,7 +75,7 @@ class PlayListViewController: UIViewController {
                 if playVideo[sender.tag].videoId == likeVideo[i].videoId {
                     print("remove \(likeVideo[i].title), \(likeVideo[i].isLike)")
                     likeVideo.remove(at: i)
-                    print("remove after have \(likeVideo.count) video")
+                    //print("remove after have \(likeVideo.count) video")
                     sendLikeData()
                     break
                     
@@ -91,10 +83,10 @@ class PlayListViewController: UIViewController {
             }
         }
         
-        //print("\(playVideo[sender.tag].isLike)")
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
         
     }
+    
     
     func sendLikeData() {
         
@@ -116,7 +108,6 @@ class PlayListViewController: UIViewController {
         
         self.navigationController?.pushViewController(dvc, animated: true)
     }
-
 }
 
 

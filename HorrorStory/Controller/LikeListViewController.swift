@@ -22,7 +22,6 @@ class LikeListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,8 +34,46 @@ class LikeListViewController: UIViewController {
     @IBAction func likeButtonChange(_ sender: UIButton) {
         
         senderLikeVideos[sender.tag].isLike = !senderLikeVideos[sender.tag].isLike
+        
+        if senderLikeVideos[sender.tag].isLike == false {
+            
+            for i in 0 ..< senderLikeVideos.count {
+                
+                if senderLikeVideos[sender.tag].videoId == senderLikeVideos[i].videoId {
+                    //print("Like page remove \(senderLikeVideos[i].title), \(senderLikeVideos[i].isLike)")
+                    senderLikeVideos.remove(at: i)
+                    print("Like page remove after have \(senderLikeVideos.count) video")
+                    
+                    sendLikeData()
+                    tableView.reloadData()
+                    break
+                }
+            
+            }
+            
+        } else {
+            for i in 0 ..< senderLikeVideos.count {
+                
+                if senderLikeVideos[sender.tag].videoId != senderLikeVideos[i].videoId {
+                    print(senderLikeVideos)
+                    //tableView.reloadData()
+                    break
+                }
+            
+            }
+            
+        }
+        
+        //tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
+        tableView.reloadData()
     }
     
+    private func sendLikeData() {
+
+        let navVC = tabBarController?.viewControllers![0] as! UINavigationController
+        let playListViewController = navVC.topViewController as! PlayListViewController
+        playListViewController.likeVideo = senderLikeVideos
+    }
   
 
 }
@@ -49,11 +86,7 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return senderLikeVideos.count
-        //guard senderLikeVideos[section].isLike == true else { return senderLikeVideos.count }
-//        if senderLikeVideos[section].isLike == true {
-//            return senderLikeVideos.count
-//        }
-//        return senderLikeVideos.count
+
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -77,9 +110,6 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
 
         }
         
-//        if video.isLike == true {
-//            cell.setCell(video)
-//        }
         
         cell.setCell(video)
         cell.likeButton.tag = indexPath.row
