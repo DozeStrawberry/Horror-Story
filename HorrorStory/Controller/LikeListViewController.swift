@@ -27,7 +27,7 @@ class LikeListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        print("have \(senderLikeVideos.count) like Videos")
+       // print("have \(senderLikeVideos.count) like Videos")
         tableView.reloadData()
     }
     
@@ -49,6 +49,11 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return senderLikeVideos.count
+        //guard senderLikeVideos[section].isLike == true else { return senderLikeVideos.count }
+//        if senderLikeVideos[section].isLike == true {
+//            return senderLikeVideos.count
+//        }
+//        return senderLikeVideos.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -65,12 +70,16 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
         //改變按鈕圖案
         if video.isLike == false {
             cell.likeButton.imageView?.image = UIImage(systemName: "heart")
-    
-      
+
+
         } else {
             cell.likeButton.imageView?.image = UIImage(systemName: "heart.fill")
 
         }
+        
+//        if video.isLike == true {
+//            cell.setCell(video)
+//        }
         
         cell.setCell(video)
         cell.likeButton.tag = indexPath.row

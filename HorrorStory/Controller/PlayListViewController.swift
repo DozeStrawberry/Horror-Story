@@ -25,7 +25,7 @@ class PlayListViewController: UIViewController {
     //接收playVideo傳送過來的值
     var backLike: Bool?
     
-    var likeNumber = 0
+    //var likeNumber = 0
     
     
     override func viewDidLoad() {
@@ -67,34 +67,41 @@ class PlayListViewController: UIViewController {
         //改變Bool值
         playVideo[sender.tag].isLike = !playVideo[sender.tag].isLike
         
+        
         if playVideo[sender.tag].isLike == true {
             
-           
             likeVideo.append(playVideo[sender.tag])
             
-            //likeNumber += 1
             
-            let navVC = tabBarController?.viewControllers![1] as! UINavigationController
-            let LikeListViewController = navVC.topViewController as! LikeListViewController
-            LikeListViewController.senderLikeVideos = likeVideo
-            //print("I send \(likeVideo.count) like")
-            print("I have \(likeNumber) number of times save likeVideo")
+            print("I send \(likeVideo.count) like")
+            sendLikeData()
             
         } else {
-//            for number in 0 ... likeNumber {
-//                likeVideo.remove(at: number)
-//
-//            }
             
-//            let indexPath = IndexPath(row: sender.tag, section: 0)
-//            likeVideo.remove(at: indexPath)
+            for i in 0 ..< likeVideo.count {
+                
+                if playVideo[sender.tag].videoId == likeVideo[i].videoId {
+                    print("remove \(likeVideo[i].title), \(likeVideo[i].isLike)")
+                    likeVideo.remove(at: i)
+                    print("remove after have \(likeVideo.count) video")
+                    sendLikeData()
+                    break
+                    
+                }
+            }
         }
-        
         
         //print("\(playVideo[sender.tag].isLike)")
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
         
-       }
+    }
+    
+    func sendLikeData() {
+        
+        let navVC = tabBarController?.viewControllers![1] as! UINavigationController
+        let LikeListViewController = navVC.topViewController as! LikeListViewController
+        LikeListViewController.senderLikeVideos = likeVideo
+    }
     
     //把檔案傳到下一頁
     private func showVideoView(video: VideoModel) {
@@ -161,7 +168,6 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         showVideoView(video: playVideo[indexPath.row])
    
     }
-    
 }
 
 
