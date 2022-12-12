@@ -58,7 +58,7 @@
                                                             <rect key="frame" x="23" y="22.5" width="20.5" height="22"/>
                                                             <rect key="contentStretch" x="0.25" y="0.0" width="0.69999999999999996" height="1"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                            <state key="normal" image="heart" catalog="system"/>
+                                                            <state key="normal" image="heart.fill" catalog="system"/>
                                                             <connections>
                                                                 <action selector="likeButtonChange:" destination="zNp-hD-eou" eventType="touchUpInside" id="hKo-wN-1XT"/>
                                                                 <action selector="likeButtonPress:" destination="wgV-Ua-8HQ" eventType="touchUpInside" id="slj-MZ-8SD"/>
@@ -546,6 +546,7 @@
     <resources>
         <image name="eye.fill" catalog="system" width="128" height="78"/>
         <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="suit.heart" catalog="system" width="128" height="109"/>
         <image name="suit.heart.fill" catalog="system" width="128" height="109"/>
         <systemColor name="labelColor">

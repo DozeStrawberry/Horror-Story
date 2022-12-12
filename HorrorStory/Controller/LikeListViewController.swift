@@ -26,7 +26,6 @@ class LikeListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-       // print("have \(senderLikeVideos.count) like Videos")
         tableView.reloadData()
     }
     
@@ -37,32 +36,25 @@ class LikeListViewController: UIViewController {
         
         if senderLikeVideos[sender.tag].isLike == false {
             
+            
             for i in 0 ..< senderLikeVideos.count {
                 
                 if senderLikeVideos[sender.tag].videoId == senderLikeVideos[i].videoId {
-                    //print("Like page remove \(senderLikeVideos[i].title), \(senderLikeVideos[i].isLike)")
+                    print("Like page remove \(senderLikeVideos[i].title), \(senderLikeVideos[i].isLike)")
                     senderLikeVideos.remove(at: i)
                     print("Like page remove after have \(senderLikeVideos.count) video")
                     
                     sendLikeData()
                     tableView.reloadData()
-                    break
-                }
-            
-            }
-            
-        } else {
-            for i in 0 ..< senderLikeVideos.count {
-                
-                if senderLikeVideos[sender.tag].videoId != senderLikeVideos[i].videoId {
-                    print(senderLikeVideos)
-                    //tableView.reloadData()
+                    
+                    print("\(senderLikeVideos.count)")
                     break
                 }
             
             }
             
         }
+
         
         //tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
         tableView.reloadData()
@@ -100,21 +92,11 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
 //            video.isLike = backLike!
 //        }
         
-        //改變按鈕圖案
-        if video.isLike == false {
-            cell.likeButton.imageView?.image = UIImage(systemName: "heart")
-
-
-        } else {
-            cell.likeButton.imageView?.image = UIImage(systemName: "heart.fill")
-
-        }
-        
+       
         
         cell.setCell(video)
         cell.likeButton.tag = indexPath.row
 
-        
         return cell
     }
     
