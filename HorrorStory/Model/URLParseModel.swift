@@ -30,13 +30,12 @@ class URLParseModel {
         // Get a data task from the URLSession object
         let dataTask = session.dataTask(with: url!) { data, response, error in
             
-            // Check if there were any errors，出現錯誤
             if error != nil || data == nil {
                 return
             }
             
             do {
-                // Parsing the data into video objects，解析json影片物件
+                // 解析json影片物件
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
                 

@@ -11,7 +11,6 @@ import WebKit
 
 class PlayVideoViewController: UIViewController {
     
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var webView: WKWebView!
@@ -31,15 +30,13 @@ class PlayVideoViewController: UIViewController {
        
         navigationItem.title = channelTitle
     
-
         //左上按鈕
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
     }
     
+    
     @objc func backAction() {
     
-       
-        
         self.navigationController?.popViewController(animated: true)
         
         //print("send value \(video!.isLike)")
@@ -48,14 +45,15 @@ class PlayVideoViewController: UIViewController {
     
     @IBAction func aLikeButtonPress(_ sender: UIButton) {
         guard video != nil else { return }
-        
+
         video!.isLike = !video!.isLike
         print("Button value \(video!.isLike)")
-        
+
         setButtonImage()
-        
+
         sendLikeBool()
     }
+    
     
     //按鈕圖片改變
     func setButtonImage() {
@@ -75,15 +73,9 @@ class PlayVideoViewController: UIViewController {
         guard video != nil else { return }
         
         dvc.backLike = video!.isLike
+        dvc.backVideoId = video!.videoId
+        print("\(video!.videoId)")
     }
-    
-    
-    private func sendToLikeListData() {
-        let navVC = tabBarController?.viewControllers![1] as! UINavigationController
-        let LikeListViewController = navVC.topViewController as! LikeListViewController
-        //LikeListViewController.senderLikeVideos = likeVideo
-    }
-    
     
     
     //即將出現
@@ -104,13 +96,12 @@ class PlayVideoViewController: UIViewController {
             return
         }
 
-        print("value is \(likeBool!)")
+        //print("value is \(likeBool!)")
         
         video!.isLike = likeBool!
         
         setButtonImage()
- 
-        // Create the embed URL
+        
         let embedURLString = Constants.YT_EMBED_URL + video!.videoId
         
         // Load it into the webview

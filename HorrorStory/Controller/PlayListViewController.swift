@@ -15,13 +15,14 @@ class PlayListViewController: UIViewController {
     public var playVideo = [VideoModel]()
     var likeVideo = [VideoModel]()
     
-
+    
     //接收overView傳送過來的值
     var getAPI: String?
     var navigationTitle: String?
     
     //接收playVideo傳送過來的值
     var backLike: Bool?
+    var backVideoId: String?
     
     
     override func viewDidLoad() {
@@ -36,9 +37,10 @@ class PlayListViewController: UIViewController {
             urlParseModel.getVideos(channelAPI: getAPI!)
         }
         
+        backValueAddLikeAarry()
+        
         navigationItem.title = navigationTitle
         
-       
         //左上回去按鈕
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
     }
@@ -50,9 +52,12 @@ class PlayListViewController: UIViewController {
     
     //傳過來按鈕資訊，可以傳新整理
     override func viewWillAppear(_ animated: Bool) {
-        //sendLikeData()
+        backValueAddLikeAarry()
+        
         tableView.reloadData()
     }
+    
+    
     
     
     //按鈕
@@ -85,7 +90,6 @@ class PlayListViewController: UIViewController {
         }
         
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
-        
     }
     
     
@@ -97,13 +101,44 @@ class PlayListViewController: UIViewController {
     }
     
     
-   
+    func backValueAddLikeAarry() {
+        
+        likeVideo = playVideo.filter { $0.isLike == true }
+        sendLikeData()
+        
+//        if backLike != nil, backVideoId != nil {
+//            for i in 0 ..< playVideo.count {
+//
+//                if playVideo[i].videoId ==  backVideoId {
+//                    playVideo[i].isLike = backLike!
+//                    print("\(playVideo[i].title)")
+//                    if playVideo[i].isLike == true {
+//                        likeVideo.append(playVideo[i])
+//                        print("add like video, have \(likeVideo.count) video")
+//                        //sendLikeData()
+//
+//                    } else {
+//                        //                    likeVideo.remove(at: i)
+//                        //                    print("remove after have \(likeVideo.count) video")
+//                        //                    sendLikeData()
+//                        //                    break
+//                    }
+//
+//                }
+//            }
+//        }
+        
+        
+        
+    }
+    
+    
     
     //把檔案傳到下一頁
     private func showVideoView(video: VideoModel) {
-
+        
         let dvc = storyboard?.instantiateViewController(withIdentifier: "goToPlayVideo") as! PlayVideoViewController
-
+        
         dvc.video = video
         dvc.channelTitle = navigationTitle
         
@@ -120,11 +155,11 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playVideo.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayListCell", for: indexPath) as! PlayListTableViewCell
         
@@ -133,7 +168,14 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         //回傳Bool過來有值
         if backLike != nil {
             selectVideo.isLike = backLike!
+            
+//            if backVideoId != nil {
+//
+//            }
         }
+        
+       
+        
         
         //改變按鈕圖案
         if selectVideo.isLike == false {
@@ -141,12 +183,12 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
             
         } else {
             cell.likeButton.imageView?.image = UIImage(systemName: "heart.fill")
-
+            
         }
         
         cell.setCell(selectVideo)
         cell.likeButton.tag = indexPath.row
-
+        
         return cell
     }
     
@@ -156,17 +198,21 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: true)
         //傳送資料到下一頁
         showVideoView(video: playVideo[indexPath.row])
-   
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
     }
 }
 
 
 extension PlayListViewController: ModelDelegate {
-
+    
     func videosFetched(_ videos: [VideoModel]) {
-
+        
         self.playVideo = videos
         tableView.reloadData()
     }
-     
+    
 }

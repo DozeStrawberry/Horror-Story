@@ -18,7 +18,6 @@ class LikeListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -39,9 +38,9 @@ class LikeListViewController: UIViewController {
             for i in 0 ..< senderLikeVideos.count {
                 
                 if senderLikeVideos[sender.tag].videoId == senderLikeVideos[i].videoId {
-                    print("Like page remove \(senderLikeVideos[i].title), \(senderLikeVideos[i].isLike)")
+                    //print("Like page remove \(senderLikeVideos[i].title), \(senderLikeVideos[i].isLike)")
                     senderLikeVideos.remove(at: i)
-                    print("Like page remove after have \(senderLikeVideos.count) video")
+                    //print("Like page remove after have \(senderLikeVideos.count) video")
                     
                     sendLikeData()
                     tableView.reloadData()
