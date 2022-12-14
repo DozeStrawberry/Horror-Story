@@ -22,7 +22,7 @@ class PlayListViewController: UIViewController {
     
     //接收playVideo傳送過來的值
     var backLike: Bool?
-    var backVideoId: String?
+    //var backVideoId: String?
     
     
     override func viewDidLoad() {
