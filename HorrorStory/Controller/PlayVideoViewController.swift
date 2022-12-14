@@ -16,6 +16,7 @@ class PlayVideoViewController: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var aLikeButton: UIButton!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var connectYoutube: UIButton!
     
     //介面顯示
     var video: VideoModel?
@@ -27,6 +28,8 @@ class PlayVideoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        connectYoutube.applyDesign()
        
         navigationItem.title = channelTitle
     
@@ -39,7 +42,7 @@ class PlayVideoViewController: UIViewController {
     
         self.navigationController?.popViewController(animated: true)
         
-        //print("send value \(video!.isLike)")
+       
     }
     
     
@@ -52,6 +55,23 @@ class PlayVideoViewController: UIViewController {
         setButtonImage()
 
         sendLikeBool()
+    }
+    
+    
+    @IBAction func connectYoutubePressed(_ sender: UIButton) {
+        guard video != nil else {
+            return
+        }
+        
+        let videoId = video!.videoId
+        guard let youtubeUrl = URL(string: "youtube://\(videoId)") else { return }
+        if UIApplication.shared.canOpenURL(youtubeUrl) {
+            UIApplication.shared.open(youtubeUrl)
+        } else {
+            guard let videoUrl = URL(string: "https://www.youtube.com/watch?v=\(videoId)") else { return }
+            UIApplication.shared.open(videoUrl)
+        }
+        
     }
     
     
@@ -73,8 +93,8 @@ class PlayVideoViewController: UIViewController {
         guard video != nil else { return }
         
         dvc.backLike = video!.isLike
-        dvc.backVideoId = video!.videoId
-        print("\(video!.videoId)")
+        //dvc.backVideoId = video!.videoId
+        //print("\(video!.videoId)")
     }
     
     
@@ -119,6 +139,18 @@ class PlayVideoViewController: UIViewController {
         
         // Set the description
         textView.text = video!.description
+    }
+    
+}
+
+extension UIButton {
+    func applyDesign() {
+        self.layer.cornerRadius = self.frame.height / 2
+        // Smooth corners
+//        self.layer.shadowColor = UIColor.darkGray.cgColor
+//        self.layer.shadowRadius = 3
+//        self.layer.shadowOpacity = 1
+//        self.layer.shadowOffset = CGSize(width: 0, height: 0)
     }
     
 }

@@ -105,31 +105,7 @@ class PlayListViewController: UIViewController {
         
         likeVideo = playVideo.filter { $0.isLike == true }
         sendLikeData()
-        
-//        if backLike != nil, backVideoId != nil {
-//            for i in 0 ..< playVideo.count {
-//
-//                if playVideo[i].videoId ==  backVideoId {
-//                    playVideo[i].isLike = backLike!
-//                    print("\(playVideo[i].title)")
-//                    if playVideo[i].isLike == true {
-//                        likeVideo.append(playVideo[i])
-//                        print("add like video, have \(likeVideo.count) video")
-//                        //sendLikeData()
-//
-//                    } else {
-//                        //                    likeVideo.remove(at: i)
-//                        //                    print("remove after have \(likeVideo.count) video")
-//                        //                    sendLikeData()
-//                        //                    break
-//                    }
-//
-//                }
-//            }
-//        }
-        
-        
-        
+          
     }
     
     
@@ -169,9 +145,7 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         if backLike != nil {
             selectVideo.isLike = backLike!
             
-//            if backVideoId != nil {
-//
-//            }
+
         }
         
        
