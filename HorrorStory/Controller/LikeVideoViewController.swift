@@ -28,8 +28,12 @@ class LikeVideoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard video != nil else {
+            return
+        }
 
-         //navigationItem.title = channelTitle
+        navigationItem.title = video!.channelTitle
      
          //左上按鈕
          self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
@@ -59,6 +63,7 @@ class LikeVideoViewController: UIViewController {
         }
         
         let videoId = video!.videoId
+        //print("\(videoId)")
         guard let youtubeUrl = URL(string: "youtube://\(videoId)") else { return }
         if UIApplication.shared.canOpenURL(youtubeUrl) {
             UIApplication.shared.open(youtubeUrl)

@@ -168,6 +168,7 @@
                                         </state>
                                         <connections>
                                             <action selector="connectYoutubePressed:" destination="wyv-T6-GWq" eventType="touchUpInside" id="4X3-bF-WOg"/>
+                                            <action selector="connectYoutubePressed:" destination="ziM-kd-hcN" eventType="touchUpInside" id="XKq-4i-5LI"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="247" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xza-zV-i51">

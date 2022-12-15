@@ -18,21 +18,18 @@
 		A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2535190293E2351000DEF86 /* OverViewModel.swift */; };
 		A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */; };
 		A25B89AF2945677800DCF035 /* LikeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25B89AE2945677800DCF035 /* LikeListViewController.swift */; };
-		A25B89B12945ADDE00DCF035 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25B89B02945ADDE00DCF035 /* Global.swift */; };
 		A26645C72941BDE2009371A8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A26645C62941BDE2009371A8 /* WebKit.framework */; };
 		A26645CB29434039009371A8 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26645CA29434039009371A8 /* VideoModel.swift */; };
 		A26AB84E293EE4F30036C000 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB84D293EE4F30036C000 /* Constants.swift */; };
 		A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB850293EF3CB0036C000 /* PlayListVideo.swift */; };
 		A26B16E4294AB66F00645EA6 /* LikeVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16E3294AB66F00645EA6 /* LikeVideoViewController.swift */; };
+		A26B16EB294B134900645EA6 /* LikeVideo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16E9294B134900645EA6 /* LikeVideo+CoreDataClass.swift */; };
+		A26B16EC294B134900645EA6 /* LikeVideo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16EA294B134900645EA6 /* LikeVideo+CoreDataProperties.swift */; };
 		A2B2EA73293EFBC100A22FEA /* PlayListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */; };
 		A2B2EA75293F00FB00A22FEA /* URLParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */; };
 		A2B2EA77293F21AB00A22FEA /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */; };
 		A2B2EA79293F254000A22FEA /* PlayListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA78293F254000A22FEA /* PlayListTableViewCell.swift */; };
 		A2B2EA7B293F369400A22FEA /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA7A293F369400A22FEA /* CacheManager.swift */; };
-		A2B2EA9329407A0700A22FEA /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA9129407A0700A22FEA /* VideoTableViewCell.swift */; };
-		A2B2EA9429407A0700A22FEA /* VideoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2B2EA9229407A0700A22FEA /* VideoTableViewCell.xib */; };
-		A2B2EA9D2940803800A22FEA /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA9B2940803800A22FEA /* VideoViewController.swift */; };
-		A2B2EA9E2940803800A22FEA /* VideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2B2EA9C2940803800A22FEA /* VideoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,21 +46,18 @@
 		A2535190293E2351000DEF86 /* OverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewModel.swift; sourceTree = "<group>"; };
 		A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
 		A25B89AE2945677800DCF035 /* LikeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeListViewController.swift; sourceTree = "<group>"; };
-		A25B89B02945ADDE00DCF035 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		A26645C62941BDE2009371A8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		A26645CA29434039009371A8 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		A26AB84D293EE4F30036C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A26AB850293EF3CB0036C000 /* PlayListVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListVideo.swift; sourceTree = "<group>"; };
 		A26B16E3294AB66F00645EA6 /* LikeVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeVideoViewController.swift; sourceTree = "<group>"; };
+		A26B16E9294B134900645EA6 /* LikeVideo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LikeVideo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A26B16EA294B134900645EA6 /* LikeVideo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LikeVideo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListResponse.swift; sourceTree = "<group>"; };
 		A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParseModel.swift; sourceTree = "<group>"; };
 		A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewController.swift; sourceTree = "<group>"; };
 		A2B2EA78293F254000A22FEA /* PlayListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListTableViewCell.swift; sourceTree = "<group>"; };
 		A2B2EA7A293F369400A22FEA /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
-		A2B2EA9129407A0700A22FEA /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
-		A2B2EA9229407A0700A22FEA /* VideoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoTableViewCell.xib; sourceTree = "<group>"; };
-		A2B2EA9B2940803800A22FEA /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
-		A2B2EA9C2940803800A22FEA /* VideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +94,7 @@
 			children = (
 				A2358EC7293B2D4700220389 /* AppDelegate.swift */,
 				A2358EC9293B2D4700220389 /* SceneDelegate.swift */,
-				A248E0B02941AC19005E293D /* Test */,
+				A26B16ED294B137500645EA6 /* CoreData */,
 				A26AB84F293EF3610036C000 /* Helpers */,
 				A2535192293E235C000DEF86 /* Model */,
 				A2535193293E236A000DEF86 /* Controller */,
@@ -114,18 +108,10 @@
 			path = HorrorStory;
 			sourceTree = "<group>";
 		};
-		A248E0B02941AC19005E293D /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				A25B89B02945ADDE00DCF035 /* Global.swift */,
-				A2535195293E23A6000DEF86 /* View */,
-			);
-			path = Test;
-			sourceTree = "<group>";
-		};
 		A2535192293E235C000DEF86 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A26B16EE294B17CA00645EA6 /* ChannelParse */,
 				A2535190293E2351000DEF86 /* OverViewModel.swift */,
 				A26AB850293EF3CB0036C000 /* PlayListVideo.swift */,
 				A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */,
@@ -156,17 +142,6 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
-		A2535195293E23A6000DEF86 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				A2B2EA9B2940803800A22FEA /* VideoViewController.swift */,
-				A2B2EA9C2940803800A22FEA /* VideoViewController.xib */,
-				A2B2EA9129407A0700A22FEA /* VideoTableViewCell.swift */,
-				A2B2EA9229407A0700A22FEA /* VideoTableViewCell.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		A26645C52941BDE2009371A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +157,22 @@
 				A2B2EA7A293F369400A22FEA /* CacheManager.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		A26B16ED294B137500645EA6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A26B16E9294B134900645EA6 /* LikeVideo+CoreDataClass.swift */,
+				A26B16EA294B134900645EA6 /* LikeVideo+CoreDataProperties.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		A26B16EE294B17CA00645EA6 /* ChannelParse */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ChannelParse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,8 +236,6 @@
 				A2358ED7293B2D4800220389 /* LaunchScreen.storyboard in Resources */,
 				A2358ED4293B2D4800220389 /* Assets.xcassets in Resources */,
 				A2358ECF293B2D4700220389 /* Main.storyboard in Resources */,
-				A2B2EA9E2940803800A22FEA /* VideoViewController.xib in Resources */,
-				A2B2EA9429407A0700A22FEA /* VideoTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,17 +252,16 @@
 				A26B16E4294AB66F00645EA6 /* LikeVideoViewController.swift in Sources */,
 				A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */,
 				A248E0B22941AF77005E293D /* PlayVideoViewController.swift in Sources */,
+				A26B16EC294B134900645EA6 /* LikeVideo+CoreDataProperties.swift in Sources */,
 				A2B2EA73293EFBC100A22FEA /* PlayListResponse.swift in Sources */,
 				A2B2EA75293F00FB00A22FEA /* URLParseModel.swift in Sources */,
 				A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */,
 				A2358ED2293B2D4700220389 /* HorrorStory.xcdatamodeld in Sources */,
 				A2358EC8293B2D4700220389 /* AppDelegate.swift in Sources */,
-				A2B2EA9D2940803800A22FEA /* VideoViewController.swift in Sources */,
 				A26AB84E293EE4F30036C000 /* Constants.swift in Sources */,
 				A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */,
-				A25B89B12945ADDE00DCF035 /* Global.swift in Sources */,
-				A2B2EA9329407A0700A22FEA /* VideoTableViewCell.swift in Sources */,
 				A2358ECA293B2D4700220389 /* SceneDelegate.swift in Sources */,
+				A26B16EB294B134900645EA6 /* LikeVideo+CoreDataClass.swift in Sources */,
 				A25B89AF2945677800DCF035 /* LikeListViewController.swift in Sources */,
 				A2B2EA79293F254000A22FEA /* PlayListTableViewCell.swift in Sources */,
 				A26645CB29434039009371A8 /* VideoModel.swift in Sources */,

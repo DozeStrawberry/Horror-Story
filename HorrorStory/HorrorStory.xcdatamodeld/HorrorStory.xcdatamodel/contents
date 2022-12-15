@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="LikeVideo" representedClassName="LikeVideo" syncable="YES">
+        <attribute name="cChannelTitle" optional="YES" attributeType="String"/>
+        <attribute name="cDescription" optional="YES" attributeType="String"/>
+        <attribute name="cIsLike" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="cPublished" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="cThumbnail" optional="YES" attributeType="String"/>
+        <attribute name="cTitle" optional="YES" attributeType="String"/>
+        <attribute name="cVideoId" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="LikeVideo" positionX="-63" positionY="-18" width="128" height="134"/>
+    </elements>
 </model>
