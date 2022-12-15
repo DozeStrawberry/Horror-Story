@@ -19,6 +19,10 @@ class OverViewController: UIViewController {
     
     let ch1UrlParseModel = Ch1UrlParseModel()
     let ch2UrlParseModel = Ch2UrlParseModel()
+    let ch3UrlParseModel = Ch3UrlParseModel()
+    let ch4UrlParseModel = Ch4UrlParseModel()
+    let ch5UrlParseModel = Ch5UrlParseModel()
+    let ch6UrlParseModel = Ch6UrlParseModel()
     
     var ch1Video = [VideoModel]()
     var ch2Video = [VideoModel]()
@@ -41,8 +45,19 @@ class OverViewController: UIViewController {
         
         ch2UrlParseModel.delegate = self
         ch2UrlParseModel.getVideos()
-        //print("\(ch2Video.count)")
-        //print("teat \(ch1Video.count)")
+        
+        ch3UrlParseModel.delegate = self
+        ch3UrlParseModel.getVideos()
+        
+        ch4UrlParseModel.delegate = self
+        ch4UrlParseModel.getVideos()
+        
+        ch5UrlParseModel.delegate = self
+        ch5UrlParseModel.getVideos()
+        
+        ch6UrlParseModel.delegate = self
+        ch6UrlParseModel.getVideos()
+
         
         
     }
@@ -133,32 +148,56 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
 //            channelName = ""
             
         case 2:
-            channelURL = Constants.S03_API_URL
-            channelName = Model.channelArray[2]
-            showVideoView(url: channelURL, channelTitle: channelName)
-            channelURL = ""
-            channelName = ""
+            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+            
+            dvc.playVideo = ch3Video
+            //dvc.navigationTitle = channelTitle
+           
+            navigationController?.pushViewController(dvc, animated: true)
+//            channelURL = Constants.S03_API_URL
+//            channelName = Model.channelArray[2]
+//            showVideoView(url: channelURL, channelTitle: channelName)
+//            channelURL = ""
+//            channelName = ""
             
         case 3:
-            channelURL = Constants.S04_API_URL
-            channelName = Model.channelArray[3]
-            showVideoView(url: channelURL, channelTitle: channelName)
-            channelURL = ""
-            channelName = ""
+            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+            
+            dvc.playVideo = ch4Video
+            //dvc.navigationTitle = channelTitle
+           
+            navigationController?.pushViewController(dvc, animated: true)
+//            channelURL = Constants.S04_API_URL
+//            channelName = Model.channelArray[3]
+//            showVideoView(url: channelURL, channelTitle: channelName)
+//            channelURL = ""
+//            channelName = ""
             
         case 4:
-            channelURL = Constants.S05_API_URL
-            channelName = Model.channelArray[4]
-            showVideoView(url: channelURL, channelTitle: channelName)
-            channelURL = ""
-            channelName = ""
+            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+            
+            dvc.playVideo = ch5Video
+            //dvc.navigationTitle = channelTitle
+           
+            navigationController?.pushViewController(dvc, animated: true)
+//            channelURL = Constants.S05_API_URL
+//            channelName = Model.channelArray[4]
+//            showVideoView(url: channelURL, channelTitle: channelName)
+//            channelURL = ""
+//            channelName = ""
             
         case 5:
-            channelURL = Constants.S06_API_URL
-            channelName = Model.channelArray[5]
-            showVideoView(url: channelURL, channelTitle: channelName)
-            channelURL = ""
-            channelName = ""
+            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+            
+            dvc.playVideo = ch6Video
+            //dvc.navigationTitle = channelTitle
+           
+            navigationController?.pushViewController(dvc, animated: true)
+//            channelURL = Constants.S06_API_URL
+//            channelName = Model.channelArray[5]
+//            showVideoView(url: channelURL, channelTitle: channelName)
+//            channelURL = ""
+//            channelName = ""
             
         default:
             break
@@ -167,7 +206,7 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
      
 }
 
-
+//MARK: - get all channel video
 
 extension OverViewController: Ch1ModelDelegate {
     func ch1VideosFetched(_ videos: [VideoModel]) {
@@ -180,8 +219,31 @@ extension OverViewController: Ch2ModelDelegate {
     func ch2VideosFetched(_ videos: [VideoModel]) {
         self.ch2Video = videos
     }
-    
-    
 }
+
+extension OverViewController: Ch3ModelDelegate {
+    func ch3VideosFetched(_ videos: [VideoModel]) {
+        self.ch3Video = videos
+    }
+}
+
+extension OverViewController: Ch4ModelDelegate {
+    func ch4VideosFetched(_ videos: [VideoModel]) {
+        self.ch4Video = videos
+    }
+}
+
+extension OverViewController: Ch5ModelDelegate {
+    func ch5VideosFetched(_ videos: [VideoModel]) {
+        self.ch5Video = videos
+    }
+}
+
+extension OverViewController: Ch6ModelDelegate {
+    func ch6VideosFetched(_ videos: [VideoModel]) {
+        self.ch6Video = videos
+    }
+}
+
 
 

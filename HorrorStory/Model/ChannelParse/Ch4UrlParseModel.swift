@@ -1,25 +1,26 @@
 //
-//  Ch2UrlParseModel.swift
+//  Ch4UrlParseModel.swift
 //  HorrorStory
 //
 //  Created by liu ya yun on 2022/12/15.
 //
+
 import Foundation
 
 
 //取得影片協議
-protocol Ch2ModelDelegate {
-    func ch2VideosFetched(_ videos: [VideoModel])
+protocol Ch4ModelDelegate {
+    func ch4VideosFetched(_ videos: [VideoModel])
 }
 
-class Ch2UrlParseModel {
+class Ch4UrlParseModel {
     
-    var delegate: Ch2ModelDelegate?
+    var delegate: Ch4ModelDelegate?
     
     func getVideos() {
         
         // Create a URL object
-        let url = URL(string: Constants.S02_API_URL)
+        let url = URL(string: Constants.S04_API_URL)
         
         guard url != nil else {
             return
@@ -56,7 +57,7 @@ class Ch2UrlParseModel {
                     //主佇列更新畫面
                     DispatchQueue.main.async {
                         // Call the "videosFetched" method of the delegate
-                        self.delegate?.ch2VideosFetched(newVideos)
+                        self.delegate?.ch4VideosFetched(newVideos)
                     }
                 }
                 

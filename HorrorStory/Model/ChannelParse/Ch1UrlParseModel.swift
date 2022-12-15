@@ -64,7 +64,7 @@ class Ch1UrlParseModel {
                 //dump(response.items)
             }
             catch {
-                print(error.localizedDescription)
+                //print(error.localizedDescription)
             }
             
         }
