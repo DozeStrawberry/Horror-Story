@@ -23,9 +23,18 @@ class OverViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.tabBarController?.tabBar.isHidden = true
+        
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+
     private func showVideoView(url: String, channelTitle: String) {
 
         let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
