@@ -8,13 +8,24 @@
 import UIKit
 
 class OverViewController: UIViewController {
-    
+   
+
     @IBOutlet weak var tableView: UITableView!
 
     let Model = OverViewModel()
     
     var channelURL = String()
     var channelName = String()
+    
+    let ch1UrlParseModel = Ch1UrlParseModel()
+    let ch2UrlParseModel = Ch2UrlParseModel()
+    
+    var ch1Video = [VideoModel]()
+    var ch2Video = [VideoModel]()
+    var ch3Video = [VideoModel]()
+    var ch4Video = [VideoModel]()
+    var ch5Video = [VideoModel]()
+    var ch6Video = [VideoModel]()
   
 
     override func viewDidLoad() {
@@ -24,6 +35,15 @@ class OverViewController: UIViewController {
         tableView.dataSource = self
         
         self.tabBarController?.tabBar.isHidden = true
+        
+        ch1UrlParseModel.delegate = self
+        ch1UrlParseModel.getVideos()
+        
+        ch2UrlParseModel.delegate = self
+        ch2UrlParseModel.getVideos()
+        //print("\(ch2Video.count)")
+        //print("teat \(ch1Video.count)")
+        
         
     }
     
@@ -46,6 +66,9 @@ class OverViewController: UIViewController {
        
         navigationController?.pushViewController(dvc, animated: true)
     }
+    
+ 
+    
     
 }
 
@@ -83,18 +106,31 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
 
         case 0:
-            channelURL = Constants.S01_API_URL
-            channelName = Model.channelArray[0]
-            showVideoView(url: channelURL, channelTitle: channelName)
-            channelURL = ""
-            channelName = ""
+            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+            
+            dvc.playVideo = ch1Video
+            //dvc.navigationTitle = channelTitle
+           
+            navigationController?.pushViewController(dvc, animated: true)
+//            channelURL = Constants.S01_API_URL
+//            channelName = Model.channelArray[0]
+//            showVideoView(url: channelURL, channelTitle: channelName)
+//            channelURL = ""
+//            channelName = ""
+            //break
     
         case 1:
-            channelURL = Constants.S02_API_URL
-            channelName = Model.channelArray[1]
-            showVideoView(url: channelURL, channelTitle: channelName)
-            channelURL = ""
-            channelName = ""
+            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+            
+            dvc.playVideo = ch2Video
+            //dvc.navigationTitle = channelTitle
+           
+            navigationController?.pushViewController(dvc, animated: true)
+//            channelURL = Constants.S02_API_URL
+//            channelName = Model.channelArray[1]
+//            showVideoView(url: channelURL, channelTitle: channelName)
+//            channelURL = ""
+//            channelName = ""
             
         case 2:
             channelURL = Constants.S03_API_URL
@@ -133,6 +169,19 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 
+extension OverViewController: Ch1ModelDelegate {
+    func ch1VideosFetched(_ videos: [VideoModel]) {
+        self.ch1Video = videos
+        //tableView.reloadData()
+    }
+}
 
+extension OverViewController: Ch2ModelDelegate {
+    func ch2VideosFetched(_ videos: [VideoModel]) {
+        self.ch2Video = videos
+    }
+    
+    
+}
 
 

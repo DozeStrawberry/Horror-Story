@@ -25,6 +25,8 @@
 		A26B16E4294AB66F00645EA6 /* LikeVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16E3294AB66F00645EA6 /* LikeVideoViewController.swift */; };
 		A26B16EB294B134900645EA6 /* LikeVideo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16E9294B134900645EA6 /* LikeVideo+CoreDataClass.swift */; };
 		A26B16EC294B134900645EA6 /* LikeVideo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16EA294B134900645EA6 /* LikeVideo+CoreDataProperties.swift */; };
+		A26B16F0294B186200645EA6 /* Ch1UrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16EF294B186200645EA6 /* Ch1UrlParseModel.swift */; };
+		A26B16F2294B20F400645EA6 /* Ch2UrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16F1294B20F400645EA6 /* Ch2UrlParseModel.swift */; };
 		A2B2EA73293EFBC100A22FEA /* PlayListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */; };
 		A2B2EA75293F00FB00A22FEA /* URLParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */; };
 		A2B2EA77293F21AB00A22FEA /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */; };
@@ -53,6 +55,8 @@
 		A26B16E3294AB66F00645EA6 /* LikeVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeVideoViewController.swift; sourceTree = "<group>"; };
 		A26B16E9294B134900645EA6 /* LikeVideo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LikeVideo+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A26B16EA294B134900645EA6 /* LikeVideo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LikeVideo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A26B16EF294B186200645EA6 /* Ch1UrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1UrlParseModel.swift; sourceTree = "<group>"; };
+		A26B16F1294B20F400645EA6 /* Ch2UrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch2UrlParseModel.swift; sourceTree = "<group>"; };
 		A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListResponse.swift; sourceTree = "<group>"; };
 		A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParseModel.swift; sourceTree = "<group>"; };
 		A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 		A26B16EE294B17CA00645EA6 /* ChannelParse */ = {
 			isa = PBXGroup;
 			children = (
+				A26B16EF294B186200645EA6 /* Ch1UrlParseModel.swift */,
+				A26B16F1294B20F400645EA6 /* Ch2UrlParseModel.swift */,
 			);
 			path = ChannelParse;
 			sourceTree = "<group>";
@@ -256,12 +262,14 @@
 				A2B2EA73293EFBC100A22FEA /* PlayListResponse.swift in Sources */,
 				A2B2EA75293F00FB00A22FEA /* URLParseModel.swift in Sources */,
 				A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */,
+				A26B16F2294B20F400645EA6 /* Ch2UrlParseModel.swift in Sources */,
 				A2358ED2293B2D4700220389 /* HorrorStory.xcdatamodeld in Sources */,
 				A2358EC8293B2D4700220389 /* AppDelegate.swift in Sources */,
 				A26AB84E293EE4F30036C000 /* Constants.swift in Sources */,
 				A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */,
 				A2358ECA293B2D4700220389 /* SceneDelegate.swift in Sources */,
 				A26B16EB294B134900645EA6 /* LikeVideo+CoreDataClass.swift in Sources */,
+				A26B16F0294B186200645EA6 /* Ch1UrlParseModel.swift in Sources */,
 				A25B89AF2945677800DCF035 /* LikeListViewController.swift in Sources */,
 				A2B2EA79293F254000A22FEA /* PlayListTableViewCell.swift in Sources */,
 				A26645CB29434039009371A8 /* VideoModel.swift in Sources */,
