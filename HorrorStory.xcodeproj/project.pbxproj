@@ -23,6 +23,7 @@
 		A26645CB29434039009371A8 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26645CA29434039009371A8 /* VideoModel.swift */; };
 		A26AB84E293EE4F30036C000 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB84D293EE4F30036C000 /* Constants.swift */; };
 		A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB850293EF3CB0036C000 /* PlayListVideo.swift */; };
+		A26B16E4294AB66F00645EA6 /* LikeVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16E3294AB66F00645EA6 /* LikeVideoViewController.swift */; };
 		A2B2EA73293EFBC100A22FEA /* PlayListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */; };
 		A2B2EA75293F00FB00A22FEA /* URLParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */; };
 		A2B2EA77293F21AB00A22FEA /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */; };
@@ -53,6 +54,7 @@
 		A26645CA29434039009371A8 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		A26AB84D293EE4F30036C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A26AB850293EF3CB0036C000 /* PlayListVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListVideo.swift; sourceTree = "<group>"; };
+		A26B16E3294AB66F00645EA6 /* LikeVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeVideoViewController.swift; sourceTree = "<group>"; };
 		A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListResponse.swift; sourceTree = "<group>"; };
 		A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParseModel.swift; sourceTree = "<group>"; };
 		A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */,
 				A248E0B12941AF77005E293D /* PlayVideoViewController.swift */,
 				A25B89AE2945677800DCF035 /* LikeListViewController.swift */,
+				A26B16E3294AB66F00645EA6 /* LikeVideoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				A2B2EA7B293F369400A22FEA /* CacheManager.swift in Sources */,
 				A2358ECC293B2D4700220389 /* OverViewController.swift in Sources */,
 				A2B2EA77293F21AB00A22FEA /* PlayListViewController.swift in Sources */,
+				A26B16E4294AB66F00645EA6 /* LikeVideoViewController.swift in Sources */,
 				A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */,
 				A248E0B22941AF77005E293D /* PlayVideoViewController.swift in Sources */,
 				A2B2EA73293EFBC100A22FEA /* PlayListResponse.swift in Sources */,

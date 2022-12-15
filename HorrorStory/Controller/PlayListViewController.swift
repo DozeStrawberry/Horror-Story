@@ -145,11 +145,8 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         if backLike != nil {
             selectVideo.isLike = backLike!
             
-
         }
-        
-       
-        
+
         
         //改變按鈕圖案
         if selectVideo.isLike == false {

@@ -12,7 +12,7 @@
         <!--喜歡影片-->
         <scene sceneID="7wU-aG-YJN">
             <objects>
-                <viewController id="zNp-hD-eou" customClass="LikeListViewController" customModule="HorrorStory" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="goToLikeList" id="zNp-hD-eou" customClass="LikeListViewController" customModule="HorrorStory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eDC-1w-6EN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,6 +113,95 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B0X-wZ-zXJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2260.8695652173915" y="208.92857142857142"/>
+        </scene>
+        <!--Like Video View Controller-->
+        <scene sceneID="zBS-Il-ama">
+            <objects>
+                <viewController storyboardIdentifier="goToLikeVideo" id="ziM-kd-hcN" customClass="LikeVideoViewController" customModule="HorrorStory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rb3-I4-FEu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6Il-NL-7i4">
+                                <rect key="frame" x="15" y="59" width="384" height="803"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O6K-PI-J75">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ki-DQ-MLx">
+                                        <rect key="frame" x="0.0" y="30.5" width="384" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JME-FP-L3n">
+                                        <rect key="frame" x="0.0" y="61" width="384" height="216"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="JME-FP-L3n" secondAttribute="height" multiplier="1280:720" id="Eqt-9U-5Rx"/>
+                                        </constraints>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muT-DT-TBK">
+                                        <rect key="frame" x="0.0" y="287" width="384" height="22"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="heart.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="aLikeButtonPress:" destination="ziM-kd-hcN" eventType="touchUpInside" id="Ajh-1i-3vJ"/>
+                                            <action selector="aLikeButtonPress:" destination="wyv-T6-GWq" eventType="touchUpInside" id="Q7A-Ea-rvH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEJ-3k-jme">
+                                        <rect key="frame" x="0.0" y="319" width="384" height="21"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="tintColor" red="0.96862745100000003" green="0.82352941180000006" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="youtube連接網址" image="personalhotspot.circle.fill" catalog="system">
+                                            <color key="titleColor" red="0.96862745100000003" green="0.82352941180000006" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="connectYoutubePressed:" destination="wyv-T6-GWq" eventType="touchUpInside" id="4X3-bF-WOg"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="247" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xza-zV-i51">
+                                        <rect key="frame" x="0.0" y="350" width="384" height="453"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="UU6-ua-BRs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Il-NL-7i4" firstAttribute="top" secondItem="UU6-ua-BRs" secondAttribute="top" constant="15" id="Da7-vZ-Lrd"/>
+                            <constraint firstItem="UU6-ua-BRs" firstAttribute="trailing" secondItem="6Il-NL-7i4" secondAttribute="trailing" constant="15" id="LXV-ip-LQB"/>
+                            <constraint firstItem="6Il-NL-7i4" firstAttribute="bottom" secondItem="UU6-ua-BRs" secondAttribute="bottom" id="T1z-8U-KIn"/>
+                            <constraint firstItem="6Il-NL-7i4" firstAttribute="leading" secondItem="UU6-ua-BRs" secondAttribute="leading" constant="15" id="rjn-v9-xIF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aLikeButton" destination="muT-DT-TBK" id="gl6-oW-2Oq"/>
+                        <outlet property="connectYoutube" destination="XEJ-3k-jme" id="RaQ-vR-wYp"/>
+                        <outlet property="dateLabel" destination="1Ki-DQ-MLx" id="Kg3-B9-9ZE"/>
+                        <outlet property="textView" destination="Xza-zV-i51" id="C5Y-Hv-IwV"/>
+                        <outlet property="titleLabel" destination="O6K-PI-J75" id="jUD-Rp-WPP"/>
+                        <outlet property="webView" destination="JME-FP-L3n" id="kQg-7m-JRG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zBb-MQ-vhz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3128" y="209"/>
         </scene>
         <!--恐怖總覽-->
         <scene sceneID="5EY-DD-vpw">
@@ -285,7 +374,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08J-lD-Ol7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4070" y="-475"/>
+            <point key="canvasLocation" x="3906" y="-475"/>
         </scene>
         <!--Play List View Controller-->
         <scene sceneID="vgJ-sz-fdp">
@@ -532,6 +621,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1XU-yA-rsC">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.99607843159999998" green="0.97254908080000002" blue="0.85490196939999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <navigationBarAppearance key="standardAppearance">
                             <color key="backgroundColor" red="0.99607843139999996" green="0.81568627449999997" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

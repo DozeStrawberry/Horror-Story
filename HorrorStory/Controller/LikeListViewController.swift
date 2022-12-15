@@ -14,7 +14,10 @@ class LikeListViewController: UIViewController {
     
     var senderLikeVideos = [VideoModel]()
     
-
+    //接收LikeVideo傳送過來的值
+    var likeBackLike: Bool?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,7 +27,7 @@ class LikeListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        backValueAddLikeAarry()
         tableView.reloadData()
     }
     
@@ -38,31 +41,50 @@ class LikeListViewController: UIViewController {
             for i in 0 ..< senderLikeVideos.count {
                 
                 if senderLikeVideos[sender.tag].videoId == senderLikeVideos[i].videoId {
-                    //print("Like page remove \(senderLikeVideos[i].title), \(senderLikeVideos[i].isLike)")
+
                     senderLikeVideos.remove(at: i)
-                    //print("Like page remove after have \(senderLikeVideos.count) video")
-                    
+
                     sendLikeData()
                     tableView.reloadData()
                     
                     print("\(senderLikeVideos.count)")
                     break
                 }
-            
             }
-            
         }
 
-        
         //tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
         tableView.reloadData()
     }
+    
     
     private func sendLikeData() {
 
         let navVC = tabBarController?.viewControllers![0] as! UINavigationController
         let playListViewController = navVC.topViewController as! PlayListViewController
         playListViewController.likeVideo = senderLikeVideos
+    }
+    
+    
+    //把檔案傳到下一頁
+    private func showVideoView(video: VideoModel) {
+        
+        let dvc = storyboard?.instantiateViewController(withIdentifier: "goToLikeVideo") as! LikeVideoViewController
+        
+        dvc.video = video
+        //dvc.channelTitle = navigationTitle
+        
+        dvc.likeBool = video.isLike
+        //print("\(video.isLike)")
+        
+        self.navigationController?.pushViewController(dvc, animated: true)
+    }
+    
+    func backValueAddLikeAarry() {
+        
+        senderLikeVideos = senderLikeVideos.filter { $0.isLike == true }
+        sendLikeData()
+          
     }
   
 
@@ -84,11 +106,9 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
         
         let video = self.senderLikeVideos[indexPath.row]
         
-        //guard backLike != nil else { return }
-        
-//        if backLike != nil {
-//            video.isLike = backLike!
-//        }
+        if likeBackLike != nil {
+            video.isLike = likeBackLike!
+        }
         
        
         
@@ -105,8 +125,8 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
         
         
         //傳送資料到下一頁
-        //showVideoView(video: playVideo[indexPath.row])
-   
+        showVideoView(video: senderLikeVideos[indexPath.row])
+        print("\(senderLikeVideos[indexPath.row])")
     }
     
     

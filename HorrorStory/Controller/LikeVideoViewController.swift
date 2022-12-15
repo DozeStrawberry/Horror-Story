@@ -1,15 +1,14 @@
 //
-//  PlayVideoViewController.swift
+//  LikeVideoViewController.swift
 //  HorrorStory
 //
-//  Created by liu ya yun on 2022/12/8.
+//  Created by liu ya yun on 2022/12/15.
 //
 
 import UIKit
 import WebKit
 
-
-class PlayVideoViewController: UIViewController {
+class LikeVideoViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -18,31 +17,28 @@ class PlayVideoViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var connectYoutube: UIButton!
     
+    
     //介面顯示
     var video: VideoModel?
     
     //接收傳過來的值
-    var channelTitle: String?
+    //var channelTitle: String?
     var likeBool: Bool?
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+         //navigationItem.title = channelTitle
      
-       
-        navigationItem.title = channelTitle
-    
-        //左上按鈕
-        self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
+         //左上按鈕
+         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
     }
     
     
     @objc func backAction() {
     
         self.navigationController?.popViewController(animated: true)
-        
-       
     }
     
     
@@ -56,7 +52,6 @@ class PlayVideoViewController: UIViewController {
 
         sendLikeBool()
     }
-    
     
     @IBAction func connectYoutubePressed(_ sender: UIButton) {
         guard video != nil else {
@@ -87,21 +82,23 @@ class PlayVideoViewController: UIViewController {
     
     
     private func sendLikeBool() {
-        
-        let dvc = storyboard?.instantiateViewController(withIdentifier: "goToPlayList") as! PlayListViewController
-        
+
+        let dvc = storyboard?.instantiateViewController(withIdentifier: "goToLikeList") as! LikeListViewController
+
         guard video != nil else { return }
-        
-        dvc.backLike = video!.isLike
+
+        dvc.likeBackLike = video!.isLike
         //dvc.backVideoId = video!.videoId
         //print("\(video!.videoId)")
     }
+
     
-    
+
+
     //即將出現
     override func viewWillAppear(_ animated: Bool) {
         
-        
+    
         // Clear the fields
         titleLabel.text = ""
         dateLabel.text = ""
@@ -112,15 +109,17 @@ class PlayVideoViewController: UIViewController {
             return
         }
         
+        //print("\(video?.title)")
+        
         guard likeBool != nil else {
             return
         }
 
-        //print("value is \(likeBool!)")
-        
+        print("value is \(likeBool!)")
+
         video!.isLike = likeBool!
-        
-        setButtonImage()
+
+        //setButtonImage()
         
         let embedURLString = Constants.YT_EMBED_URL + video!.videoId
         
@@ -142,5 +141,3 @@ class PlayVideoViewController: UIViewController {
     }
     
 }
-
-
