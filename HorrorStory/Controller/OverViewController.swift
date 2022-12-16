@@ -36,8 +36,6 @@ class OverViewController: UIViewController {
         super.viewDidLoad()
         
         
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
         
