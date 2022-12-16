@@ -9,11 +9,16 @@ import UIKit
 
 class PlayListViewController: UIViewController {
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var urlParseModel = URLParseModel()
+    //var urlParseModel = URLParseModel()
     public var playVideo = [VideoModel]()
     var likeVideo = [VideoModel]()
+    
+    // Core data空陣列
+    var CoreDataModels = [LikeVideo]()
     
     
     //接收overView傳送過來的值
@@ -31,17 +36,10 @@ class PlayListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        //urlParseModel.delegate = self
-        
-//        if getAPI != nil {
-//            urlParseModel.getVideos(channelAPI: getAPI!)
-//        }
-        
+
         backValueAddLikeAarry()
         
         navigationItem.title = navigationTitle
-        
-        
         
         //左上回去按鈕
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
@@ -59,11 +57,7 @@ class PlayListViewController: UIViewController {
         tableView.reloadData()
     }
     
-    
-//    func sortArray() {
-//        let playVideo.sorted(by: { $0.published > $1.published } )
-//    }
-    
+
     //按鈕
     @IBAction func likeButtonPress(_ sender: UIButton) {
         //改變Bool值
@@ -127,6 +121,23 @@ class PlayListViewController: UIViewController {
         
         self.navigationController?.pushViewController(dvc, animated: true)
     }
+    
+    //MARK: - Core Data處理
+    func getAllItems() {
+        
+        do {
+            //獲取請求
+            CoreDataModels = try context.fetch(LikeVideo.fetchRequest())
+            //主畫面更新
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        } catch {
+            print("get All Items have error: ",error.localizedDescription)
+        }
+    }
+    
+    
 }
 
 
@@ -148,7 +159,6 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         //回傳Bool過來有值
         if backLike != nil {
             selectVideo.isLike = backLike!
-            
         }
 
         
@@ -182,12 +192,4 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 
-//extension PlayListViewController: ModelDelegate {
-//
-//    func videosFetched(_ videos: [VideoModel]) {
-//
-//        self.playVideo = videos
-//        tableView.reloadData()
-//    }
-//
-//}
+

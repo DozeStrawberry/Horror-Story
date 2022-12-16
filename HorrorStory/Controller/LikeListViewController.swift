@@ -60,9 +60,9 @@ class LikeListViewController: UIViewController {
     
     private func sendLikeData() {
 
-        let navVC = tabBarController?.viewControllers![0] as! UINavigationController
-        let playListViewController = navVC.topViewController as! PlayListViewController
-        playListViewController.likeVideo = senderLikeVideos
+//        let navVC = tabBarController?.viewControllers![0] as! UINavigationController
+//        let playListViewController = navVC.topViewController as! PlayListViewController
+//        playListViewController.likeVideo = senderLikeVideos
     }
     
     

@@ -9,14 +9,12 @@ import UIKit
 
 class OverViewController: UIViewController {
    
-
     @IBOutlet weak var tableView: UITableView!
 
     let Model = OverViewModel()
     
     var channelURL = String()
     var channelName = String()
-    
     
     let ch1UrlParseModel = Ch1UrlParseModel()
     let ch2UrlParseModel = Ch2UrlParseModel()
@@ -34,9 +32,11 @@ class OverViewController: UIViewController {
     var ch6Video = [VideoModel]()
     
   
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -58,25 +58,25 @@ class OverViewController: UIViewController {
         
         ch6UrlParseModel.delegate = self
         ch6UrlParseModel.getVideos()
-
-       
-        print("\(ch3Video.count)")
-        print("\(allChannelVideo.count)")
         
-        self.tabBarController?.tabBar.isHidden = true
+        //self.tabBarController?.tabBar.isHidden = true
+        
+       
+        
         
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        self.tabBarController?.tabBar.isHidden = false
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//
+//        self.tabBarController?.tabBar.isHidden = false
+//    }
+//
+//    override func viewWillAppear(_ animated: Bool) {
+//
+//        self.tabBarController?.tabBar.isHidden = true
+//    }
 
-    override func viewWillAppear(_ animated: Bool) {
-        
-        self.tabBarController?.tabBar.isHidden = true
-    }
-
+    
     private func showVideoView(url: String, channelTitle: String) {
 
         let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
@@ -88,10 +88,7 @@ class OverViewController: UIViewController {
        
         navigationController?.pushViewController(dvc, animated: true)
     }
-    
- 
-    
-    
+
 }
 
 
@@ -129,7 +126,7 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
 
         case 0:
             let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-            allChannelVideo = ch3Video + ch5Video + ch2Video + ch1Video + ch4Video + ch6Video
+            allChannelVideo = ch1Video + ch2Video + ch3Video + ch4Video + ch5Video + ch6Video
             let sortArray = allChannelVideo.sorted(by: { $0.published > $1.published } )
             dvc.playVideo = sortArray
             dvc.navigationTitle = Model.channelArray[0]
@@ -234,5 +231,12 @@ extension OverViewController: Ch6ModelDelegate {
     }
 }
 
+
+extension OverViewController:UITabBarControllerDelegate{
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
+    }
+}
 
 
