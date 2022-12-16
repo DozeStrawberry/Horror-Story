@@ -46,7 +46,7 @@ class Ch2UrlParseModel {
                     let newVideo = VideoModel(videoId: item.videoId, title: item.title, description: item.description, thumbnail: item.thumbnail, published: item.published, channelTitle: item.channelTitle)
                     
                     newVideos += [newVideo]
-                    print("\(newVideos.count)")
+                    //print("\(newVideos.count)")
                 }
                 
                 

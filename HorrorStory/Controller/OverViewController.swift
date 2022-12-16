@@ -17,6 +17,7 @@ class OverViewController: UIViewController {
     var channelURL = String()
     var channelName = String()
     
+    
     let ch1UrlParseModel = Ch1UrlParseModel()
     let ch2UrlParseModel = Ch2UrlParseModel()
     let ch3UrlParseModel = Ch3UrlParseModel()
@@ -24,12 +25,14 @@ class OverViewController: UIViewController {
     let ch5UrlParseModel = Ch5UrlParseModel()
     let ch6UrlParseModel = Ch6UrlParseModel()
     
+    var allChannelVideo = [VideoModel]()
     var ch1Video = [VideoModel]()
     var ch2Video = [VideoModel]()
     var ch3Video = [VideoModel]()
     var ch4Video = [VideoModel]()
     var ch5Video = [VideoModel]()
     var ch6Video = [VideoModel]()
+    
   
 
     override func viewDidLoad() {
@@ -37,8 +40,6 @@ class OverViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        self.tabBarController?.tabBar.isHidden = true
         
         ch1UrlParseModel.delegate = self
         ch1UrlParseModel.getVideos()
@@ -58,15 +59,21 @@ class OverViewController: UIViewController {
         ch6UrlParseModel.delegate = self
         ch6UrlParseModel.getVideos()
 
+       
+        print("\(ch3Video.count)")
+        print("\(allChannelVideo.count)")
         
+        self.tabBarController?.tabBar.isHidden = true
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         self.tabBarController?.tabBar.isHidden = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
         self.tabBarController?.tabBar.isHidden = true
     }
 
@@ -122,83 +129,65 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
 
         case 0:
             let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-            
-            dvc.playVideo = ch1Video
-            //dvc.navigationTitle = channelTitle
-           
+            allChannelVideo = ch3Video + ch5Video + ch2Video + ch1Video + ch4Video + ch6Video
+            let sortArray = allChannelVideo.sorted(by: { $0.published > $1.published } )
+            dvc.playVideo = sortArray
+            dvc.navigationTitle = Model.channelArray[0]
             navigationController?.pushViewController(dvc, animated: true)
-//            channelURL = Constants.S01_API_URL
-//            channelName = Model.channelArray[0]
-//            showVideoView(url: channelURL, channelTitle: channelName)
-//            channelURL = ""
-//            channelName = ""
-            //break
+
     
         case 1:
             let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-            
-            dvc.playVideo = ch2Video
-            //dvc.navigationTitle = channelTitle
-           
+       
+            dvc.playVideo = ch1Video
+            dvc.navigationTitle = Model.channelArray[1]
             navigationController?.pushViewController(dvc, animated: true)
-//            channelURL = Constants.S02_API_URL
-//            channelName = Model.channelArray[1]
-//            showVideoView(url: channelURL, channelTitle: channelName)
-//            channelURL = ""
-//            channelName = ""
+
             
         case 2:
             let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-            
-            dvc.playVideo = ch3Video
-            //dvc.navigationTitle = channelTitle
-           
+   
+            dvc.playVideo = ch2Video
+            dvc.navigationTitle = Model.channelArray[2]
+
             navigationController?.pushViewController(dvc, animated: true)
-//            channelURL = Constants.S03_API_URL
-//            channelName = Model.channelArray[2]
-//            showVideoView(url: channelURL, channelTitle: channelName)
-//            channelURL = ""
-//            channelName = ""
+
             
         case 3:
             let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-            
-            dvc.playVideo = ch4Video
-            //dvc.navigationTitle = channelTitle
+     
+            dvc.playVideo = ch3Video
+            dvc.navigationTitle = Model.channelArray[3]
            
             navigationController?.pushViewController(dvc, animated: true)
-//            channelURL = Constants.S04_API_URL
-//            channelName = Model.channelArray[3]
-//            showVideoView(url: channelURL, channelTitle: channelName)
-//            channelURL = ""
-//            channelName = ""
+
             
         case 4:
             let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-            
-            dvc.playVideo = ch5Video
-            //dvc.navigationTitle = channelTitle
+          
+            dvc.playVideo = ch4Video
+            dvc.navigationTitle = Model.channelArray[4]
            
             navigationController?.pushViewController(dvc, animated: true)
-//            channelURL = Constants.S05_API_URL
-//            channelName = Model.channelArray[4]
-//            showVideoView(url: channelURL, channelTitle: channelName)
-//            channelURL = ""
-//            channelName = ""
+
             
         case 5:
             let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-            
-            dvc.playVideo = ch6Video
-            //dvc.navigationTitle = channelTitle
+       
+            dvc.playVideo = ch5Video
+            dvc.navigationTitle = Model.channelArray[5]
            
             navigationController?.pushViewController(dvc, animated: true)
-//            channelURL = Constants.S06_API_URL
-//            channelName = Model.channelArray[5]
-//            showVideoView(url: channelURL, channelTitle: channelName)
-//            channelURL = ""
-//            channelName = ""
+
+        case 6:
+            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+            let sort6Array = ch6Video.sorted(by: { $0.title < $1.title } )
+            dvc.playVideo = sort6Array
+            dvc.navigationTitle = Model.channelArray[6]
+           
+            navigationController?.pushViewController(dvc, animated: true)
             
+          
         default:
             break
         }

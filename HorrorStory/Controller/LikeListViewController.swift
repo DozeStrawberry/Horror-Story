@@ -47,7 +47,7 @@ class LikeListViewController: UIViewController {
                     sendLikeData()
                     tableView.reloadData()
                     
-                    print("\(senderLikeVideos.count)")
+                    //print("\(senderLikeVideos.count)")
                     break
                 }
             }

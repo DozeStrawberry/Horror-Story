@@ -31,15 +31,17 @@ class PlayListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        urlParseModel.delegate = self
+        //urlParseModel.delegate = self
         
-        if getAPI != nil {
-            urlParseModel.getVideos(channelAPI: getAPI!)
-        }
+//        if getAPI != nil {
+//            urlParseModel.getVideos(channelAPI: getAPI!)
+//        }
         
         backValueAddLikeAarry()
         
         navigationItem.title = navigationTitle
+        
+        
         
         //左上回去按鈕
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
@@ -58,7 +60,9 @@ class PlayListViewController: UIViewController {
     }
     
     
-    
+//    func sortArray() {
+//        let playVideo.sorted(by: { $0.published > $1.published } )
+//    }
     
     //按鈕
     @IBAction func likeButtonPress(_ sender: UIButton) {
@@ -178,12 +182,12 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
 }
 
 
-extension PlayListViewController: ModelDelegate {
-    
-    func videosFetched(_ videos: [VideoModel]) {
-        
-        self.playVideo = videos
-        tableView.reloadData()
-    }
-    
-}
+//extension PlayListViewController: ModelDelegate {
+//
+//    func videosFetched(_ videos: [VideoModel]) {
+//
+//        self.playVideo = videos
+//        tableView.reloadData()
+//    }
+//
+//}
