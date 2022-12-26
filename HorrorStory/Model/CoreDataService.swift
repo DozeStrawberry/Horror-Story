@@ -9,9 +9,26 @@ import Foundation
 import CoreData
 
 
-class CoreDataManager {
+class CoreDataService {
     
-//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    static var shared = CoreDataService()
+    let coreData = CoreDataStack()
+    var coreDataArray = CoreVideo()
+    
+    
+    func getAPIVideo(_ viedoArray: [VideoModel]) {
+        let context = coreData.persistentContainer.viewContext
+        
+        for response in viedoArray {
+            //let video = coreDataArray(context: self.coreData)
+            
+            coreDataArray.cChannelTitle = response.channelTitle
+            coreDataArray.cTitle = response.title
+            coreDataArray.cDescription = response.description
+            coreDataArray
+        }
+    }
+    //
 //
 //    var Models = [LikeVideo]()
 //

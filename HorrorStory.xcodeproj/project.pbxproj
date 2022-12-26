@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A235853D294C683200B85F22 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A235853C294C683200B85F22 /* CoreDataManager.swift */; };
+		A235853D294C683200B85F22 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A235853C294C683200B85F22 /* CoreDataService.swift */; };
 		A2358EC8293B2D4700220389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2358EC7293B2D4700220389 /* AppDelegate.swift */; };
 		A2358ECA293B2D4700220389 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2358EC9293B2D4700220389 /* SceneDelegate.swift */; };
 		A2358ECC293B2D4700220389 /* OverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2358ECB293B2D4700220389 /* OverViewController.swift */; };
@@ -15,6 +15,8 @@
 		A2358ED2293B2D4700220389 /* HorrorStory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2358ED0293B2D4700220389 /* HorrorStory.xcdatamodeld */; };
 		A2358ED4293B2D4800220389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2358ED3293B2D4800220389 /* Assets.xcassets */; };
 		A2358ED7293B2D4800220389 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2358ED5293B2D4800220389 /* LaunchScreen.storyboard */; };
+		A23F54C4295942AF001C900A /* CoreVideo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F54C2295942AF001C900A /* CoreVideo+CoreDataClass.swift */; };
+		A23F54C5295942AF001C900A /* CoreVideo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F54C3295942AF001C900A /* CoreVideo+CoreDataProperties.swift */; };
 		A248E0B22941AF77005E293D /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A248E0B12941AF77005E293D /* PlayVideoViewController.swift */; };
 		A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2535190293E2351000DEF86 /* OverViewModel.swift */; };
 		A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */; };
@@ -24,14 +26,13 @@
 		A26AB84E293EE4F30036C000 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB84D293EE4F30036C000 /* Constants.swift */; };
 		A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB850293EF3CB0036C000 /* PlayListVideo.swift */; };
 		A26B16E4294AB66F00645EA6 /* LikeVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16E3294AB66F00645EA6 /* LikeVideoViewController.swift */; };
-		A26B16EB294B134900645EA6 /* LikeVideo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16E9294B134900645EA6 /* LikeVideo+CoreDataClass.swift */; };
-		A26B16EC294B134900645EA6 /* LikeVideo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16EA294B134900645EA6 /* LikeVideo+CoreDataProperties.swift */; };
 		A26B16F0294B186200645EA6 /* Ch1UrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16EF294B186200645EA6 /* Ch1UrlParseModel.swift */; };
 		A26B16F2294B20F400645EA6 /* Ch2UrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16F1294B20F400645EA6 /* Ch2UrlParseModel.swift */; };
 		A26B16F4294B249A00645EA6 /* Ch3UrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16F3294B249A00645EA6 /* Ch3UrlParseModel.swift */; };
 		A26B16F6294B25BB00645EA6 /* Ch4UrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16F5294B25BB00645EA6 /* Ch4UrlParseModel.swift */; };
 		A26B16F8294B264A00645EA6 /* Ch5UrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16F7294B264A00645EA6 /* Ch5UrlParseModel.swift */; };
 		A26B16FA294B27AE00645EA6 /* Ch6UrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16F9294B27AE00645EA6 /* Ch6UrlParseModel.swift */; };
+		A273538C29588FAB000EB48E /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A273538B29588FAB000EB48E /* CoreDataStack.swift */; };
 		A2B2EA73293EFBC100A22FEA /* PlayListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */; };
 		A2B2EA75293F00FB00A22FEA /* URLParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */; };
 		A2B2EA77293F21AB00A22FEA /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */; };
@@ -40,7 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A235853C294C683200B85F22 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		A235853C294C683200B85F22 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		A2358EC4293B2D4700220389 /* HorrorStory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorrorStory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2358EC7293B2D4700220389 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2358EC9293B2D4700220389 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +51,8 @@
 		A2358ED3293B2D4800220389 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2358ED6293B2D4800220389 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2358ED8293B2D4800220389 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A23F54C2295942AF001C900A /* CoreVideo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreVideo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A23F54C3295942AF001C900A /* CoreVideo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreVideo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A248E0B12941AF77005E293D /* PlayVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoViewController.swift; sourceTree = "<group>"; };
 		A2535190293E2351000DEF86 /* OverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewModel.swift; sourceTree = "<group>"; };
 		A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -59,14 +62,13 @@
 		A26AB84D293EE4F30036C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A26AB850293EF3CB0036C000 /* PlayListVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListVideo.swift; sourceTree = "<group>"; };
 		A26B16E3294AB66F00645EA6 /* LikeVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeVideoViewController.swift; sourceTree = "<group>"; };
-		A26B16E9294B134900645EA6 /* LikeVideo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LikeVideo+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A26B16EA294B134900645EA6 /* LikeVideo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LikeVideo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A26B16EF294B186200645EA6 /* Ch1UrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1UrlParseModel.swift; sourceTree = "<group>"; };
 		A26B16F1294B20F400645EA6 /* Ch2UrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch2UrlParseModel.swift; sourceTree = "<group>"; };
 		A26B16F3294B249A00645EA6 /* Ch3UrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch3UrlParseModel.swift; sourceTree = "<group>"; };
 		A26B16F5294B25BB00645EA6 /* Ch4UrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch4UrlParseModel.swift; sourceTree = "<group>"; };
 		A26B16F7294B264A00645EA6 /* Ch5UrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch5UrlParseModel.swift; sourceTree = "<group>"; };
 		A26B16F9294B27AE00645EA6 /* Ch6UrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch6UrlParseModel.swift; sourceTree = "<group>"; };
+		A273538B29588FAB000EB48E /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListResponse.swift; sourceTree = "<group>"; };
 		A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParseModel.swift; sourceTree = "<group>"; };
 		A2B2EA76293F21AB00A22FEA /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewController.swift; sourceTree = "<group>"; };
@@ -131,7 +133,7 @@
 				A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */,
 				A26645CA29434039009371A8 /* VideoModel.swift */,
 				A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */,
-				A235853C294C683200B85F22 /* CoreDataManager.swift */,
+				A235853C294C683200B85F22 /* CoreDataService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				A26AB84D293EE4F30036C000 /* Constants.swift */,
+				A273538B29588FAB000EB48E /* CoreDataStack.swift */,
 				A2B2EA7A293F369400A22FEA /* CacheManager.swift */,
 			);
 			path = Helpers;
@@ -177,8 +180,8 @@
 		A26B16ED294B137500645EA6 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				A26B16E9294B134900645EA6 /* LikeVideo+CoreDataClass.swift */,
-				A26B16EA294B134900645EA6 /* LikeVideo+CoreDataProperties.swift */,
+				A23F54C2295942AF001C900A /* CoreVideo+CoreDataClass.swift */,
+				A23F54C3295942AF001C900A /* CoreVideo+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -271,13 +274,14 @@
 				A2B2EA7B293F369400A22FEA /* CacheManager.swift in Sources */,
 				A2358ECC293B2D4700220389 /* OverViewController.swift in Sources */,
 				A2B2EA77293F21AB00A22FEA /* PlayListViewController.swift in Sources */,
+				A23F54C5295942AF001C900A /* CoreVideo+CoreDataProperties.swift in Sources */,
 				A26B16E4294AB66F00645EA6 /* LikeVideoViewController.swift in Sources */,
 				A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */,
 				A248E0B22941AF77005E293D /* PlayVideoViewController.swift in Sources */,
 				A26B16FA294B27AE00645EA6 /* Ch6UrlParseModel.swift in Sources */,
-				A26B16EC294B134900645EA6 /* LikeVideo+CoreDataProperties.swift in Sources */,
 				A26B16F8294B264A00645EA6 /* Ch5UrlParseModel.swift in Sources */,
 				A2B2EA73293EFBC100A22FEA /* PlayListResponse.swift in Sources */,
+				A23F54C4295942AF001C900A /* CoreVideo+CoreDataClass.swift in Sources */,
 				A2B2EA75293F00FB00A22FEA /* URLParseModel.swift in Sources */,
 				A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */,
 				A26B16F2294B20F400645EA6 /* Ch2UrlParseModel.swift in Sources */,
@@ -285,10 +289,10 @@
 				A2358EC8293B2D4700220389 /* AppDelegate.swift in Sources */,
 				A26AB84E293EE4F30036C000 /* Constants.swift in Sources */,
 				A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */,
-				A235853D294C683200B85F22 /* CoreDataManager.swift in Sources */,
+				A235853D294C683200B85F22 /* CoreDataService.swift in Sources */,
 				A2358ECA293B2D4700220389 /* SceneDelegate.swift in Sources */,
-				A26B16EB294B134900645EA6 /* LikeVideo+CoreDataClass.swift in Sources */,
 				A26B16F0294B186200645EA6 /* Ch1UrlParseModel.swift in Sources */,
+				A273538C29588FAB000EB48E /* CoreDataStack.swift in Sources */,
 				A26B16F4294B249A00645EA6 /* Ch3UrlParseModel.swift in Sources */,
 				A25B89AF2945677800DCF035 /* LikeListViewController.swift in Sources */,
 				A2B2EA79293F254000A22FEA /* PlayListTableViewCell.swift in Sources */,
