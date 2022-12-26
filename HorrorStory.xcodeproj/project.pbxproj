@@ -15,8 +15,8 @@
 		A2358ED2293B2D4700220389 /* HorrorStory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2358ED0293B2D4700220389 /* HorrorStory.xcdatamodeld */; };
 		A2358ED4293B2D4800220389 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2358ED3293B2D4800220389 /* Assets.xcassets */; };
 		A2358ED7293B2D4800220389 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2358ED5293B2D4800220389 /* LaunchScreen.storyboard */; };
-		A23F54C4295942AF001C900A /* CoreVideo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F54C2295942AF001C900A /* CoreVideo+CoreDataClass.swift */; };
-		A23F54C5295942AF001C900A /* CoreVideo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F54C3295942AF001C900A /* CoreVideo+CoreDataProperties.swift */; };
+		A23F54C829596227001C900A /* CoreVideo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F54C629596227001C900A /* CoreVideo+CoreDataClass.swift */; };
+		A23F54C929596227001C900A /* CoreVideo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A23F54C729596227001C900A /* CoreVideo+CoreDataProperties.swift */; };
 		A248E0B22941AF77005E293D /* PlayVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A248E0B12941AF77005E293D /* PlayVideoViewController.swift */; };
 		A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2535190293E2351000DEF86 /* OverViewModel.swift */; };
 		A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */; };
@@ -51,8 +51,8 @@
 		A2358ED3293B2D4800220389 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2358ED6293B2D4800220389 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2358ED8293B2D4800220389 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A23F54C2295942AF001C900A /* CoreVideo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreVideo+CoreDataClass.swift"; sourceTree = "<group>"; };
-		A23F54C3295942AF001C900A /* CoreVideo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreVideo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A23F54C629596227001C900A /* CoreVideo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreVideo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A23F54C729596227001C900A /* CoreVideo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreVideo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A248E0B12941AF77005E293D /* PlayVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayVideoViewController.swift; sourceTree = "<group>"; };
 		A2535190293E2351000DEF86 /* OverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewModel.swift; sourceTree = "<group>"; };
 		A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
@@ -180,8 +180,8 @@
 		A26B16ED294B137500645EA6 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				A23F54C2295942AF001C900A /* CoreVideo+CoreDataClass.swift */,
-				A23F54C3295942AF001C900A /* CoreVideo+CoreDataProperties.swift */,
+				A23F54C629596227001C900A /* CoreVideo+CoreDataClass.swift */,
+				A23F54C729596227001C900A /* CoreVideo+CoreDataProperties.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -274,14 +274,14 @@
 				A2B2EA7B293F369400A22FEA /* CacheManager.swift in Sources */,
 				A2358ECC293B2D4700220389 /* OverViewController.swift in Sources */,
 				A2B2EA77293F21AB00A22FEA /* PlayListViewController.swift in Sources */,
-				A23F54C5295942AF001C900A /* CoreVideo+CoreDataProperties.swift in Sources */,
+				A23F54C929596227001C900A /* CoreVideo+CoreDataProperties.swift in Sources */,
 				A26B16E4294AB66F00645EA6 /* LikeVideoViewController.swift in Sources */,
 				A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */,
 				A248E0B22941AF77005E293D /* PlayVideoViewController.swift in Sources */,
 				A26B16FA294B27AE00645EA6 /* Ch6UrlParseModel.swift in Sources */,
 				A26B16F8294B264A00645EA6 /* Ch5UrlParseModel.swift in Sources */,
 				A2B2EA73293EFBC100A22FEA /* PlayListResponse.swift in Sources */,
-				A23F54C4295942AF001C900A /* CoreVideo+CoreDataClass.swift in Sources */,
+				A23F54C829596227001C900A /* CoreVideo+CoreDataClass.swift in Sources */,
 				A2B2EA75293F00FB00A22FEA /* URLParseModel.swift in Sources */,
 				A25822AF293E21B50067D409 /* OverViewTableViewCell.swift in Sources */,
 				A26B16F2294B20F400645EA6 /* Ch2UrlParseModel.swift in Sources */,

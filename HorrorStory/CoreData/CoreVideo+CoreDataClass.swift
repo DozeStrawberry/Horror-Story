@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(CoreVideo)
+
 public class CoreVideo: NSManagedObject {
 
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class PlayListViewController: UIViewController {
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -18,7 +18,10 @@ class PlayListViewController: UIViewController {
     var likeVideo = [VideoModel]()
     
     // Core data空陣列
-    var CoreDataModels = [LikeVideo]()
+    //var CoreDataModels = [LikeVideo]()
+    
+    var coreVideo = [CoreVideo]()
+    
     
     
     //接收overView傳送過來的值
@@ -123,19 +126,19 @@ class PlayListViewController: UIViewController {
     }
     
     //MARK: - Core Data處理
-    func getAllItems() {
-        
-        do {
-            //獲取請求
-            CoreDataModels = try context.fetch(LikeVideo.fetchRequest())
-            //主畫面更新
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        } catch {
-            print("get All Items have error: ",error.localizedDescription)
-        }
-    }
+//    func getAllItems() {
+//        
+//        do {
+//            //獲取請求
+//            CoreDataModels = try context.fetch(LikeVideo.fetchRequest())
+//            //主畫面更新
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        } catch {
+//            print("get All Items have error: ",error.localizedDescription)
+//        }
+//    }
     
     
 }
@@ -148,22 +151,23 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return playVideo.count
+        return coreVideo.count
+        //return playVideo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayListCell", for: indexPath) as! PlayListTableViewCell
         
-        let selectVideo = self.playVideo[indexPath.row]
+        let selectVideo = self.coreVideo[indexPath.row]
         
         //回傳Bool過來有值
-        if backLike != nil {
-            selectVideo.isLike = backLike!
-        }
+//        if backLike != nil {
+//            selectVideo.cIsLike = backLike!
+//        }
 
         
         //改變按鈕圖案
-        if selectVideo.isLike == false {
+        if selectVideo.cIsLike == false {
             cell.likeButton.imageView?.image = UIImage(systemName: "heart")
             
         } else {

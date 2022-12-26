@@ -15,7 +15,7 @@ class PlayListTableViewCell: UITableViewCell {
     @IBOutlet weak var publishedLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
-    var video: VideoModel?
+    var video: CoreVideo?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +30,7 @@ class PlayListTableViewCell: UITableViewCell {
     
     
     //顯示Cell內容
-    func setCell(_ v: VideoModel) {
+    func setCell(_ v: CoreVideo) {
         self.video = v
         
         // Ensure that we have a Video
@@ -39,20 +39,24 @@ class PlayListTableViewCell: UITableViewCell {
         }
         
         // Set the title
-        self.titleLabel.text = video?.title
+        self.titleLabel.text = video?.cTitle
         
         // 轉換日期格式
         let df = DateFormatter()
         df.dateFormat = "EEEE, MMM d, yyyy"
-        self.publishedLabel.text = df.string(from: video!.published)
+        
+        if video!.cPublished != nil {
+            self.publishedLabel.text = df.string(from: video!.cPublished!)
+        }
+        
         
         // 確定縮圖不是空的
-        guard self.video!.thumbnail != "" else {
+        guard self.video!.cThumbnail != "" else {
             return
         }
         
         // 取得cache
-        if let cachedData = CacheManager.getVideoCache(self.video!.thumbnail) {
+        if let cachedData = CacheManager.getVideoCache(self.video!.cThumbnail!) {
             
             // 設定顯示圖片
             self.playListImage.image = UIImage(data: cachedData)
@@ -60,7 +64,7 @@ class PlayListTableViewCell: UITableViewCell {
         }
         
         // 下載縮圖圖片
-        let url = URL(string: self.video!.thumbnail)
+        let url = URL(string: self.video!.cThumbnail!)
         
         // Get the shared URL Session object
         let session = URLSession.shared
@@ -77,7 +81,7 @@ class PlayListTableViewCell: UITableViewCell {
                 
                 // Check that the downloaded url matches the video thumbnail url that this cell is currently set to display
                 
-                if url!.absoluteString != self.video?.thumbnail {
+                if url!.absoluteString != self.video?.cThumbnail! {
                     // Video cell has been recycled for another video and no longer matches the thumbnail that was downloaded
                     
                     return

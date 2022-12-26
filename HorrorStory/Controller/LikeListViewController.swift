@@ -112,7 +112,7 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
         
        
         
-        cell.setCell(video)
+        //cell.setCell(video)
         cell.likeButton.tag = indexPath.row
 
         return cell
