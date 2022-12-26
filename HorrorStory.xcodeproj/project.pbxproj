@@ -26,7 +26,7 @@
 		A26AB84E293EE4F30036C000 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB84D293EE4F30036C000 /* Constants.swift */; };
 		A26AB851293EF3CB0036C000 /* PlayListVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26AB850293EF3CB0036C000 /* PlayListVideo.swift */; };
 		A26B16E4294AB66F00645EA6 /* LikeVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16E3294AB66F00645EA6 /* LikeVideoViewController.swift */; };
-		A26B16F0294B186200645EA6 /* Ch1UrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16EF294B186200645EA6 /* Ch1UrlParseModel.swift */; };
+		A26B16F0294B186200645EA6 /* ChannelUrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16EF294B186200645EA6 /* ChannelUrlParseModel.swift */; };
 		A26B16F2294B20F400645EA6 /* Ch2UrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16F1294B20F400645EA6 /* Ch2UrlParseModel.swift */; };
 		A26B16F4294B249A00645EA6 /* Ch3UrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16F3294B249A00645EA6 /* Ch3UrlParseModel.swift */; };
 		A26B16F6294B25BB00645EA6 /* Ch4UrlParseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26B16F5294B25BB00645EA6 /* Ch4UrlParseModel.swift */; };
@@ -62,7 +62,7 @@
 		A26AB84D293EE4F30036C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A26AB850293EF3CB0036C000 /* PlayListVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListVideo.swift; sourceTree = "<group>"; };
 		A26B16E3294AB66F00645EA6 /* LikeVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeVideoViewController.swift; sourceTree = "<group>"; };
-		A26B16EF294B186200645EA6 /* Ch1UrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch1UrlParseModel.swift; sourceTree = "<group>"; };
+		A26B16EF294B186200645EA6 /* ChannelUrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUrlParseModel.swift; sourceTree = "<group>"; };
 		A26B16F1294B20F400645EA6 /* Ch2UrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch2UrlParseModel.swift; sourceTree = "<group>"; };
 		A26B16F3294B249A00645EA6 /* Ch3UrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch3UrlParseModel.swift; sourceTree = "<group>"; };
 		A26B16F5294B25BB00645EA6 /* Ch4UrlParseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ch4UrlParseModel.swift; sourceTree = "<group>"; };
@@ -110,6 +110,7 @@
 			children = (
 				A2358EC7293B2D4700220389 /* AppDelegate.swift */,
 				A2358EC9293B2D4700220389 /* SceneDelegate.swift */,
+				A23F54CA2959D443001C900A /* NoUse */,
 				A26B16ED294B137500645EA6 /* CoreData */,
 				A26AB84F293EF3610036C000 /* Helpers */,
 				A2535192293E235C000DEF86 /* Model */,
@@ -124,15 +125,27 @@
 			path = HorrorStory;
 			sourceTree = "<group>";
 		};
+		A23F54CA2959D443001C900A /* NoUse */ = {
+			isa = PBXGroup;
+			children = (
+				A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */,
+				A26B16F3294B249A00645EA6 /* Ch3UrlParseModel.swift */,
+				A26B16F5294B25BB00645EA6 /* Ch4UrlParseModel.swift */,
+				A26B16F7294B264A00645EA6 /* Ch5UrlParseModel.swift */,
+				A26B16F9294B27AE00645EA6 /* Ch6UrlParseModel.swift */,
+				A26B16F1294B20F400645EA6 /* Ch2UrlParseModel.swift */,
+			);
+			path = NoUse;
+			sourceTree = "<group>";
+		};
 		A2535192293E235C000DEF86 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A26B16EE294B17CA00645EA6 /* ChannelParse */,
 				A2535190293E2351000DEF86 /* OverViewModel.swift */,
 				A26AB850293EF3CB0036C000 /* PlayListVideo.swift */,
 				A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */,
 				A26645CA29434039009371A8 /* VideoModel.swift */,
-				A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */,
+				A26B16EF294B186200645EA6 /* ChannelUrlParseModel.swift */,
 				A235853C294C683200B85F22 /* CoreDataService.swift */,
 			);
 			path = Model;
@@ -184,19 +197,6 @@
 				A23F54C729596227001C900A /* CoreVideo+CoreDataProperties.swift */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		A26B16EE294B17CA00645EA6 /* ChannelParse */ = {
-			isa = PBXGroup;
-			children = (
-				A26B16EF294B186200645EA6 /* Ch1UrlParseModel.swift */,
-				A26B16F1294B20F400645EA6 /* Ch2UrlParseModel.swift */,
-				A26B16F3294B249A00645EA6 /* Ch3UrlParseModel.swift */,
-				A26B16F5294B25BB00645EA6 /* Ch4UrlParseModel.swift */,
-				A26B16F7294B264A00645EA6 /* Ch5UrlParseModel.swift */,
-				A26B16F9294B27AE00645EA6 /* Ch6UrlParseModel.swift */,
-			);
-			path = ChannelParse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,7 +291,7 @@
 				A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */,
 				A235853D294C683200B85F22 /* CoreDataService.swift in Sources */,
 				A2358ECA293B2D4700220389 /* SceneDelegate.swift in Sources */,
-				A26B16F0294B186200645EA6 /* Ch1UrlParseModel.swift in Sources */,
+				A26B16F0294B186200645EA6 /* ChannelUrlParseModel.swift in Sources */,
 				A273538C29588FAB000EB48E /* CoreDataStack.swift in Sources */,
 				A26B16F4294B249A00645EA6 /* Ch3UrlParseModel.swift in Sources */,
 				A25B89AF2945677800DCF035 /* LikeListViewController.swift in Sources */,

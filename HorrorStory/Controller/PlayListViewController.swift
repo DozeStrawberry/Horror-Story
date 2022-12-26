@@ -9,11 +9,8 @@ import UIKit
 
 class PlayListViewController: UIViewController {
     
-    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     @IBOutlet weak var tableView: UITableView!
     
-    //var urlParseModel = URLParseModel()
     public var playVideo = [VideoModel]()
     var likeVideo = [VideoModel]()
     
@@ -25,11 +22,11 @@ class PlayListViewController: UIViewController {
     
     
     //接收overView傳送過來的值
-    var getAPI: String?
+   // var getAPI: String?
     var navigationTitle: String?
     
     //接收playVideo傳送過來的值
-    var backLike: Bool?
+    //var backLike: Bool?
     //var backVideoId: String?
     
     
@@ -117,7 +114,7 @@ class PlayListViewController: UIViewController {
         let dvc = storyboard?.instantiateViewController(withIdentifier: "goToPlayVideo") as! PlayVideoViewController
         
         dvc.video = video
-        dvc.channelTitle = navigationTitle
+        //dvc.channelTitle = navigationTitle
         
         dvc.likeBool = video.isLike
         //print("\(video.isLike)")

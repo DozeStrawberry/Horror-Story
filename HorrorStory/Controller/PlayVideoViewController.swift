@@ -92,7 +92,7 @@ class PlayVideoViewController: UIViewController {
         
         guard video != nil else { return }
         
-        dvc.backLike = video!.isLike
+        //dvc.backLike = video!.isLike
         //dvc.backVideoId = video!.videoId
         //print("\(video!.videoId)")
     }

@@ -8,82 +8,48 @@
 import UIKit
 import CoreData
 
+
 class OverViewController: UIViewController {
     
-    
-    let coreData = CoreDataStack()
-    
-   
     @IBOutlet weak var tableView: UITableView!
 
+    let coreData = CoreDataStack()
     let Model = OverViewModel()
     
     var channelURL = String()
     var channelName = String()
     
     //var container: NSPersistentContainer!
-    var coreDataUse = CoreDataStack()
     
     var channelVideos = [CoreVideo]()
     
-    let ch1UrlParseModel = Ch1UrlParseModel()
-//    let ch2UrlParseModel = Ch2UrlParseModel()
-//    let ch3UrlParseModel = Ch3UrlParseModel()
-//    let ch4UrlParseModel = Ch4UrlParseModel()
-//    let ch5UrlParseModel = Ch5UrlParseModel()
-//    let ch6UrlParseModel = Ch6UrlParseModel()
-//
-//    var allChannelVideo = [VideoModel]()
-//    var ch1Video = [VideoModel]()
-//    var ch2Video = [VideoModel]()
-//    var ch3Video = [VideoModel]()
-//    var ch4Video = [VideoModel]()
-//    var ch5Video = [VideoModel]()
-//    var ch6Video = [VideoModel]()
-    
+    let ch1UrlParseModel = ChannelUrlParseModel()
+
+
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
- 
-        
-        
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         
         //ch1UrlParseModel.delegate = self
         ch1UrlParseModel.checkData()
-//
-//        ch2UrlParseModel.delegate = self
-//        ch2UrlParseModel.getVideos()
-//
-//        ch3UrlParseModel.delegate = self
-//        ch3UrlParseModel.getVideos()
-//
-//        ch4UrlParseModel.delegate = self
-//        ch4UrlParseModel.getVideos()
-//
-//        ch5UrlParseModel.delegate = self
-//        ch5UrlParseModel.getVideos()
-//
-//        ch6UrlParseModel.delegate = self
-//        ch6UrlParseModel.getVideos()
-        
-        
-        //loadSavedData()
-       
+
         getAllItems()
         
     }
     
+    
     func getAllItems() {
-        let context = coreDataUse.persistentContainer.viewContext
+        let context = coreData.persistentContainer.viewContext
+        let sortByTime = NSSortDescriptor(key: "cPublished", ascending: false)
+        let request: NSFetchRequest<CoreVideo> = CoreVideo.fetchRequest()
+        request.sortDescriptors = [sortByTime]
          
          do {
              //獲取請求
-             channelVideos = try context.fetch(CoreVideo.fetchRequest())
+             channelVideos = try context.fetch(request)
              //主畫面更新
              DispatchQueue.main.async {
                  self.tableView.reloadData()
@@ -94,31 +60,19 @@ class OverViewController: UIViewController {
          
      }
     
-//    func loadSavedData() {
-//        let request = CoreVideo.createFetchRequest()
-//        let sort = NSSortDescriptor(key: "cPublished", ascending: false)
-//        request.sortDescriptors = [sort]
-//
-//        do {
-//            channelVideos = try container.viewContext.fetch(request)
-//            print("Got \(channelVideos .count) videos")
-//            tableView.reloadData()
-//        } catch {
-//            print("Fetch failed")
-//        }
-//    }
-
     
-    private func showVideoView(url: String, channelTitle: String) {
+    private func showVideoView(channelTitle: String) {
 
-        let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-        
-        //let dvc = VideoViewController.init() //傳送xib方法
+    let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
 
-        dvc.getAPI = url
-        dvc.navigationTitle = channelTitle
-       
-        navigationController?.pushViewController(dvc, animated: true)
+    //print("channel Videos have \(channelVideos.count) video ")
+    let videoArray = channelVideos.filter { $0.cChannelTitle == "\(channelTitle)"}
+    
+    //print("\(channelTitle) channel have \(videoArray.count) video")
+    dvc.coreVideo = videoArray
+    dvc.navigationTitle = channelTitle
+
+    navigationController?.pushViewController(dvc, animated: true)
     }
 
 }
@@ -151,76 +105,47 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.row {
 
         case 0:
-//            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-//            allChannelVideo = ch1Video + ch2Video + ch3Video + ch4Video + ch5Video + ch6Video
-//            let sortArray = allChannelVideo.sorted(by: { $0.published > $1.published } )
-//            dvc.playVideo = sortArray
-//            dvc.navigationTitle = Model.channelArray[0]
-//            navigationController?.pushViewController(dvc, animated: true)
-
-            break
-        case 1:
             let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-            print("channel Videos have \(channelVideos.count) video ")
-            let ch1Array = channelVideos.filter { $0.cChannelTitle == "X調查"}
-            print("X調查 channel have \(ch1Array.count) video")
-            dvc.coreVideo = ch1Array
-            //dvc.playVideo = ch1Video
-            dvc.navigationTitle = Model.channelArray[1]
-            navigationController?.pushViewController(dvc, animated: true)
-           // break
-
             
+            dvc.coreVideo = channelVideos
+            dvc.navigationTitle = Model.channelArray[0]
+            
+            navigationController?.pushViewController(dvc, animated: true)
+            
+        case 1:
+            showVideoView(channelTitle: Model.channelArray[1])
+
         case 2:
-//            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-//
-//            dvc.playVideo = ch2Video
-//            dvc.navigationTitle = Model.channelArray[2]
-//
-//            navigationController?.pushViewController(dvc, animated: true)
-            break
+            showVideoView(channelTitle: Model.channelArray[2])
             
         case 3:
-//            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-//
-//            dvc.playVideo = ch3Video
-//            dvc.navigationTitle = Model.channelArray[3]
-//
-//            navigationController?.pushViewController(dvc, animated: true)
-            break
+            showVideoView(channelTitle: Model.channelArray[3])
             
         case 4:
-//            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-//
-//            dvc.playVideo = ch4Video
-//            dvc.navigationTitle = Model.channelArray[4]
-//
-//            navigationController?.pushViewController(dvc, animated: true)
-            break
+            showVideoView(channelTitle: Model.channelArray[4])
             
         case 5:
-//            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-//
-//            dvc.playVideo = ch5Video
-//            dvc.navigationTitle = Model.channelArray[5]
-//
-//            navigationController?.pushViewController(dvc, animated: true)
-            break
+            showVideoView(channelTitle: Model.channelArray[5])
             
         case 6:
-//            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-//            let sort6Array = ch6Video.sorted(by: { $0.title < $1.title } )
-//            dvc.playVideo = sort6Array
-//            dvc.navigationTitle = Model.channelArray[6]
-//
-//            navigationController?.pushViewController(dvc, animated: true)
-            break
+            let channelName = "Muse木棉花-TW"
+            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+
+            //print("channel Videos have \(channelVideos.count) video ")
+            let videoArray = channelVideos.filter { $0.cChannelTitle == "\(channelName)"}.sorted(by: { $0.cTitle ?? "" < $1.cTitle ?? "" } )
+            
+            //print("Muse木棉花-TW channel have \(videoArray.count) video")
+            dvc.coreVideo = videoArray
+            dvc.navigationTitle = Model.channelArray[6]
+            
+            navigationController?.pushViewController(dvc, animated: true)
           
         default:
             break
@@ -229,51 +154,3 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
      
 }
 
-//MARK: - get all channel video
-
-//extension OverViewController: Ch1ModelDelegate {
-//    func ch1VideosFetched(_ videos: [VideoModel]) {
-//        self.ch1Video = videos
-//        //tableView.reloadData()
-//    }
-//}
-//
-//extension OverViewController: Ch2ModelDelegate {
-//    func ch2VideosFetched(_ videos: [VideoModel]) {
-//        self.ch2Video = videos
-//    }
-//}
-//
-//extension OverViewController: Ch3ModelDelegate {
-//    func ch3VideosFetched(_ videos: [VideoModel]) {
-//        self.ch3Video = videos
-//    }
-//}
-//
-//extension OverViewController: Ch4ModelDelegate {
-//    func ch4VideosFetched(_ videos: [VideoModel]) {
-//        self.ch4Video = videos
-//    }
-//}
-//
-//extension OverViewController: Ch5ModelDelegate {
-//    func ch5VideosFetched(_ videos: [VideoModel]) {
-//        self.ch5Video = videos
-//    }
-//}
-//
-//extension OverViewController: Ch6ModelDelegate {
-//    func ch6VideosFetched(_ videos: [VideoModel]) {
-//        self.ch6Video = videos
-//    }
-//}
-//
-//
-//extension OverViewController:UITabBarControllerDelegate{
-//
-//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-//
-//    }
-//}
-//
-//
