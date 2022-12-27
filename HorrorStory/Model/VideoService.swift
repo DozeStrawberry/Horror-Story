@@ -45,15 +45,19 @@ class VideoService {
     
     func updateVideo(currentVideo video: CoreVideo, isLike newValue: Bool) {
         video.cIsLike = newValue
-        
+        save()
+    }
+    
+    
+    private func save() {
         do {
             try moc.save()
             
-        } catch {
-            print("update video bool value have error: \(error.localizedDescription)")
+        } catch let error as NSError {
+            print("Save failed: \(error.localizedDescription)")
         }
     }
-
+    
     
     
     

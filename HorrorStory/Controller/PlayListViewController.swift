@@ -20,9 +20,7 @@ class PlayListViewController: UIViewController {
     private var coreData = CoreDataStack()
     
     let overViewController = OverViewController()
-    
 
-    
     var corePlayVideo = [CoreVideo]()
     
     
@@ -70,6 +68,7 @@ class PlayListViewController: UIViewController {
         
         let coreDataInit = overViewController.videoService
         
+        
         //改變Bool值
         corePlayVideo[sender.tag].cIsLike = !corePlayVideo[sender.tag].cIsLike
         
@@ -77,7 +76,8 @@ class PlayListViewController: UIViewController {
         if corePlayVideo[sender.tag].cIsLike == true {
             
             coreDataInit?.updateVideo(currentVideo: corePlayVideo[sender.tag], isLike: true)
-            
+            //overViewController.loadView()
+            //coreDataInit?.getAllVideos()
             //likeVideo.append(playVideo[sender.tag])
             
             //print("I send \(likeVideo.count) like")
@@ -86,7 +86,8 @@ class PlayListViewController: UIViewController {
         } else {
             
             coreDataInit?.updateVideo(currentVideo: corePlayVideo[sender.tag], isLike: false)
-            
+            //overViewController.loadView()
+            //coreDataInit?.getAllVideos()
            
 //            // false, array刪減
 //            for i in 0 ..< likeVideo.count {

@@ -18,8 +18,10 @@ class PlayVideoViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var connectYoutube: UIButton!
     
+    let overViewController = OverViewController()
+    
     //介面顯示
-    var video: VideoModel?
+    var video: CoreVideo?
     
     //接收傳過來的值
     var channelTitle: String?
@@ -47,14 +49,28 @@ class PlayVideoViewController: UIViewController {
     
     
     @IBAction func aLikeButtonPress(_ sender: UIButton) {
+        
+        let coreDataInit = overViewController.videoService
+        
         guard video != nil else { return }
 
-        video!.isLike = !video!.isLike
-        print("Button value \(video!.isLike)")
+        video!.cIsLike = !video!.cIsLike
+        print("Button value \(video!.cIsLike)")
+        
+        if video!.cIsLike == true {
+            coreDataInit?.updateVideo(currentVideo: video!, isLike: true)
+            //overViewController.loadView()
+            
+        } else {
+            coreDataInit?.updateVideo(currentVideo: video!, isLike: false)
+            //overViewController.loadView()
+            //coreDataInit?.getAllVideos()
+        }
+    
 
         setButtonImage()
 
-        sendLikeBool()
+        //sendLikeBool()
     }
     
     
@@ -63,12 +79,14 @@ class PlayVideoViewController: UIViewController {
             return
         }
         
-        let videoId = video!.videoId
-        guard let youtubeUrl = URL(string: "youtube://\(videoId)") else { return }
+        let videoId = video!.cVideoId
+        
+        guard let youtubeUrl = URL(string: "youtube://\(videoId ?? "")") else { return }
+        
         if UIApplication.shared.canOpenURL(youtubeUrl) {
             UIApplication.shared.open(youtubeUrl)
         } else {
-            guard let videoUrl = URL(string: "https://www.youtube.com/watch?v=\(videoId)") else { return }
+            guard let videoUrl = URL(string: "https://www.youtube.com/watch?v=\(videoId ?? "")") else { return }
             UIApplication.shared.open(videoUrl)
         }
         
@@ -78,7 +96,7 @@ class PlayVideoViewController: UIViewController {
     //按鈕圖片改變
     func setButtonImage() {
         guard video != nil else { return }
-        if video!.isLike == false {
+        if video!.cIsLike == false {
             aLikeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         } else {
             aLikeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
@@ -86,16 +104,16 @@ class PlayVideoViewController: UIViewController {
     }
     
     
-    private func sendLikeBool() {
-        
-        let dvc = storyboard?.instantiateViewController(withIdentifier: "goToPlayList") as! PlayListViewController
-        
-        guard video != nil else { return }
-        
-        //dvc.backLike = video!.isLike
-        //dvc.backVideoId = video!.videoId
-        //print("\(video!.videoId)")
-    }
+//    private func sendLikeBool() {
+//        
+//        let dvc = storyboard?.instantiateViewController(withIdentifier: "goToPlayList") as! PlayListViewController
+//        
+//        guard video != nil else { return }
+//        
+//        dvc.backLike = video!.cIsLike
+//        //dvc.backVideoId = video!.videoId
+//        //print("\(video!.videoId)")
+//    }
     
     
     //即將出現
@@ -118,27 +136,36 @@ class PlayVideoViewController: UIViewController {
 
         //print("value is \(likeBool!)")
         
-        video!.isLike = likeBool!
+        video!.cIsLike = likeBool!
         
         setButtonImage()
         
-        let embedURLString = Constants.YT_EMBED_URL + video!.videoId
+        if video!.cVideoId != nil {
+            let embedURLString = Constants.YT_EMBED_URL + video!.cVideoId!
+            
+            // Load it into the webview
+            let url = URL(string: embedURLString)
+            let request = URLRequest(url: url!)
+            webView.load(request)
+        }
         
-        // Load it into the webview
-        let url = URL(string: embedURLString)
-        let request = URLRequest(url: url!)
-        webView.load(request)
+        
+        
         
         // Set the title
-        titleLabel.text = video!.title
+        titleLabel.text = video!.cTitle
         
         // Set the date
         let df = DateFormatter()
         df.dateFormat = "EEEE, MMM d, yyyy"
-        dateLabel.text = df.string(from: video!.published)
+        
+        if video!.cPublished != nil {
+            dateLabel.text = df.string(from: video!.cPublished!)
+        }
+        
         
         // Set the description
-        textView.text = video!.description
+        textView.text = video!.cDescription
     }
     
 }

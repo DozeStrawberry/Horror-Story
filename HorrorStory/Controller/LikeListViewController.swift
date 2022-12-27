@@ -14,6 +14,8 @@ class LikeListViewController: UIViewController {
     
     var senderLikeVideos = [VideoModel]()
     
+    var likeVideos = [CoreVideo]()
+    
     //接收LikeVideo傳送過來的值
     var likeBackLike: Bool?
     
@@ -23,6 +25,8 @@ class LikeListViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        
         
     }
     
@@ -91,6 +95,8 @@ class LikeListViewController: UIViewController {
 }
 
 extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
+    
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
