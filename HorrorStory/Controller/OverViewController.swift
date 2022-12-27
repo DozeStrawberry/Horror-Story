@@ -9,67 +9,60 @@ import UIKit
 import CoreData
 
 
-class OverViewController: UIViewController {
+class OverViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-
-    let coreData = CoreDataStack()
+    
+    //目錄顯示
     let Model = OverViewModel()
+    //解析API
+    let channelUrlParseModel = ChannelUrlParseModel()
     
-    var channelURL = String()
-    var channelName = String()
+    private var coreData = CoreDataStack()
+    public var videoService: VideoService?
     
-    //var container: NSPersistentContainer!
-    
+    //解析完影片
     var channelVideos = [CoreVideo]()
     
-    let ch1UrlParseModel = ChannelUrlParseModel()
-
-
-  
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
-        
-        //ch1UrlParseModel.delegate = self
-        ch1UrlParseModel.checkData()
 
-        getAllItems()
+        catchAPIVideos()
+        
+        videoService = VideoService(moc: coreData.persistentContainer.viewContext)
+
+        loadVideos()
         
     }
     
+    //如果沒有影片會解析API
+    func catchAPIVideos() {
+        channelUrlParseModel.checkData()
+        tableView.reloadData()
+    }
     
-    func getAllItems() {
-        let context = coreData.persistentContainer.viewContext
-        let sortByTime = NSSortDescriptor(key: "cPublished", ascending: false)
-        let request: NSFetchRequest<CoreVideo> = CoreVideo.fetchRequest()
-        request.sortDescriptors = [sortByTime]
-         
-         do {
-             //獲取請求
-             channelVideos = try context.fetch(request)
-             //主畫面更新
-             DispatchQueue.main.async {
-                 self.tableView.reloadData()
-             }
-         } catch {
-             print("get All Items have error: ",error.localizedDescription)
-         }
-         
-     }
+    //匯入影片
+    private func loadVideos() {
+        if let videos = videoService?.getAllVideos() {
+            channelVideos = videos
+            tableView.reloadData()
+        }
+    }
     
-    
+    //傳遞資訊
     private func showVideoView(channelTitle: String) {
 
     let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
 
-    //print("channel Videos have \(channelVideos.count) video ")
+    print("channel Videos have \(channelVideos.count) video ")
     let videoArray = channelVideos.filter { $0.cChannelTitle == "\(channelTitle)"}
     
-    //print("\(channelTitle) channel have \(videoArray.count) video")
-    dvc.coreVideo = videoArray
+    print("\(channelTitle) channel have \(videoArray.count) video")
+    dvc.corePlayVideo = videoArray
     dvc.navigationTitle = channelTitle
 
     navigationController?.pushViewController(dvc, animated: true)
@@ -114,7 +107,7 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
             
-            dvc.coreVideo = channelVideos
+            dvc.corePlayVideo = channelVideos
             dvc.navigationTitle = Model.channelArray[0]
             
             navigationController?.pushViewController(dvc, animated: true)
@@ -136,13 +129,14 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
             
         case 6:
             let channelName = "Muse木棉花-TW"
+            
             let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
 
             //print("channel Videos have \(channelVideos.count) video ")
             let videoArray = channelVideos.filter { $0.cChannelTitle == "\(channelName)"}.sorted(by: { $0.cTitle ?? "" < $1.cTitle ?? "" } )
             
             //print("Muse木棉花-TW channel have \(videoArray.count) video")
-            dvc.coreVideo = videoArray
+            dvc.corePlayVideo = videoArray
             dvc.navigationTitle = Model.channelArray[6]
             
             navigationController?.pushViewController(dvc, animated: true)

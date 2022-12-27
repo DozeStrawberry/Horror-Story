@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A235853D294C683200B85F22 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A235853C294C683200B85F22 /* CoreDataService.swift */; };
+		A235853D294C683200B85F22 /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A235853C294C683200B85F22 /* VideoService.swift */; };
 		A2358EC8293B2D4700220389 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2358EC7293B2D4700220389 /* AppDelegate.swift */; };
 		A2358ECA293B2D4700220389 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2358EC9293B2D4700220389 /* SceneDelegate.swift */; };
 		A2358ECC293B2D4700220389 /* OverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2358ECB293B2D4700220389 /* OverViewController.swift */; };
@@ -41,7 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A235853C294C683200B85F22 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		A235853C294C683200B85F22 /* VideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
 		A2358EC4293B2D4700220389 /* HorrorStory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HorrorStory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2358EC7293B2D4700220389 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2358EC9293B2D4700220389 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +128,7 @@
 		A23F54CA2959D443001C900A /* NoUse */ = {
 			isa = PBXGroup;
 			children = (
+				A26645CA29434039009371A8 /* VideoModel.swift */,
 				A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */,
 				A26B16F3294B249A00645EA6 /* Ch3UrlParseModel.swift */,
 				A26B16F5294B25BB00645EA6 /* Ch4UrlParseModel.swift */,
@@ -144,9 +145,8 @@
 				A2535190293E2351000DEF86 /* OverViewModel.swift */,
 				A26AB850293EF3CB0036C000 /* PlayListVideo.swift */,
 				A2B2EA72293EFBC100A22FEA /* PlayListResponse.swift */,
-				A26645CA29434039009371A8 /* VideoModel.swift */,
 				A26B16EF294B186200645EA6 /* ChannelUrlParseModel.swift */,
-				A235853C294C683200B85F22 /* CoreDataService.swift */,
+				A235853C294C683200B85F22 /* VideoService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,8 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				A26AB84D293EE4F30036C000 /* Constants.swift */,
-				A273538B29588FAB000EB48E /* CoreDataStack.swift */,
 				A2B2EA7A293F369400A22FEA /* CacheManager.swift */,
+				A273538B29588FAB000EB48E /* CoreDataStack.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -289,7 +289,7 @@
 				A2358EC8293B2D4700220389 /* AppDelegate.swift in Sources */,
 				A26AB84E293EE4F30036C000 /* Constants.swift in Sources */,
 				A2535191293E2351000DEF86 /* OverViewModel.swift in Sources */,
-				A235853D294C683200B85F22 /* CoreDataService.swift in Sources */,
+				A235853D294C683200B85F22 /* VideoService.swift in Sources */,
 				A2358ECA293B2D4700220389 /* SceneDelegate.swift in Sources */,
 				A26B16F0294B186200645EA6 /* ChannelUrlParseModel.swift in Sources */,
 				A273538C29588FAB000EB48E /* CoreDataStack.swift in Sources */,

@@ -17,24 +17,29 @@ class PlayListViewController: UIViewController {
     // Core data空陣列
     //var CoreDataModels = [LikeVideo]()
     
-    var coreVideo = [CoreVideo]()
+    private var coreData = CoreDataStack()
     
+    let overViewController = OverViewController()
+    
+
+    
+    var corePlayVideo = [CoreVideo]()
     
     
     //接收overView傳送過來的值
-   // var getAPI: String?
     var navigationTitle: String?
     
     //接收playVideo傳送過來的值
-    //var backLike: Bool?
-    //var backVideoId: String?
+    var backLike: Bool?
+    var backVideoId: String?
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
         
 
         backValueAddLikeAarry()
@@ -52,90 +57,87 @@ class PlayListViewController: UIViewController {
     
     //傳過來按鈕資訊，可以傳新整理
     override func viewWillAppear(_ animated: Bool) {
-        backValueAddLikeAarry()
+        //backValueAddLikeAarry()
         
         tableView.reloadData()
     }
     
+   
+
 
     //按鈕
     @IBAction func likeButtonPress(_ sender: UIButton) {
+        
+        let coreDataInit = overViewController.videoService
+        
         //改變Bool值
-        playVideo[sender.tag].isLike = !playVideo[sender.tag].isLike
+        corePlayVideo[sender.tag].cIsLike = !corePlayVideo[sender.tag].cIsLike
         
         // true增加到array
-        if playVideo[sender.tag].isLike == true {
+        if corePlayVideo[sender.tag].cIsLike == true {
             
-            likeVideo.append(playVideo[sender.tag])
+            coreDataInit?.updateVideo(currentVideo: corePlayVideo[sender.tag], isLike: true)
+            
+            //likeVideo.append(playVideo[sender.tag])
             
             //print("I send \(likeVideo.count) like")
-            sendLikeData()
+            //sendLikeData()
             
         } else {
             
-            // false, array刪減
-            for i in 0 ..< likeVideo.count {
-                
-                if playVideo[sender.tag].videoId == likeVideo[i].videoId {
-                    print("remove \(likeVideo[i].title), \(likeVideo[i].isLike)")
-                    likeVideo.remove(at: i)
-                    //print("remove after have \(likeVideo.count) video")
-                    sendLikeData()
-                    break
-                    
-                }
-            }
+            coreDataInit?.updateVideo(currentVideo: corePlayVideo[sender.tag], isLike: false)
+            
+           
+//            // false, array刪減
+//            for i in 0 ..< likeVideo.count {
+//
+//                if playVideo[sender.tag].videoId == likeVideo[i].videoId {
+//                    print("remove \(likeVideo[i].title), \(likeVideo[i].isLike)")
+//                    likeVideo.remove(at: i)
+//                    //print("remove after have \(likeVideo.count) video")
+//                    sendLikeData()
+//                    break
+//
+//                }
+//            }
         }
         
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
     }
     
     
-    private func sendLikeData() {
-        
-        let navVC = tabBarController?.viewControllers![1] as! UINavigationController
-        let LikeListViewController = navVC.topViewController as! LikeListViewController
-        LikeListViewController.senderLikeVideos = likeVideo
-    }
+//    private func sendLikeData() {
+//        
+//        let navVC = tabBarController?.viewControllers![1] as! UINavigationController
+//        let LikeListViewController = navVC.topViewController as! LikeListViewController
+//        LikeListViewController.senderLikeVideos = likeVideo
+//    }
     
     
     func backValueAddLikeAarry() {
         
-        likeVideo = playVideo.filter { $0.isLike == true }
-        sendLikeData()
+        //likeVideo = playVideo.filter { $0.isLike == true }
+        //sendLikeData()
           
     }
     
     
     
     //把檔案傳到下一頁
-    private func showVideoView(video: VideoModel) {
+    private func showVideoView(video: CoreVideo) {
         
         let dvc = storyboard?.instantiateViewController(withIdentifier: "goToPlayVideo") as! PlayVideoViewController
         
         dvc.video = video
         //dvc.channelTitle = navigationTitle
         
-        dvc.likeBool = video.isLike
+        dvc.likeBool = video.cIsLike
         //print("\(video.isLike)")
         
         self.navigationController?.pushViewController(dvc, animated: true)
     }
     
-    //MARK: - Core Data處理
-//    func getAllItems() {
-//        
-//        do {
-//            //獲取請求
-//            CoreDataModels = try context.fetch(LikeVideo.fetchRequest())
-//            //主畫面更新
-//            DispatchQueue.main.async {
-//                self.tableView.reloadData()
-//            }
-//        } catch {
-//            print("get All Items have error: ",error.localizedDescription)
-//        }
-//    }
+
     
     
 }
@@ -148,19 +150,19 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return coreVideo.count
+        return corePlayVideo.count
         //return playVideo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayListCell", for: indexPath) as! PlayListTableViewCell
         
-        let selectVideo = self.coreVideo[indexPath.row]
+        let selectVideo = self.corePlayVideo[indexPath.row]
         
         //回傳Bool過來有值
-//        if backLike != nil {
-//            selectVideo.cIsLike = backLike!
-//        }
+        if backLike != nil {
+            selectVideo.cIsLike = backLike!
+        }
 
         
         //改變按鈕圖案
@@ -183,13 +185,11 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         
         tableView.deselectRow(at: indexPath, animated: true)
         //傳送資料到下一頁
-        showVideoView(video: playVideo[indexPath.row])
+        showVideoView(video: corePlayVideo[indexPath.row])
         
     }
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
-    }
+  
 }
 
 
