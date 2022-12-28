@@ -14,6 +14,8 @@ class LikeListViewController: UIViewController {
     
     var senderLikeVideos = [VideoModel]()
     
+   var overViewController = OverViewController()
+    
     var likeVideos = [CoreVideo]()
     
     //接收LikeVideo傳送過來的值
@@ -26,13 +28,26 @@ class LikeListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        
+        loadView()
+        print("like video have \(likeVideos.count)")
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        backValueAddLikeAarry()
-        tableView.reloadData()
+        loadVideos()
+//
+//        backValueAddLikeAarry()
+//        tableView.reloadData()
+        
+        
+    }
+    
+    private func loadVideos() {
+        let videoService = overViewController.videoService
+        if let videos = videoService?.getLikeVideos() {
+            likeVideos = videos
+            tableView.reloadData()
+        }
     }
     
 
@@ -103,14 +118,14 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
     }
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return senderLikeVideos.count
+        return likeVideos.count
 
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayListCell", for: indexPath) as! PlayListTableViewCell
         
-        let video = self.senderLikeVideos[indexPath.row]
+        let video = self.likeVideos[indexPath.row]
         
         if likeBackLike != nil {
             video.isLike = likeBackLike!
@@ -118,7 +133,7 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
         
        
         
-        //cell.setCell(video)
+        cell.setCell(video)
         cell.likeButton.tag = indexPath.row
 
         return cell

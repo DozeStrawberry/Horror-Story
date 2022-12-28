@@ -60,7 +60,9 @@ class ChannelUrlParseModel {
                     
                     let newVideo = CoreVideo(context: moc)
                     
-                    newVideo.cIsLike = false
+                    //CoreVideo.setValue(false, forKey: "cIsLike")
+                    newVideo.isLike = false
+                    //newVideo.cIsLike = false
                     newVideo.cThumbnail = item.thumbnail
                     newVideo.cPublished = item.published
                     newVideo.cVideoId = item.videoId

@@ -44,7 +44,7 @@ class VideoService {
     
     
     func updateVideo(currentVideo video: CoreVideo, isLike newValue: Bool) {
-        video.cIsLike = newValue
+        video.isLike = newValue
         save()
     }
     
@@ -56,6 +56,24 @@ class VideoService {
         } catch let error as NSError {
             print("Save failed: \(error.localizedDescription)")
         }
+    }
+    
+    
+    func getLikeVideos() -> [CoreVideo]? {
+
+        let request: NSFetchRequest<CoreVideo> = CoreVideo.fetchRequest()
+        request.predicate = NSPredicate(format:"isLike = %@", true)
+        
+        do {
+    
+            videoArray = try moc.fetch(request)
+            return videoArray
+            
+        } catch let error as NSError {
+            print("Error fetching students: \(error.localizedDescription)")
+        }
+        
+        return nil
     }
     
     

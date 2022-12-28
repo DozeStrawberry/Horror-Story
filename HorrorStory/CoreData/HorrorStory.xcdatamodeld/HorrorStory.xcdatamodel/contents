@@ -3,7 +3,7 @@
     <entity name="CoreVideo" representedClassName=".CoreVideo" syncable="YES">
         <attribute name="cChannelTitle" optional="YES" attributeType="String"/>
         <attribute name="cDescription" optional="YES" attributeType="String"/>
-        <attribute name="cIsLike" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="cIsLike" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="cPublished" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="cThumbnail" optional="YES" attributeType="String"/>
         <attribute name="cTitle" optional="YES" attributeType="String"/>

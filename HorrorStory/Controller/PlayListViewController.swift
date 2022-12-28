@@ -70,12 +70,14 @@ class PlayListViewController: UIViewController {
         
         
         //改變Bool值
-        corePlayVideo[sender.tag].cIsLike = !corePlayVideo[sender.tag].cIsLike
+        corePlayVideo[sender.tag].isLike = !corePlayVideo[sender.tag].isLike
         
         // true增加到array
         if corePlayVideo[sender.tag].cIsLike == true {
             
             coreDataInit?.updateVideo(currentVideo: corePlayVideo[sender.tag], isLike: true)
+            let likeVideoArray = corePlayVideo.filter{ $0.isLike == true}
+            print("like video add after have \(likeVideoArray.count).")
             //overViewController.loadView()
             //coreDataInit?.getAllVideos()
             //likeVideo.append(playVideo[sender.tag])
@@ -132,7 +134,7 @@ class PlayListViewController: UIViewController {
         dvc.video = video
         //dvc.channelTitle = navigationTitle
         
-        dvc.likeBool = video.cIsLike
+        dvc.likeBool = video.isLike
         //print("\(video.isLike)")
         
         self.navigationController?.pushViewController(dvc, animated: true)
@@ -162,7 +164,7 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         
         //回傳Bool過來有值
         if backLike != nil {
-            selectVideo.cIsLike = backLike!
+            selectVideo.isLike = backLike!
         }
 
         

@@ -54,7 +54,7 @@ class PlayVideoViewController: UIViewController {
         
         guard video != nil else { return }
 
-        video!.cIsLike = !video!.cIsLike
+        video!.isLike = !video!.isLike
         print("Button value \(video!.cIsLike)")
         
         if video!.cIsLike == true {
@@ -136,7 +136,7 @@ class PlayVideoViewController: UIViewController {
 
         //print("value is \(likeBool!)")
         
-        video!.cIsLike = likeBool!
+        video!.isLike = likeBool!
         
         setButtonImage()
         
