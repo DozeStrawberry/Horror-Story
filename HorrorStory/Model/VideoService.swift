@@ -33,25 +33,57 @@ class VideoService {
         
         do {
             videoArray = try moc.fetch(request)
+            
             return videoArray
             
         } catch let error as NSError {
             print("Error fetching students: \(error.localizedDescription)")
         }
         
+        
+        
         return nil
     }
     
+    func getVideosByTitle(cChannelTitle:String?) -> [CoreVideo]? {
+
+        let sortByTime = NSSortDescriptor(key: "cPublished", ascending: false)
+        let request: NSFetchRequest<CoreVideo> = CoreVideo.fetchRequest()
+        if cChannelTitle != nil
+        {
+            request.predicate = NSPredicate(format:"cChannelTitle = %@", cChannelTitle!)
+        }
+        request.sortDescriptors = [sortByTime]
+        
+        do {
+            videoArray = try moc.fetch(request)
+            
+            return videoArray
+            
+        } catch let error as NSError {
+            print("Error fetching students: \(error.localizedDescription)")
+        }
+        
+        
+        
+        return nil
+    }
+
     
-    func updateVideo(currentVideo video: CoreVideo, isLike newValue: Bool) {
+    func updateVideo(currentVideo video: CoreVideo, newValue: Bool) {
+        
         video.isLike = newValue
+        
         save()
+        
     }
     
     
     private func save() {
         do {
+            print("save")
             try moc.save()
+            
             
         } catch let error as NSError {
             print("Save failed: \(error.localizedDescription)")

@@ -26,13 +26,28 @@ extension CoreVideo {
     
     var isLike: Bool {
         get {
-            return Bool(truncating: cIsLike)
+            print("cIsLike \(cIsLike)")
+            return cIsLike.boolValue
         }
         set {
-            cIsLike = NSNumber(value: newValue)
+            print("newValue \(newValue)")
+            
+            cIsLike = NSNumber.init(booleanLiteral: newValue)
+            
         }
     }
     
+    var isChannelTitle: String {
+        get {
+            return (cTitle! )
+        }
+        
+        set
+        {
+            cTitle = newValue
+        }
+        
+    }
 
 
 }

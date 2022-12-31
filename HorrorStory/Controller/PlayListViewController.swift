@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PlayListViewController: UIViewController {
     
@@ -14,14 +15,14 @@ class PlayListViewController: UIViewController {
     public var playVideo = [VideoModel]()
     var likeVideo = [VideoModel]()
     
-    // Core data空陣列
-    //var CoreDataModels = [LikeVideo]()
     
-    private var coreData = CoreDataStack()
+    var coreData = CoreDataStack()
     
-    let overViewController = OverViewController()
+    var overViewController = OverViewController()
 
     var corePlayVideo = [CoreVideo]()
+    
+    var mTitle:String?
     
     
     //接收overView傳送過來的值
@@ -38,15 +39,27 @@ class PlayListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        loadVideos()
         
-
         backValueAddLikeAarry()
-        
         navigationItem.title = navigationTitle
+        
         
         //左上回去按鈕
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
     }
+    
+    
+    //匯入影片
+    private func loadVideos() {
+        overViewController.videoService = VideoService(moc: coreData.persistentContainer.viewContext)
+        
+        if let videos = overViewController.videoService?.getVideosByTitle(cChannelTitle: mTitle) {
+            corePlayVideo = videos
+            tableView.reloadData()
+        }
+    }
+
     
     @objc func backAction() {
         self.navigationController?.popViewController(animated: true)
@@ -66,18 +79,21 @@ class PlayListViewController: UIViewController {
     //按鈕
     @IBAction func likeButtonPress(_ sender: UIButton) {
         
-        let coreDataInit = overViewController.videoService
-        
+//        let coreDataInit = overViewController.videoService
         
         //改變Bool值
+        print("corePlayVideo[sender.tag] \(corePlayVideo[sender.tag].isChannelTitle)")
         corePlayVideo[sender.tag].isLike = !corePlayVideo[sender.tag].isLike
+        print("corePlayVideo[sender.tag].isLike \(corePlayVideo[sender.tag].isLike)")
+//        print("coreDataInit \(coreDataInit)")
+                
+        coreData.saveContext()
         
-        // true增加到array
-        if corePlayVideo[sender.tag].cIsLike == true {
+        if corePlayVideo[sender.tag].isLike == true {
             
-            coreDataInit?.updateVideo(currentVideo: corePlayVideo[sender.tag], isLike: true)
-            let likeVideoArray = corePlayVideo.filter{ $0.isLike == true}
-            print("like video add after have \(likeVideoArray.count).")
+//            coreDataInit?.updateVideo(currentVideo: corePlayVideo[sender.tag], isLike: true)
+//            let likeVideoArray = corePlayVideo.filter{ $0.isLike == true}
+//            print("like video add after have \(likeVideoArray.count).")
             //overViewController.loadView()
             //coreDataInit?.getAllVideos()
             //likeVideo.append(playVideo[sender.tag])
@@ -87,7 +103,7 @@ class PlayListViewController: UIViewController {
             
         } else {
             
-            coreDataInit?.updateVideo(currentVideo: corePlayVideo[sender.tag], isLike: false)
+//            coreDataInit?.updateVideo(currentVideo: corePlayVideo[sender.tag], isLike: false)
             //overViewController.loadView()
             //coreDataInit?.getAllVideos()
            
@@ -169,7 +185,7 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
 
         
         //改變按鈕圖案
-        if selectVideo.cIsLike == false {
+        if selectVideo.isLike == false {
             cell.likeButton.imageView?.image = UIImage(systemName: "heart")
             
         } else {

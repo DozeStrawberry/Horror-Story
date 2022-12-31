@@ -35,21 +35,24 @@ class OverViewController: UIViewController, NSFetchedResultsControllerDelegate {
         
         videoService = VideoService(moc: coreData.persistentContainer.viewContext)
 
+//        print("videoService \(videoService)")
         loadVideos()
+        
+     
         
     }
     
     //如果沒有影片會解析API
     func catchAPIVideos() {
-        channelUrlParseModel.checkData()
-        tableView.reloadData()
+        channelUrlParseModel.checkData ()
+//        tableView.reloadData()
     }
     
     //匯入影片
     private func loadVideos() {
         if let videos = videoService?.getAllVideos() {
             channelVideos = videos
-            tableView.reloadData()
+//            tableView.reloadData()
         }
     }
     
@@ -62,8 +65,10 @@ class OverViewController: UIViewController, NSFetchedResultsControllerDelegate {
     let videoArray = channelVideos.filter { $0.cChannelTitle == "\(channelTitle)"}
     
     print("\(channelTitle) channel have \(videoArray.count) video")
-    dvc.corePlayVideo = videoArray
+//    dvc.corePlayVideo = videoArray
     dvc.navigationTitle = channelTitle
+        dvc.mTitle = channelTitle
+        dvc.overViewController = self
 
     navigationController?.pushViewController(dvc, animated: true)
     }
@@ -102,6 +107,10 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+//        loadVideos()
+        
+        
+        
         switch indexPath.row {
 
         case 0:
@@ -109,6 +118,9 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
             
             dvc.corePlayVideo = channelVideos
             dvc.navigationTitle = Model.channelArray[0]
+            dvc.overViewController = self
+            dvc.coreData = coreData
+            dvc.mTitle = nil
             
             navigationController?.pushViewController(dvc, animated: true)
             

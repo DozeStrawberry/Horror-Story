@@ -57,12 +57,12 @@ class PlayVideoViewController: UIViewController {
         video!.isLike = !video!.isLike
         print("Button value \(video!.cIsLike)")
         
-        if video!.cIsLike == true {
-            coreDataInit?.updateVideo(currentVideo: video!, isLike: true)
+        if video!.isLike == true {
+            coreDataInit?.updateVideo(currentVideo: video!, newValue: true)
             //overViewController.loadView()
             
         } else {
-            coreDataInit?.updateVideo(currentVideo: video!, isLike: false)
+            coreDataInit?.updateVideo(currentVideo: video!, newValue: false)
             //overViewController.loadView()
             //coreDataInit?.getAllVideos()
         }
