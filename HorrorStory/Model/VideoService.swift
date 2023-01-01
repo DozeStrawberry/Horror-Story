@@ -11,10 +11,8 @@ import CoreData
 
 class VideoService {
     
-    let coreData = CoreDataStack()
-    
-    //static let shared = VideoService(moc: coreData.persistentContainer.viewContext)
-    
+    //let coreData = CoreDataStack()
+
  
     private let moc: NSManagedObjectContext
     private var videoArray = [CoreVideo]()
@@ -45,15 +43,19 @@ class VideoService {
         return nil
     }
     
+    
     func getVideosByTitle(cChannelTitle:String?) -> [CoreVideo]? {
 
         let sortByTime = NSSortDescriptor(key: "cPublished", ascending: false)
         let request: NSFetchRequest<CoreVideo> = CoreVideo.fetchRequest()
+        
         if cChannelTitle != nil
         {
             request.predicate = NSPredicate(format:"cChannelTitle = %@", cChannelTitle!)
         }
         request.sortDescriptors = [sortByTime]
+        
+       
         
         do {
             videoArray = try moc.fetch(request)
@@ -63,9 +65,7 @@ class VideoService {
         } catch let error as NSError {
             print("Error fetching students: \(error.localizedDescription)")
         }
-        
-        
-        
+
         return nil
     }
 
@@ -92,10 +92,11 @@ class VideoService {
     
     
     func getLikeVideos() -> [CoreVideo]? {
-
+        //let sortByTime = NSSortDescriptor(key: "cPublished", ascending: false)
         let request: NSFetchRequest<CoreVideo> = CoreVideo.fetchRequest()
-        request.predicate = NSPredicate(format:"isLike = %@", true)
-        
+        //request.predicate = NSPredicate(format:"cIsLike = %@", 1)
+        request.predicate = NSPredicate(format: "cIsLike == %@", NSNumber(value: true))
+        //request.sortDescriptors = [sortByTime]
         do {
     
             videoArray = try moc.fetch(request)

@@ -20,6 +20,8 @@ class PlayVideoViewController: UIViewController {
     
     let overViewController = OverViewController()
     
+    var coreData = CoreDataStack()
+    
     //介面顯示
     var video: CoreVideo?
     
@@ -50,23 +52,12 @@ class PlayVideoViewController: UIViewController {
     
     @IBAction func aLikeButtonPress(_ sender: UIButton) {
         
-        let coreDataInit = overViewController.videoService
+        //let coreDataInit = overViewController.videoService
         
         guard video != nil else { return }
 
         video!.isLike = !video!.isLike
-        print("Button value \(video!.cIsLike)")
-        
-        if video!.isLike == true {
-            coreDataInit?.updateVideo(currentVideo: video!, newValue: true)
-            //overViewController.loadView()
-            
-        } else {
-            coreDataInit?.updateVideo(currentVideo: video!, newValue: false)
-            //overViewController.loadView()
-            //coreDataInit?.getAllVideos()
-        }
-    
+        coreData.saveContext()
 
         setButtonImage()
 

@@ -35,39 +35,42 @@ class OverViewController: UIViewController, NSFetchedResultsControllerDelegate {
         
         videoService = VideoService(moc: coreData.persistentContainer.viewContext)
 
-//        print("videoService \(videoService)")
-        loadVideos()
-        
-     
-        
+        //loadVideos()
     }
     
     //如果沒有影片會解析API
     func catchAPIVideos() {
         channelUrlParseModel.checkData ()
-//        tableView.reloadData()
+        tableView.reloadData()
     }
     
     //匯入影片
     private func loadVideos() {
         if let videos = videoService?.getAllVideos() {
             channelVideos = videos
-//            tableView.reloadData()
+            tableView.reloadData()
         }
     }
     
     //傳遞資訊
-    private func showVideoView(channelTitle: String) {
+    private func showVideoView(channelTitle: String, navigationTitle: String) {
 
     let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
 
-    print("channel Videos have \(channelVideos.count) video ")
+    //print("channel Videos have \(channelVideos.count) video ")
     let videoArray = channelVideos.filter { $0.cChannelTitle == "\(channelTitle)"}
-    
-    print("\(channelTitle) channel have \(videoArray.count) video")
-//    dvc.corePlayVideo = videoArray
-    dvc.navigationTitle = channelTitle
-        dvc.mTitle = channelTitle
+    //print("\(channelTitle) channel have \(videoArray.count) video")
+        
+        //防止NSarray空的發生錯誤
+        if videoArray.isEmpty {
+            dvc.mTitle = nil
+            
+        } else {
+            dvc.mTitle = channelTitle
+        }
+
+        dvc.navigationTitle = navigationTitle
+        dvc.coreData = coreData
         dvc.overViewController = self
 
     navigationController?.pushViewController(dvc, animated: true)
@@ -106,10 +109,9 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-//        loadVideos()
-        
-        
+    
+        //解析影片慢，按下讀取影片
+        loadVideos()
         
         switch indexPath.row {
 
@@ -125,33 +127,24 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
             navigationController?.pushViewController(dvc, animated: true)
             
         case 1:
-            showVideoView(channelTitle: Model.channelArray[1])
+            showVideoView(channelTitle: Model.channelArray[1], navigationTitle: Model.channelArray[1])
 
         case 2:
-            showVideoView(channelTitle: Model.channelArray[2])
+            showVideoView(channelTitle: Model.channelArray[2], navigationTitle: Model.channelArray[2])
             
         case 3:
-            showVideoView(channelTitle: Model.channelArray[3])
+            showVideoView(channelTitle: Model.channelArray[3], navigationTitle: Model.channelArray[3])
             
         case 4:
-            showVideoView(channelTitle: Model.channelArray[4])
+            showVideoView(channelTitle: Model.channelArray[4], navigationTitle: Model.channelArray[4])
             
         case 5:
-            showVideoView(channelTitle: Model.channelArray[5])
+            showVideoView(channelTitle: Model.channelArray[5], navigationTitle: Model.channelArray[5])
             
         case 6:
             let channelName = "Muse木棉花-TW"
-            
-            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-
-            //print("channel Videos have \(channelVideos.count) video ")
-            let videoArray = channelVideos.filter { $0.cChannelTitle == "\(channelName)"}.sorted(by: { $0.cTitle ?? "" < $1.cTitle ?? "" } )
-            
-            //print("Muse木棉花-TW channel have \(videoArray.count) video")
-            dvc.corePlayVideo = videoArray
-            dvc.navigationTitle = Model.channelArray[6]
-            
-            navigationController?.pushViewController(dvc, animated: true)
+            showVideoView(channelTitle: channelName, navigationTitle: Model.channelArray[6])
+ 
           
         default:
             break

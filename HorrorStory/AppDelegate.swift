@@ -13,16 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    //let coreData = CoreDataStack()
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
         
-//        let channelUrlParseModel = ChannelUrlParseModel()
-//        channelUrlParseModel.checkData { success in
-//            print("catchAPIVideos success \(success)")
-//        }
         return true
     }
     

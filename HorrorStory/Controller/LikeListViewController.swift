@@ -14,7 +14,11 @@ class LikeListViewController: UIViewController {
     
     var senderLikeVideos = [VideoModel]()
     
-   var overViewController = OverViewController()
+   
+    var overViewController = OverViewController()
+    
+    var coreData = CoreDataStack()
+    
     
     var likeVideos = [CoreVideo]()
     
@@ -28,8 +32,10 @@ class LikeListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        loadView()
-        print("like video have \(likeVideos.count)")
+ 
+        
+        //loadVideos()
+        //print("like video have \(likeVideos.count)")
         
     }
     
@@ -43,9 +49,14 @@ class LikeListViewController: UIViewController {
     }
     
     private func loadVideos() {
-        let videoService = overViewController.videoService
-        if let videos = videoService?.getLikeVideos() {
+        overViewController.videoService = VideoService(moc: coreData.persistentContainer.viewContext)
+        if overViewController.videoService != nil {
+            print("videoService is \(overViewController.videoService!)")
+        }
+        
+        if let videos = overViewController.videoService?.getLikeVideos() {
             likeVideos = videos
+            print("likeVideos have \(likeVideos.count)")
             tableView.reloadData()
         }
     }

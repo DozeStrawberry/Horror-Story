@@ -26,11 +26,11 @@ extension CoreVideo {
     
     var isLike: Bool {
         get {
-            print("cIsLike \(cIsLike)")
+            //print("cIsLike \(cIsLike)")
             return cIsLike.boolValue
         }
         set {
-            print("newValue \(newValue)")
+            //print("newValue \(newValue)")
             
             cIsLike = NSNumber.init(booleanLiteral: newValue)
             

@@ -52,14 +52,19 @@ class PlayListViewController: UIViewController {
     
     //匯入影片
     private func loadVideos() {
+        
+        //初始化
         overViewController.videoService = VideoService(moc: coreData.persistentContainer.viewContext)
         
         if let videos = overViewController.videoService?.getVideosByTitle(cChannelTitle: mTitle) {
-            corePlayVideo = videos
+           
+                corePlayVideo = videos
+
             tableView.reloadData()
         }
     }
 
+    
     
     @objc func backAction() {
         self.navigationController?.popViewController(animated: true)
@@ -79,58 +84,25 @@ class PlayListViewController: UIViewController {
     //按鈕
     @IBAction func likeButtonPress(_ sender: UIButton) {
         
-//        let coreDataInit = overViewController.videoService
-        
         //改變Bool值
-        print("corePlayVideo[sender.tag] \(corePlayVideo[sender.tag].isChannelTitle)")
         corePlayVideo[sender.tag].isLike = !corePlayVideo[sender.tag].isLike
-        print("corePlayVideo[sender.tag].isLike \(corePlayVideo[sender.tag].isLike)")
-//        print("coreDataInit \(coreDataInit)")
-                
+   
         coreData.saveContext()
         
-        if corePlayVideo[sender.tag].isLike == true {
-            
-//            coreDataInit?.updateVideo(currentVideo: corePlayVideo[sender.tag], isLike: true)
-//            let likeVideoArray = corePlayVideo.filter{ $0.isLike == true}
-//            print("like video add after have \(likeVideoArray.count).")
-            //overViewController.loadView()
-            //coreDataInit?.getAllVideos()
-            //likeVideo.append(playVideo[sender.tag])
-            
-            //print("I send \(likeVideo.count) like")
-            //sendLikeData()
-            
-        } else {
-            
-//            coreDataInit?.updateVideo(currentVideo: corePlayVideo[sender.tag], isLike: false)
-            //overViewController.loadView()
-            //coreDataInit?.getAllVideos()
-           
-//            // false, array刪減
-//            for i in 0 ..< likeVideo.count {
-//
-//                if playVideo[sender.tag].videoId == likeVideo[i].videoId {
-//                    print("remove \(likeVideo[i].title), \(likeVideo[i].isLike)")
-//                    likeVideo.remove(at: i)
-//                    //print("remove after have \(likeVideo.count) video")
-//                    sendLikeData()
-//                    break
-//
-//                }
-//            }
-        }
+        
+        
         
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
     }
     
     
-//    private func sendLikeData() {
-//        
-//        let navVC = tabBarController?.viewControllers![1] as! UINavigationController
-//        let LikeListViewController = navVC.topViewController as! LikeListViewController
-//        LikeListViewController.senderLikeVideos = likeVideo
-//    }
+    private func sendLikeData() {
+        
+        let navVC = tabBarController?.viewControllers![1] as! UINavigationController
+        let LikeListViewController = navVC.topViewController as! LikeListViewController
+        LikeListViewController.coreData = coreData
+        LikeListViewController.overViewController = overViewController
+    }
     
     
     func backValueAddLikeAarry() {
@@ -152,6 +124,8 @@ class PlayListViewController: UIViewController {
         
         dvc.likeBool = video.isLike
         //print("\(video.isLike)")
+        
+        dvc.coreData = coreData
         
         self.navigationController?.pushViewController(dvc, animated: true)
     }
@@ -177,12 +151,6 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlayListCell", for: indexPath) as! PlayListTableViewCell
         
         let selectVideo = self.corePlayVideo[indexPath.row]
-        
-        //回傳Bool過來有值
-        if backLike != nil {
-            selectVideo.isLike = backLike!
-        }
-
         
         //改變按鈕圖案
         if selectVideo.isLike == false {
