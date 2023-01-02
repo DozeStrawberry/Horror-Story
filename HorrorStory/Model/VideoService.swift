@@ -23,6 +23,7 @@ class VideoService {
     }
     
 
+    //取得全部影片
     func getAllVideos() -> [CoreVideo]? {
 
         let sortByTime = NSSortDescriptor(key: "cPublished", ascending: false)
@@ -42,6 +43,7 @@ class VideoService {
     }
     
     
+    //有頻道名稱可以取得影片
     func getVideosByTitle(cChannelTitle:String?) -> [CoreVideo]? {
 
         let sortByTime = NSSortDescriptor(key: "cPublished", ascending: false)
@@ -126,6 +128,7 @@ class VideoService {
                     if updateVideo[index].channelTitle == videoArray[i].cChannelTitle {
                         
                         if updateVideo[index].videoId != videoArray[i].cVideoId {
+                            
                             print("core video have \(videoArray.count)")
                             print("update new video \(updateVideo[index].videoId)")
                             let newVideo = CoreVideo(context: moc)

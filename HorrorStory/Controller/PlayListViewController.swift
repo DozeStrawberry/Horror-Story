@@ -50,7 +50,7 @@ class PlayListViewController: UIViewController {
     }
     
     
-    //匯入影片
+    //have channel name can get video
     private func loadVideos() {
         
         //初始化
