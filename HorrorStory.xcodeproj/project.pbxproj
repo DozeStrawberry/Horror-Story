@@ -128,7 +128,6 @@
 		A23F54CA2959D443001C900A /* NoUse */ = {
 			isa = PBXGroup;
 			children = (
-				A26645CA29434039009371A8 /* VideoModel.swift */,
 				A2B2EA74293F00FB00A22FEA /* URLParseModel.swift */,
 				A26B16F3294B249A00645EA6 /* Ch3UrlParseModel.swift */,
 				A26B16F5294B25BB00645EA6 /* Ch4UrlParseModel.swift */,
@@ -186,6 +185,7 @@
 				A26AB84D293EE4F30036C000 /* Constants.swift */,
 				A2B2EA7A293F369400A22FEA /* CacheManager.swift */,
 				A273538B29588FAB000EB48E /* CoreDataStack.swift */,
+				A26645CA29434039009371A8 /* VideoModel.swift */,
 				A261135D2961282E00CB7D86 /* Foundation.h */,
 			);
 			path = Helpers;

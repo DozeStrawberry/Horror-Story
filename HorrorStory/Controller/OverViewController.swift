@@ -34,32 +34,54 @@ class OverViewController: UIViewController, NSFetchedResultsControllerDelegate {
         catchAPIVideos()
         
         videoService = VideoService(moc: self.coreData.persistentContainer.viewContext)
-        loadVideos()
+        loadVideos { success in
+            self.reloadVideos(self.channelVideos)
+        }
         
-//        reloadCatchAPIVideos()
-//
-//        loadVideos()
-        
-        
-//        reloadCatchAPIVideos()
-//        loadVideos()
-        
+
        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        
-        
-    }
     
-//    override func viewWillAppear(_ animated: Bool) {
+//    override func viewDidA(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
 //
-//        reloadCatchAPIVideos()
-//        loadVideos()
 //    }
     
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        channelUrlParseModel.updateAPIVideos(channelVideos) { success in
+//
+//        }
+//    }
+    
+    @IBAction func coreDateClearButton(_ sender: UIBarButtonItem) {
+
+      deleteAllRecords()
+
+    }
+
+    func deleteAllRecords() {
+
+           let context = coreData.persistentContainer.viewContext
+
+           let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "CoreVideo")
+           let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+
+           do {
+               try context.execute(deleteRequest)
+               try context.save()
+           } catch {
+               print ("There was an error")
+           }
+        
+        //catchAPIVideos()
+       }
+
+    
+    
+    
+
     
     //如果沒有影片會解析API
     func catchAPIVideos() {
@@ -69,10 +91,39 @@ class OverViewController: UIViewController, NSFetchedResultsControllerDelegate {
     }
     
     //匯入影片
-    private func loadVideos() {
+    private func loadVideos(_ completion: @escaping(_ success: Bool)->Void) {
         if let videos = videoService?.getAllVideos() {
             channelVideos = videos
             tableView.reloadData()
+            
+            completion(true)
+        }
+        
+    }
+    
+    
+    private func reloadVideos(_ checkVideo: [CoreVideo]) {
+       
+        if let videos = videoService?.getAllVideos() {
+            
+            for i in 0 ... checkVideo.count - 1 {
+                
+                for index in 0 ... videos.count - 1 {
+                    
+                    if checkVideo[i].cChannelTitle == videos[index].cChannelTitle {
+                        
+                        if videos[index].cVideoId != checkVideo[index].cVideoId {
+                            
+                            print("have new videos \(videos[i])")
+                            channelVideos.append(videos[i])
+                            coreData.saveContext()
+                        }
+                    }
+                }
+            }
+            tableView.reloadData()
+            
+          
         }
     }
     
@@ -200,12 +251,14 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+  
     
         //解析影片慢，按下讀取影片
         //loadVideos()
         reloadCatchAPIVideos(checkDataIndex: indexPath.row) { ok in
-            
-            
+
+
             switch indexPath.row {
             case 0:
                 
@@ -242,6 +295,7 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
             default:
                 break
             }
+
         }
        
     }
