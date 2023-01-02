@@ -57,7 +57,6 @@
 		A2535190293E2351000DEF86 /* OverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewModel.swift; sourceTree = "<group>"; };
 		A25822AE293E21B50067D409 /* OverViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverViewTableViewCell.swift; sourceTree = "<group>"; };
 		A25B89AE2945677800DCF035 /* LikeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeListViewController.swift; sourceTree = "<group>"; };
-		A261135D2961282E00CB7D86 /* Foundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Foundation.h; sourceTree = "<group>"; };
 		A26645C62941BDE2009371A8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		A26645CA29434039009371A8 /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		A26AB84D293EE4F30036C000 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -186,7 +185,6 @@
 				A2B2EA7A293F369400A22FEA /* CacheManager.swift */,
 				A273538B29588FAB000EB48E /* CoreDataStack.swift */,
 				A26645CA29434039009371A8 /* VideoModel.swift */,
-				A261135D2961282E00CB7D86 /* Foundation.h */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

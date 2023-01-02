@@ -273,7 +273,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="恐怖總覽" id="DZb-JP-rYr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="Gr3-tE-2X0">
+                        <barButtonItem key="leftBarButtonItem" systemItem="trash" id="Gr3-tE-2X0">
                             <color key="tintColor" red="0.99607843159999998" green="0.97254908080000002" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="coreDateClearButton:" destination="9Xv-cn-DC5" id="LoW-Rg-I1G"/>
@@ -281,6 +281,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="deletButton" destination="Gr3-tE-2X0" id="Yb5-h2-zNP"/>
                         <outlet property="tableView" destination="Ibc-GV-Qgw" id="5y1-hS-ypb"/>
                     </connections>
                 </viewController>

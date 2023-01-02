@@ -13,6 +13,7 @@ class OverViewTableViewCell: UITableViewCell {
     @IBOutlet weak var channelName: UILabel!
     @IBOutlet weak var sortLabel: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
