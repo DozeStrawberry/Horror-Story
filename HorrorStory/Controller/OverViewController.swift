@@ -33,15 +33,39 @@ class OverViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
         catchAPIVideos()
         
-        videoService = VideoService(moc: coreData.persistentContainer.viewContext)
-
-        //loadVideos()
+        videoService = VideoService(moc: self.coreData.persistentContainer.viewContext)
+        loadVideos()
+        
+//        reloadCatchAPIVideos()
+//
+//        loadVideos()
+        
+        
+//        reloadCatchAPIVideos()
+//        loadVideos()
+        
+       
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        
+        
+    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//
+//        reloadCatchAPIVideos()
+//        loadVideos()
+//    }
+    
     
     //如果沒有影片會解析API
     func catchAPIVideos() {
         channelUrlParseModel.checkData ()
         tableView.reloadData()
+     
     }
     
     //匯入影片
@@ -52,22 +76,89 @@ class OverViewController: UIViewController, NSFetchedResultsControllerDelegate {
         }
     }
     
+    
+    private func reloadCatchAPIVideos(checkDataIndex:Int?, CompletionHandleer handler:(Bool)->()) {
+        
+        let videoArray1 = channelVideos.filter { $0.cChannelTitle == "\(Model.channelArray[1])"}
+        let videoArray2 = channelVideos.filter { $0.cChannelTitle == "\(Model.channelArray[2])"}
+        let videoArray3 = channelVideos.filter { $0.cChannelTitle == "\(Model.channelArray[3])"}
+        let videoArray4 = channelVideos.filter { $0.cChannelTitle == "\(Model.channelArray[4])"}
+        let videoArray5 = channelVideos.filter { $0.cChannelTitle == "\(Model.channelArray[5])"}
+        let videoArray6 = channelVideos.filter { $0.cChannelTitle == "\(Model.channelArray[6])"}
+        
+        let videoAry = [videoArray1,videoArray2,videoArray3,videoArray4,videoArray5,videoArray6]
+        
+        let urlAry = [Constants.S01_API_URL,
+                      Constants.S02_API_URL,
+                      Constants.S03_API_URL,
+                      Constants.S04_API_URL,
+                      Constants.S05_API_URL,
+                      Constants.S06_API_URL]
+
+        
+        if let index = checkDataIndex, index != 0
+        {
+            if videoAry[index - 1 ].isEmpty
+            {
+                channelUrlParseModel.getVideos(urlAry[index],cChannelTitle: Model.channelArray[index])
+            }
+        }else
+        {
+            for i in 0...videoAry.count - 1
+            {
+                if videoAry[i].isEmpty{
+                    channelUrlParseModel.getVideos(urlAry[i],cChannelTitle: Model.channelArray[i - 1])
+                }
+            }
+        }
+        
+//        Thread.sleep(forTimeInterval: 0.2)
+        handler(true)
+        
+        tableView.reloadData()
+        
+        
+//        if videoArray1.isEmpty{
+//            channelUrlParseModel.getVideos(Constants.S01_API_URL)
+//            tableView.reloadData()
+//
+//        } else if videoArray2.isEmpty{
+//            channelUrlParseModel.getVideos(Constants.S02_API_URL)
+//            tableView.reloadData()
+//
+//        } else if videoArray3.isEmpty{
+//            channelUrlParseModel.getVideos(Constants.S03_API_URL)
+//            tableView.reloadData()
+//
+//        } else if videoArray4.isEmpty{
+//            channelUrlParseModel.getVideos(Constants.S04_API_URL)
+//            tableView.reloadData()
+//
+//        } else if videoArray5.isEmpty{
+//            channelUrlParseModel.getVideos(Constants.S05_API_URL)
+//            tableView.reloadData()
+//
+//        } else if videoArray6.isEmpty{
+//            channelUrlParseModel.getVideos(Constants.S06_API_URL)
+//            tableView.reloadData()
+//
+//        }
+    }
+    
+    
     //傳遞資訊
     private func showVideoView(channelTitle: String, navigationTitle: String) {
 
     let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
 
-    //print("channel Videos have \(channelVideos.count) video ")
+    print("channel Videos have \(channelVideos.count) video ")
     let videoArray = channelVideos.filter { $0.cChannelTitle == "\(channelTitle)"}
-    //print("\(channelTitle) channel have \(videoArray.count) video")
+    print("\(channelTitle) channel have \(videoArray.count) video")
         
         //防止NSarray空的發生錯誤
-        if videoArray.isEmpty {
-            dvc.mTitle = nil
-            
-        } else {
-            dvc.mTitle = channelTitle
-        }
+
+        
+        dvc.mTitle = channelTitle
 
         dvc.navigationTitle = navigationTitle
         dvc.coreData = coreData
@@ -111,44 +202,48 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     
         //解析影片慢，按下讀取影片
-        loadVideos()
-        
-        switch indexPath.row {
+        //loadVideos()
+        reloadCatchAPIVideos(checkDataIndex: indexPath.row) { ok in
+            
+            
+            switch indexPath.row {
+            case 0:
+                
+                let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+                
+                dvc.corePlayVideo = channelVideos
+                dvc.navigationTitle = Model.channelArray[0]
+                dvc.overViewController = self
+                dvc.coreData = coreData
+                dvc.mTitle = nil
+                
+                navigationController?.pushViewController(dvc, animated: true)
+                
+            case 1:
+                showVideoView(channelTitle: Model.channelArray[1], navigationTitle: Model.channelArray[1])
 
-        case 0:
-            let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-            
-            dvc.corePlayVideo = channelVideos
-            dvc.navigationTitle = Model.channelArray[0]
-            dvc.overViewController = self
-            dvc.coreData = coreData
-            dvc.mTitle = nil
-            
-            navigationController?.pushViewController(dvc, animated: true)
-            
-        case 1:
-            showVideoView(channelTitle: Model.channelArray[1], navigationTitle: Model.channelArray[1])
-
-        case 2:
-            showVideoView(channelTitle: Model.channelArray[2], navigationTitle: Model.channelArray[2])
-            
-        case 3:
-            showVideoView(channelTitle: Model.channelArray[3], navigationTitle: Model.channelArray[3])
-            
-        case 4:
-            showVideoView(channelTitle: Model.channelArray[4], navigationTitle: Model.channelArray[4])
-            
-        case 5:
-            showVideoView(channelTitle: Model.channelArray[5], navigationTitle: Model.channelArray[5])
-            
-        case 6:
-            let channelName = "Muse木棉花-TW"
-            showVideoView(channelTitle: channelName, navigationTitle: Model.channelArray[6])
- 
-          
-        default:
-            break
+            case 2:
+                showVideoView(channelTitle: Model.channelArray[2], navigationTitle: Model.channelArray[2])
+                
+            case 3:
+                showVideoView(channelTitle: Model.channelArray[3], navigationTitle: Model.channelArray[3])
+                
+            case 4:
+                showVideoView(channelTitle: Model.channelArray[4], navigationTitle: Model.channelArray[4])
+                
+            case 5:
+                showVideoView(channelTitle: Model.channelArray[5], navigationTitle: Model.channelArray[5])
+                
+            case 6:
+                //let channelName = "Muse木棉花-TW"
+                showVideoView(channelTitle: Model.channelArray[6], navigationTitle: Model.channelArray[6])
+     
+              
+            default:
+                break
+            }
         }
+       
     }
      
 }

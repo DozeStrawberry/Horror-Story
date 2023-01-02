@@ -13,15 +13,14 @@ class PlayListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     public var playVideo = [VideoModel]()
-    var likeVideo = [VideoModel]()
-    
     
     var coreData = CoreDataStack()
-    
     var overViewController = OverViewController()
 
     var corePlayVideo = [CoreVideo]()
+    var likeVideo = [CoreVideo]()
     
+    //解析影片
     var mTitle:String?
     
     
@@ -44,6 +43,7 @@ class PlayListViewController: UIViewController {
         backValueAddLikeAarry()
         navigationItem.title = navigationTitle
         
+        likeVideo = corePlayVideo.filter { $0.isLike == true }
         
         //左上回去按鈕
         self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
@@ -65,7 +65,6 @@ class PlayListViewController: UIViewController {
     }
 
     
-    
     @objc func backAction() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -79,8 +78,6 @@ class PlayListViewController: UIViewController {
     }
     
    
-
-
     //按鈕
     @IBAction func likeButtonPress(_ sender: UIButton) {
         
@@ -89,7 +86,30 @@ class PlayListViewController: UIViewController {
    
         coreData.saveContext()
         
-        
+        // true增加到array
+        if corePlayVideo[sender.tag].isLike == true {
+            
+            likeVideo.append(corePlayVideo[sender.tag])
+            coreData.saveContext()
+            sendLikeData()
+            
+            
+        } else {
+            
+            // false, array刪減
+            for i in 0 ..< likeVideo.count {
+                
+                if corePlayVideo[sender.tag].cVideoId == likeVideo[i].cVideoId {
+                    //print("remove \(likeVideo[i].title), \(likeVideo[i].isLike)")
+                    likeVideo.remove(at: i)
+                    //print("remove after have \(likeVideo.count) video")
+                    sendLikeData()
+                    coreData.saveContext()
+                    break
+                    
+                }
+            }
+        }
         
         
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
@@ -102,13 +122,16 @@ class PlayListViewController: UIViewController {
         let LikeListViewController = navVC.topViewController as! LikeListViewController
         LikeListViewController.coreData = coreData
         LikeListViewController.overViewController = overViewController
+        LikeListViewController.likeVideos = likeVideo
     }
     
     
     func backValueAddLikeAarry() {
         
-        //likeVideo = playVideo.filter { $0.isLike == true }
-        //sendLikeData()
+        likeVideo = corePlayVideo.filter { $0.isLike == true }
+        coreData.saveContext()
+        sendLikeData()
+        
           
     }
     
@@ -129,8 +152,6 @@ class PlayListViewController: UIViewController {
         
         self.navigationController?.pushViewController(dvc, animated: true)
     }
-    
-
     
     
 }

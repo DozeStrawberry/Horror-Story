@@ -32,8 +32,6 @@ class LikeListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
- 
-        
         //loadVideos()
         //print("like video have \(likeVideos.count)")
         
@@ -74,7 +72,7 @@ class LikeListViewController: UIViewController {
 
                     senderLikeVideos.remove(at: i)
 
-                    sendLikeData()
+                    //sendLikeData()
                     tableView.reloadData()
                     
                     //print("\(senderLikeVideos.count)")
@@ -88,12 +86,7 @@ class LikeListViewController: UIViewController {
     }
     
     
-    private func sendLikeData() {
 
-        //let navVC = tabBarController?.viewControllers![0] as! UINavigationController
-        //let playListViewController = navVC.topViewController as! PlayListViewController
-        //playListViewController.likeVideo = senderLikeVideos
-    }
     
     
     //把檔案傳到下一頁
@@ -113,7 +106,7 @@ class LikeListViewController: UIViewController {
     func backValueAddLikeAarry() {
         
         senderLikeVideos = senderLikeVideos.filter { $0.isLike == true }
-        sendLikeData()
+        //sendLikeData()
           
     }
   

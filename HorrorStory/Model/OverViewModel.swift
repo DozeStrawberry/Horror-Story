@@ -10,9 +10,9 @@ import UIKit
 
 struct OverViewModel {
     
-    let channelArray = ["全部頻道", "X調查", "三更研究所MiDnight", "光暗杂学馆", "脑洞乌托邦", "怪談先生-故事是這樣的", "陰陽眼見子"]
+    let channelArray = ["全部頻道", "X調查", "三更研究所MiDnight", "光暗杂学馆", "脑洞乌托邦", "怪談先生-故事是這樣的", "Muse木棉花-TW"]
     
-    let sortArray = ["懸疑恐怖合集","偵探推理類故事", "奇聞異事", "懸疑犯罪", "未解之謎、腦洞大開的話題", "床邊鬼故事", "日本動畫"]
+    let sortArray = ["懸疑恐怖合集","偵探推理類故事", "奇聞異事", "懸疑犯罪", "未解之謎、腦洞大開的話題", "床邊鬼故事", "日本動漫-陰陽眼見子"]
     
     let channelImageArray: [UIImage] = [
         UIImage(named: "00.png")!,
