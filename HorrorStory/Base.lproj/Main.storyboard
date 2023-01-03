@@ -105,7 +105,11 @@
                             <constraint firstItem="YAf-yK-lfA" firstAttribute="leading" secondItem="agH-KP-zli" secondAttribute="leading" id="sLd-67-dq2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="喜歡影片" id="5Wq-Nv-WsZ"/>
+                    <navigationItem key="navigationItem" title="喜歡影片" id="5Wq-Nv-WsZ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="5VV-mI-vVX">
+                            <color key="tintColor" red="0.99607843137254903" green="0.97254901960784312" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="YAf-yK-lfA" id="TJN-0Y-xsr"/>
                     </connections>
@@ -274,7 +278,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="恐怖總覽" id="DZb-JP-rYr">
                         <barButtonItem key="leftBarButtonItem" systemItem="trash" id="Gr3-tE-2X0">
-                            <color key="tintColor" red="0.99607843159999998" green="0.97254908080000002" blue="0.85098040100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" red="0.99607843137254903" green="0.97254901960784312" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="coreDateClearButton:" destination="9Xv-cn-DC5" id="LoW-Rg-I1G"/>
                             </connections>

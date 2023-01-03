@@ -14,8 +14,7 @@ class LikeListViewController: UIViewController {
     var senderLikeVideos = [VideoModel]()
     var overViewController = OverViewController()
     var coreData = CoreDataStack()
-    
-    
+
     var likeVideos = [CoreVideo]()
     
     //接收LikeVideo傳送過來的值
@@ -140,7 +139,7 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
         
         //傳送資料到下一頁
         showVideoView(video: senderLikeVideos[indexPath.row])
-        print("\(senderLikeVideos[indexPath.row])")
+        //print("\(senderLikeVideos[indexPath.row])")
     }
     
     

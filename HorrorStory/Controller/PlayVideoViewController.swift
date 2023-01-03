@@ -18,8 +18,7 @@ class PlayVideoViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var connectYoutube: UIButton!
     
-    let overViewController = OverViewController()
-    
+    var overViewController = OverViewController()
     var coreData = CoreDataStack()
     
     //介面顯示
@@ -28,6 +27,7 @@ class PlayVideoViewController: UIViewController {
     //接收傳過來的值
     var channelTitle: String?
     var likeBool: Bool?
+    var acceptLikeArray: [CoreVideo]?
     
     
     override func viewDidLoad() {
@@ -45,8 +45,7 @@ class PlayVideoViewController: UIViewController {
     @objc func backAction() {
     
         self.navigationController?.popViewController(animated: true)
-        
-       
+
     }
     
     
@@ -57,9 +56,44 @@ class PlayVideoViewController: UIViewController {
         guard video != nil else { return }
 
         video!.isLike = !video!.isLike
+        
         coreData.saveContext()
 
         setButtonImage()
+        
+        
+        guard acceptLikeArray != nil else { return }
+        
+        if video!.isLike == true {
+            
+            let likeVideoNumber = overViewController.channelVideos.filter { $0.isLike == true }
+            print("likeVideoNumber is \(likeVideoNumber.count)")
+            
+            video!.cAddNumber = Int64(likeVideoNumber.count + 1)
+        
+
+        } else {
+            
+            let likeVideoNumber = overViewController.channelVideos.filter { $0.isLike == true }
+    
+            for i in 0 ..< likeVideoNumber.count {
+                
+                if likeVideoNumber[i].cVideoId == video!.cVideoId {
+                    
+                    for array in likeVideoNumber {
+
+                        if i < array.cAddNumber {
+                            array.cAddNumber -= 1
+                            print("\(array.cAddNumber)")
+                        }
+                    }
+
+                    coreData.saveContext()
+                    break
+                }
+            }
+        }
+        
 
         //sendLikeBool()
     }

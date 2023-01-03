@@ -76,6 +76,8 @@ class OverViewController: UIViewController {
         }
         
         catchAPIVideos()
+        //senderCoreData()
+        tableView.reloadData()
     }
     
     
@@ -147,6 +149,17 @@ class OverViewController: UIViewController {
         //Thread.sleep(forTimeInterval: 0.2) //測試
         handler(true)
         tableView.reloadData()
+    }
+    
+    
+    func senderCoreData() {
+        
+        let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
+        
+        dvc.coreData = coreData
+        dvc.overViewController = self
+        
+        //navigationController?.pushViewController(dvc, animated: true)
     }
     
     

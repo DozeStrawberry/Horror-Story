@@ -40,9 +40,10 @@ class PlayListViewController: UIViewController {
         
         loadVideos()
         
-        backValueAddLikeAarry()
+        //backValueAddLikeAarry()
         navigationItem.title = navigationTitle
         
+        sendLikeData()
         likeVideo = corePlayVideo.filter { $0.isLike == true }
         
         //左上回去按鈕
@@ -96,11 +97,12 @@ class PlayListViewController: UIViewController {
                 if likeVideo[i].cVideoId == corePlayVideo[sender.tag].cVideoId {
                     
                     let likeVideoNumber = overViewController.channelVideos.filter { $0.isLike == true }
-                    //print("save like video \(likeVideoNumber.count)")
+                    print("save like video \(likeVideoNumber.count)")
                     likeVideo[i].cAddNumber = Int64(likeVideoNumber.count + 1)
-                    //print("like video number \(likeVideo[i].cAddNumber)")
+                    print("like video number \(likeVideo[i].cAddNumber)")
                     
                     coreData.saveContext()
+                    sendLikeData()
                 }
             }
             
@@ -125,7 +127,7 @@ class PlayListViewController: UIViewController {
                     //dump(likeVideo)
 
                     coreData.saveContext()
-                    
+                    sendLikeData()
                     break
                 }
             }
@@ -141,19 +143,19 @@ class PlayListViewController: UIViewController {
         let LikeListViewController = navVC.topViewController as! LikeListViewController
         LikeListViewController.coreData = coreData
         LikeListViewController.overViewController = overViewController
-        LikeListViewController.likeVideos = likeVideo
+        //LikeListViewController.likeVideos = likeVideo
     }
     
     
-    func backValueAddLikeAarry() {
-        
-        likeVideo = corePlayVideo.filter { $0.isLike == true }
-        coreData.saveContext()
-        sendLikeData()
-        
-        
-    }
-    
+//    func backValueAddLikeAarry() {
+//
+//        likeVideo = corePlayVideo.filter { $0.isLike == true }
+//        coreData.saveContext()
+//        sendLikeData()
+//
+//
+//    }
+//
     
     
     //把檔案傳到下一頁
@@ -161,8 +163,12 @@ class PlayListViewController: UIViewController {
         
         let dvc = storyboard?.instantiateViewController(withIdentifier: "goToPlayVideo") as! PlayVideoViewController
         
+        dvc.overViewController = self.overViewController
+        dvc.coreData = self.coreData
+        
         dvc.video = video
-        //dvc.channelTitle = navigationTitle
+        dvc.channelTitle = navigationTitle
+        dvc.acceptLikeArray = likeVideo
         
         dvc.likeBool = video.isLike
         //print("\(video.isLike)")
