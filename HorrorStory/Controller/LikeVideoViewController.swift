@@ -181,7 +181,7 @@ class LikeVideoViewController: UIViewController {
         
         
         // Set the description
-        textView.text = video!.description
+        textView.text = video!.cDescription
     }
     
 }
