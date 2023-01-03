@@ -108,6 +108,9 @@
                     <navigationItem key="navigationItem" title="喜歡影片" id="5Wq-Nv-WsZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="5VV-mI-vVX">
                             <color key="tintColor" red="0.99607843137254903" green="0.97254901960784312" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="deleteButtonPressed:" destination="zNp-hD-eou" id="E7a-wt-Ive"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

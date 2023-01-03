@@ -51,8 +51,6 @@ class PlayVideoViewController: UIViewController {
     
     @IBAction func aLikeButtonPress(_ sender: UIButton) {
         
-        //let coreDataInit = overViewController.videoService
-        
         guard video != nil else { return }
 
         video!.isLike = !video!.isLike
@@ -62,7 +60,7 @@ class PlayVideoViewController: UIViewController {
         setButtonImage()
         
         
-        guard acceptLikeArray != nil else { return }
+        //guard acceptLikeArray != nil else { return }
         
         if video!.isLike == true {
             
@@ -70,7 +68,8 @@ class PlayVideoViewController: UIViewController {
             print("likeVideoNumber is \(likeVideoNumber.count)")
             
             video!.cAddNumber = Int64(likeVideoNumber.count + 1)
-        
+            
+            coreData.saveContext()
 
         } else {
             

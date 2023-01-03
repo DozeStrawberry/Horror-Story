@@ -7,6 +7,7 @@
 import Foundation
 import CoreData
 
+//核對更新陣列
 protocol UpdateModelDelegate {
     
     func videosFetched(_ videos: [VideoModel])
@@ -39,10 +40,11 @@ class ChannelUrlParseModel {
                   Constants.S06_API_URL]
         
         getVideosAry(urlAry) { success in
-            
+ 
         }
         
     }
+    
     
     //MARK: - 解析陣列API
     func getVideosAry(_ urlString: [String], completion: @escaping(_ success: Bool)->Void) {
@@ -109,7 +111,6 @@ class ChannelUrlParseModel {
     }
     
     
-    
     //MARK: - 單一頻道解析
     func getVideos(_ urlString: String, cChannelTitle:String?) {
         
@@ -166,9 +167,7 @@ class ChannelUrlParseModel {
                     newVideo.cAddNumber = 0
                     
                     newVideos += [newVideo]
-                    
                 }
-                
                 self.coreData.saveContext()
                 
                 

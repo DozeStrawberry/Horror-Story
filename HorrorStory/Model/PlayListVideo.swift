@@ -46,26 +46,22 @@ struct PlayListVideo: Decodable {
         //對照字典內容取值
         let snippetContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .snippet)
         
-        // Parse title
         self.title = try snippetContainer.decode(String.self, forKey: .title)
         
-        // Parse description
         self.description = try snippetContainer.decode(String.self, forKey: .description)
         
-        // Parse the publish data，日期型別
         self.published = try snippetContainer.decode(Date.self, forKey: .published)
         
         self.channelTitle = try snippetContainer.decode(String.self, forKey: .channelTitle)
         
-        // Parse thumbanails，縮圖
+        //縮圖
         let thumbnailContainer = try snippetContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .thumbnails)
         
         let highContainer = try thumbnailContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .high)
         
-        // Parse url
+        //url
         self.thumbnail = try highContainer.decode(String.self, forKey: .thumbnail)
         
-        // Parse Video ID
         let resourceIdContainer = try snippetContainer.nestedContainer(keyedBy: CodingKeys.self, forKey: .resourceId)
         
         self.videoId = try resourceIdContainer.decode(String.self, forKey: .videoId)

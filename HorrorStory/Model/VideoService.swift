@@ -10,10 +10,7 @@ import CoreData
 
 
 class VideoService {
-    
-    //let coreData = CoreDataStack()
 
- 
     private let moc: NSManagedObjectContext
     private var videoArray = [CoreVideo]()
     
@@ -23,7 +20,7 @@ class VideoService {
     }
     
 
-    //取得全部影片
+    //取得全部影片，方便查看影片更新
     func getAllVideos() -> [CoreVideo]? {
 
         let sortByTime = NSSortDescriptor(key: "cPublished", ascending: false)
@@ -54,9 +51,7 @@ class VideoService {
             request.predicate = NSPredicate(format:"cChannelTitle = %@", cChannelTitle!)
         }
         request.sortDescriptors = [sortByTime]
-        
-       
-        
+
         do {
             videoArray = try moc.fetch(request)
             
@@ -91,6 +86,7 @@ class VideoService {
     }
     
     
+    //按照點擊順序顯示影片
     func getLikeVideos() -> [CoreVideo]? {
         let sortByNumber = NSSortDescriptor(key: "cAddNumber", ascending: false)
         let request: NSFetchRequest<CoreVideo> = CoreVideo.fetchRequest()
@@ -108,7 +104,6 @@ class VideoService {
         
         return nil
     }
-    
     
     
     //檢查更新影片
@@ -157,7 +152,6 @@ class VideoService {
         } catch let error as NSError {
             print("Error fetching students: \(error.localizedDescription)")
         }
-        
         return nil
     }
     

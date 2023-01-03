@@ -40,7 +40,6 @@ class PlayListViewController: UIViewController {
         
         loadVideos()
         
-        //backValueAddLikeAarry()
         navigationItem.title = navigationTitle
         
         sendLikeData()
@@ -110,22 +109,24 @@ class PlayListViewController: UIViewController {
         } else {
             
             // false, array刪減
-            for i in 0 ..< likeVideo.count {
+            for i in 0 ..< likeVideo.count
+            {
                 
-                if corePlayVideo[sender.tag].cVideoId == likeVideo[i].cVideoId {
+                if corePlayVideo[sender.tag].cVideoId == likeVideo[i].cVideoId
+                {
                     
                     likeVideo.remove(at: i)
                     
-                    for array in likeVideo {
-
-                        if i < array.cAddNumber {
+                    for array in likeVideo
+                    {
+                        if i < array.cAddNumber
+                        {
                             array.cAddNumber -= 1
                             print("\(array.cAddNumber)")
                         }
                     }
 
                     //dump(likeVideo)
-
                     coreData.saveContext()
                     sendLikeData()
                     break
@@ -136,26 +137,15 @@ class PlayListViewController: UIViewController {
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
     }
     
-    
+    //內存同步
     private func sendLikeData() {
         
         let navVC = tabBarController?.viewControllers![1] as! UINavigationController
         let LikeListViewController = navVC.topViewController as! LikeListViewController
         LikeListViewController.coreData = coreData
         LikeListViewController.overViewController = overViewController
-        //LikeListViewController.likeVideos = likeVideo
     }
     
-    
-//    func backValueAddLikeAarry() {
-//
-//        likeVideo = corePlayVideo.filter { $0.isLike == true }
-//        coreData.saveContext()
-//        sendLikeData()
-//
-//
-//    }
-//
     
     
     //把檔案傳到下一頁

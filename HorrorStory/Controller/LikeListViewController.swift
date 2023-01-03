@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import CoreData
 
 class LikeListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var senderLikeVideos = [VideoModel]()
+    var channelUrlParseModel = ChannelUrlParseModel()
     var overViewController = OverViewController()
     var coreData = CoreDataStack()
 
@@ -27,14 +28,15 @@ class LikeListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
+        //channelUrlParseModel = .init()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadVideos()
-//
-//        backValueAddLikeAarry()
-//        tableView.reloadData() 
+        
     }
+    
     
     private func loadVideos() {
         overViewController.videoService = VideoService(moc: coreData.persistentContainer.viewContext)
@@ -49,21 +51,55 @@ class LikeListViewController: UIViewController {
         }
     }
     
-
+    
+    @IBAction func deleteButtonPressed(_ sender: UIBarButtonItem) {
+        print("like video have \(likeVideos.count)")
+        deleteVideos()
+        print("like video have \(likeVideos.count)")
+    }
+    
+    func deleteVideos() {
+        
+        for array in likeVideos{
+            array.isLike = false
+            array.cAddNumber = 0
+            tableView.reloadData()
+        }
+        likeVideos = []
+        coreData.saveContext()
+        tableView.reloadData()
+    }
+    
+ 
     @IBAction func likeButtonChange(_ sender: UIButton) {
         
-        senderLikeVideos[sender.tag].isLike = !senderLikeVideos[sender.tag].isLike
+        likeVideos[sender.tag].isLike = !likeVideos[sender.tag].isLike
         
-        if senderLikeVideos[sender.tag].isLike == false {
+        coreData.saveContext()
+        
+        if likeVideos[sender.tag].isLike == false
+        {
             
-            for i in 0 ..< senderLikeVideos.count {
+            for i in 0 ..< likeVideos.count
+            {
                 
-                if senderLikeVideos[sender.tag].videoId == senderLikeVideos[i].videoId {
+                if likeVideos[sender.tag].cVideoId == likeVideos[i].cVideoId
+                {
 
-                    senderLikeVideos.remove(at: i)
+                    likeVideos.remove(at: i)
 
-                    //sendLikeData()
-                    tableView.reloadData()
+                    for array in likeVideos
+                    {
+
+                        if i < array.cAddNumber
+                        {
+                            array.cAddNumber -= 1
+                            print("\(array.cAddNumber)")
+                        }
+                    }
+                    
+                    coreData.saveContext()
+                    //tableView.reloadData()
                     
                     //print("\(senderLikeVideos.count)")
                     break
@@ -76,29 +112,20 @@ class LikeListViewController: UIViewController {
     }
     
     
-
-    
-    
     //把檔案傳到下一頁
-    private func showVideoView(video: VideoModel) {
+    private func showVideoView(video: CoreVideo) {
         
         let dvc = storyboard?.instantiateViewController(withIdentifier: "goToLikeVideo") as! LikeVideoViewController
         
         dvc.video = video
-        //dvc.channelTitle = navigationTitle
-        
         dvc.likeBool = video.isLike
-        //print("\(video.isLike)")
+        
+        dvc.overViewController = overViewController
+        dvc.coreData = coreData
         
         self.navigationController?.pushViewController(dvc, animated: true)
     }
     
-    func backValueAddLikeAarry() {
-        
-        senderLikeVideos = senderLikeVideos.filter { $0.isLike == true }
-        //sendLikeData()
-          
-    }
 }
 
 extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
@@ -123,8 +150,6 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
             video.isLike = likeBackLike!
         }
         
-       
-        
         cell.setCell(video)
         cell.likeButton.tag = indexPath.row
 
@@ -138,7 +163,7 @@ extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{
         
         
         //傳送資料到下一頁
-        showVideoView(video: senderLikeVideos[indexPath.row])
+        showVideoView(video: likeVideos[indexPath.row])
         //print("\(senderLikeVideos[indexPath.row])")
     }
     

@@ -17,9 +17,11 @@ class LikeVideoViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var connectYoutube: UIButton!
     
+    var overViewController = OverViewController()
+    var coreData = CoreDataStack()
     
     //介面顯示
-    var video: VideoModel?
+    var video: CoreVideo?
     
     //接收傳過來的值
     //var channelTitle: String?
@@ -33,7 +35,7 @@ class LikeVideoViewController: UIViewController {
             return
         }
 
-        navigationItem.title = video!.channelTitle
+        navigationItem.title = video!.cChannelTitle
      
          //左上按鈕
          self.navigationItem.leftBarButtonItems = [UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(self.backAction))]
@@ -51,24 +53,55 @@ class LikeVideoViewController: UIViewController {
 
         video!.isLike = !video!.isLike
         print("Button value \(video!.isLike)")
+        
+        coreData.saveContext()
 
         setButtonImage()
 
         sendLikeBool()
-    }
+        
+        if video!.isLike == false {
+            
+            let likeVideoNumber = overViewController.channelVideos.filter { $0.isLike == true }
     
-    @IBAction func connectYoutubePressed(_ sender: UIButton) {
-        guard video != nil else {
-            return
+            for i in 0 ..< likeVideoNumber.count
+            {
+                
+                if likeVideoNumber[i].cVideoId == video!.cVideoId
+                {
+                    
+                    for array in likeVideoNumber
+                    {
+
+                        if i < array.cAddNumber {
+                            array.cAddNumber -= 1
+                            print("\(array.cAddNumber)")
+                        }
+                    }
+
+                    coreData.saveContext()
+                    break
+                }
+            }
         }
         
-        let videoId = video!.videoId
+    }
+    
+    
+    @IBAction func connectYoutubePressed(_ sender: UIButton) {
+        guard video != nil else { return }
+        
+        let videoId = video!.cVideoId
         //print("\(videoId)")
-        guard let youtubeUrl = URL(string: "youtube://\(videoId)") else { return }
-        if UIApplication.shared.canOpenURL(youtubeUrl) {
+        
+        guard let youtubeUrl = URL(string: "youtube://\(videoId ?? "")") else { return }
+        
+        if UIApplication.shared.canOpenURL(youtubeUrl)
+        {
             UIApplication.shared.open(youtubeUrl)
-        } else {
-            guard let videoUrl = URL(string: "https://www.youtube.com/watch?v=\(videoId)") else { return }
+        } else
+        {
+            guard let videoUrl = URL(string: "https://www.youtube.com/watch?v=\(videoId ?? "")") else { return }
             UIApplication.shared.open(videoUrl)
         }
         
@@ -93,13 +126,10 @@ class LikeVideoViewController: UIViewController {
         guard video != nil else { return }
 
         dvc.likeBackLike = video!.isLike
-        //dvc.backVideoId = video!.videoId
-        //print("\(video!.videoId)")
+
     }
 
     
-
-
     //即將出現
     override func viewWillAppear(_ animated: Bool) {
         
@@ -126,20 +156,29 @@ class LikeVideoViewController: UIViewController {
 
         //setButtonImage()
         
-        let embedURLString = Constants.YT_EMBED_URL + video!.videoId
-        
-        // Load it into the webview
-        let url = URL(string: embedURLString)
-        let request = URLRequest(url: url!)
-        webView.load(request)
+
+        if video?.cVideoId != nil {
+            
+            let embedURLString = Constants.YT_EMBED_URL + video!.cVideoId!
+            
+            // Load it into the webview
+            let url = URL(string: embedURLString)
+            let request = URLRequest(url: url!)
+            webView.load(request)
+        }
         
         // Set the title
-        titleLabel.text = video!.title
+        titleLabel.text = video!.cTitle
         
         // Set the date
+        
         let df = DateFormatter()
         df.dateFormat = "EEEE, MMM d, yyyy"
-        dateLabel.text = df.string(from: video!.published)
+        
+        if video!.cPublished != nil {
+            dateLabel.text = df.string(from: video!.cPublished!)
+        }
+        
         
         // Set the description
         textView.text = video!.description

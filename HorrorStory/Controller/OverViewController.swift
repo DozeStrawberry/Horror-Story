@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-//NSFetchedResultsControllerDelegate
+
 class OverViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -17,7 +17,7 @@ class OverViewController: UIViewController {
     //目錄顯示
     let Model = OverViewModel()
     //解析API
-    let channelUrlParseModel = ChannelUrlParseModel()
+    var channelUrlParseModel = ChannelUrlParseModel()
     
     private var coreData = CoreDataStack()
     public var videoService: VideoService?
@@ -34,7 +34,7 @@ class OverViewController: UIViewController {
         channelUrlParseModel.delegate = self
         
         //隱藏刪除按鈕
-        //self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.leftBarButtonItem = nil
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -76,7 +76,6 @@ class OverViewController: UIViewController {
         }
         
         catchAPIVideos()
-        //senderCoreData()
         tableView.reloadData()
     }
     
@@ -152,17 +151,6 @@ class OverViewController: UIViewController {
     }
     
     
-    func senderCoreData() {
-        
-        let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
-        
-        dvc.coreData = coreData
-        dvc.overViewController = self
-        
-        //navigationController?.pushViewController(dvc, animated: true)
-    }
-    
-    
     //傳遞資訊
     private func showVideoView(channelTitle: String, navigationTitle: String) {
         
@@ -173,7 +161,6 @@ class OverViewController: UIViewController {
         //print("\(channelTitle) channel have \(videoArray.count) video")
         
         dvc.mTitle = channelTitle
-        
         dvc.navigationTitle = navigationTitle
         dvc.coreData = coreData
         dvc.overViewController = self
@@ -259,6 +246,8 @@ extension OverViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+
+//更新影片
 extension OverViewController: UpdateModelDelegate {
     func videosFetched(_ videos: [VideoModel]) {
         self.updateVideos = videos
