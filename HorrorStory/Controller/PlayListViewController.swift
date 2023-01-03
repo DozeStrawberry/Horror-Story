@@ -16,7 +16,7 @@ class PlayListViewController: UIViewController {
     
     var coreData = CoreDataStack()
     var overViewController = OverViewController()
-
+    
     var corePlayVideo = [CoreVideo]()
     var likeVideo = [CoreVideo]()
     
@@ -31,7 +31,7 @@ class PlayListViewController: UIViewController {
     var backLike: Bool?
     var backVideoId: String?
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,13 +57,13 @@ class PlayListViewController: UIViewController {
         overViewController.videoService = VideoService(moc: coreData.persistentContainer.viewContext)
         
         if let videos = overViewController.videoService?.getVideosByTitle(cChannelTitle: mTitle) {
-           
-                corePlayVideo = videos
-
+            
+            corePlayVideo = videos
+            
             tableView.reloadData()
         }
     }
-
+    
     
     @objc func backAction() {
         self.navigationController?.popViewController(animated: true)
@@ -77,21 +77,32 @@ class PlayListViewController: UIViewController {
         tableView.reloadData()
     }
     
-   
+    
     //按鈕
     @IBAction func likeButtonPress(_ sender: UIButton) {
         
         //改變Bool值
         corePlayVideo[sender.tag].isLike = !corePlayVideo[sender.tag].isLike
-   
+        
         coreData.saveContext()
         
         // true增加到array
         if corePlayVideo[sender.tag].isLike == true {
             
             likeVideo.append(corePlayVideo[sender.tag])
-            coreData.saveContext()
-            sendLikeData()
+            
+            for i in 0 ..< likeVideo.count {
+                
+                if likeVideo[i].cVideoId == corePlayVideo[sender.tag].cVideoId {
+                    
+                    let likeVideoNumber = overViewController.channelVideos.filter { $0.isLike == true }
+                    //print("save like video \(likeVideoNumber.count)")
+                    likeVideo[i].cAddNumber = Int64(likeVideoNumber.count + 1)
+                    //print("like video number \(likeVideo[i].cAddNumber)")
+                    
+                    coreData.saveContext()
+                }
+            }
             
             
         } else {
@@ -100,17 +111,25 @@ class PlayListViewController: UIViewController {
             for i in 0 ..< likeVideo.count {
                 
                 if corePlayVideo[sender.tag].cVideoId == likeVideo[i].cVideoId {
-                    //print("remove \(likeVideo[i].title), \(likeVideo[i].isLike)")
-                    likeVideo.remove(at: i)
-                    //print("remove after have \(likeVideo.count) video")
-                    sendLikeData()
-                    coreData.saveContext()
-                    break
                     
+                    likeVideo.remove(at: i)
+                    
+                    for array in likeVideo {
+
+                        if i < array.cAddNumber {
+                            array.cAddNumber -= 1
+                            print("\(array.cAddNumber)")
+                        }
+                    }
+
+                    //dump(likeVideo)
+
+                    coreData.saveContext()
+                    
+                    break
                 }
             }
         }
-        
         
         tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .none)
     }
@@ -132,7 +151,7 @@ class PlayListViewController: UIViewController {
         coreData.saveContext()
         sendLikeData()
         
-          
+        
     }
     
     
@@ -197,7 +216,7 @@ extension PlayListViewController: UITableViewDelegate, UITableViewDataSource{
         
     }
     
-  
+    
 }
 
 

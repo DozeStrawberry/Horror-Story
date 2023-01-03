@@ -9,14 +9,10 @@ import UIKit
 
 class LikeListViewController: UIViewController {
     
-    
     @IBOutlet weak var tableView: UITableView!
     
     var senderLikeVideos = [VideoModel]()
-    
-   
     var overViewController = OverViewController()
-    
     var coreData = CoreDataStack()
     
     
@@ -32,18 +28,13 @@ class LikeListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        //loadVideos()
-        //print("like video have \(likeVideos.count)")
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadVideos()
 //
 //        backValueAddLikeAarry()
-//        tableView.reloadData()
-        
-        
+//        tableView.reloadData() 
     }
     
     private func loadVideos() {
@@ -54,7 +45,7 @@ class LikeListViewController: UIViewController {
         
         if let videos = overViewController.videoService?.getLikeVideos() {
             likeVideos = videos
-            print("likeVideos have \(likeVideos.count)")
+            //print("likeVideos have \(likeVideos.count)")
             tableView.reloadData()
         }
     }
@@ -109,8 +100,6 @@ class LikeListViewController: UIViewController {
         //sendLikeData()
           
     }
-  
-
 }
 
 extension LikeListViewController: UITableViewDelegate, UITableViewDataSource{

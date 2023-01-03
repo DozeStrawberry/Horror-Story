@@ -101,7 +101,7 @@ class OverViewController: UIViewController {
     //影片更新
     private func reloadVideos() {
         if let videos = videoService?.getUpdateAllVideos(updateVideo: updateVideos) {
-            print("check video have reload")
+            //print("check video have reload")
             channelVideos = videos
             tableView.reloadData()
         }
@@ -155,7 +155,7 @@ class OverViewController: UIViewController {
         
         let dvc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "goToPlayList") as! PlayListViewController
         
-        print("channel Videos have \(channelVideos.count) video ")
+        //print("channel Videos have \(channelVideos.count) video ")
         //let videoArray = channelVideos.filter { $0.cChannelTitle == "\(channelTitle)"}
         //print("\(channelTitle) channel have \(videoArray.count) video")
         

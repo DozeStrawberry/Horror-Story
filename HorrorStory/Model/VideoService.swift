@@ -92,11 +92,11 @@ class VideoService {
     
     
     func getLikeVideos() -> [CoreVideo]? {
-        //let sortByTime = NSSortDescriptor(key: "cPublished", ascending: false)
+        let sortByNumber = NSSortDescriptor(key: "cAddNumber", ascending: false)
         let request: NSFetchRequest<CoreVideo> = CoreVideo.fetchRequest()
-        //request.predicate = NSPredicate(format:"cIsLike = %@", 1)
         request.predicate = NSPredicate(format: "cIsLike == %@", NSNumber(value: true))
-        //request.sortDescriptors = [sortByTime]
+        request.sortDescriptors = [sortByNumber]
+        
         do {
     
             videoArray = try moc.fetch(request)
@@ -108,6 +108,8 @@ class VideoService {
         
         return nil
     }
+    
+    
     
     //檢查更新影片
     func getUpdateAllVideos(updateVideo: [VideoModel]) -> [CoreVideo]? {
@@ -140,6 +142,7 @@ class VideoService {
                             newVideo.cDescription = updateVideo[index].description
                             newVideo.cThumbnail = updateVideo[index].thumbnail
                             newVideo.cPublished = updateVideo[index].published
+                            newVideo.cAddNumber = 0
                             
                             newVideos += [newVideo]
                             videoArray += newVideos

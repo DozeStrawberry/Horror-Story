@@ -17,6 +17,7 @@ class VideoModel {
     let published: Date
     let channelTitle: String
     var isLike: Bool = false
+    var addNumber: Int = 0
     
     init(videoId: String, title: String, description: String, thumbnail: String, published: Date, channelTitle: String) {
         self.videoId = videoId

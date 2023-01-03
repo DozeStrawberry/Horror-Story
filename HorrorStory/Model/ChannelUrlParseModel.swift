@@ -87,6 +87,7 @@ class ChannelUrlParseModel {
                         newVideo.cDescription = item.description
                         newVideo.cChannelTitle = item.channelTitle
                         newVideo.cTitle = item.title
+                        newVideo.cAddNumber = 0
                         
                         newVideos += [newVideo]
                         
@@ -106,6 +107,7 @@ class ChannelUrlParseModel {
             dataTask.resume()
         }
     }
+    
     
     
     //MARK: - 單一頻道解析
@@ -161,6 +163,7 @@ class ChannelUrlParseModel {
                     newVideo.cDescription = item.description
                     newVideo.cChannelTitle = item.channelTitle
                     newVideo.cTitle = item.title
+                    newVideo.cAddNumber = 0
                     
                     newVideos += [newVideo]
                     
@@ -180,41 +183,6 @@ class ChannelUrlParseModel {
         dataTask.resume()
     }
     
-    
-    //取得更新影片
-//    func updateVideos(completion: @escaping(_ success: Bool)->Void) {
-//
-//        var urlAry:[String] = []
-//
-//        urlAry = [Constants.S01_API_URL,
-//                  Constants.S02_API_URL,
-//                  Constants.S03_API_URL,
-//                  Constants.S04_API_URL,
-//                  Constants.S05_API_URL,
-//                  Constants.S06_API_URL]
-//
-//        getVideosAry(urlAry) { success in
-//
-//
-//        }
-//
-//        completion(true)
-//    }
-    
-//
-//    func updateVideos() {
-//
-//        var urlAry:[String] = []
-//
-//        urlAry = [Constants.S01_API_URL,
-//                  Constants.S02_API_URL,
-//                  Constants.S03_API_URL,
-//                  Constants.S04_API_URL,
-//                  Constants.S05_API_URL,
-//                  Constants.S06_API_URL]
-//
-//        updateVideosAry(urlAry)
-//    }
     
     
     //MARK: - 更新使用

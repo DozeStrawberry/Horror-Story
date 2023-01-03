@@ -2,7 +2,7 @@
 //  CoreVideo+CoreDataProperties.swift
 //  HorrorStory
 //
-//  Created by liu ya yun on 2022/12/27.
+//  Created by liu ya yun on 2023/1/3.
 //
 //
 
@@ -23,6 +23,8 @@ extension CoreVideo {
     @NSManaged public var cThumbnail: String?
     @NSManaged public var cTitle: String?
     @NSManaged public var cVideoId: String?
+    @NSManaged public var cAddNumber: Int64
+
     
     var isLike: Bool {
         get {
@@ -48,10 +50,8 @@ extension CoreVideo {
         }
         
     }
-
-
 }
 
 extension CoreVideo : Identifiable {
-   
+
 }
